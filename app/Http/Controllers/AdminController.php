@@ -40,4 +40,11 @@ class AdminController extends Controller
         $result->approve();
         return redirect()->route('admin.elementResults')->with('success', 'Element result approved!');
     }
+
+    // Delete element result
+    public function deleteElementResult(Result $result)
+    {
+        $result->delete();
+        return redirect()->route('admin.elementResults')->with('success', 'Element result deleted!');
+    }
 }

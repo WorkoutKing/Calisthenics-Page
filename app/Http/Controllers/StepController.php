@@ -32,16 +32,14 @@ class StepController extends Controller
     {
         $request->validate([
             'video_url' => 'nullable|url',
-            'reps' => 'nullable|integer',
-            'time' => 'nullable|numeric',
+            'reps_time' => 'nullable|integer',
         ]);
 
         Result::create([
             'user_id' => auth()->id(),
             'step_id' => $step_id,
             'video_url' => $request->video_url,
-            'reps' => $request->reps,
-            'time' => $request->time,
+            'reps_time' => $request->reps_time,
         ]);
 
         return redirect()->route('elements.index')->with('success', 'Your result has been uploaded.');
@@ -105,5 +103,21 @@ class StepController extends Controller
         $step->delete();
 
         return redirect()->route('elements.index')->with('success', 'Step deleted successfully.');
+    }
+
+    public function destroyResult($step_id)
+    {
+        $step = Step::findOrFail($step_id);
+
+        $result = Result::where('user_id', auth()->id())
+            ->where('step_id', $step_id)
+            ->first();
+
+        if ($result && $result->approved) {
+            $result->delete();
+            return redirect()->route('elements.index')->with('success', 'Your result has been deleted.');
+        } else {
+            return redirect()->route('elements.index')->with('error', 'You can only delete results that are approved.');
+        }
     }
 }

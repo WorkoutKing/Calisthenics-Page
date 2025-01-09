@@ -32,13 +32,8 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="reps" class="block text-sm font-medium text-gray-700">Reps</label>
-                            <input type="number" name="reps" id="reps" value="{{ old('reps') }}" placeholder="Enter number of reps (optional)" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="time" class="block text-sm font-medium text-gray-700">Time (Seconds)</label>
-                            <input type="number" name="time" id="time" step="0.1" value="{{ old('time') }}" placeholder="Enter time in seconds (optional)" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            <label for="reps_time" class="block text-sm font-medium text-gray-700">Reps or Time</label>
+                            <input type="number" name="reps_time" id="reps_time" value="{{ old('reps_time') }}" placeholder="Enter number of reps or time in seconds" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
 
                         <button type="submit" class="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">

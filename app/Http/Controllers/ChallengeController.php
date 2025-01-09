@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Challenge;
 use Illuminate\Http\Request;
 use App\Models\ChallengeResult;
+use App\Models\Notification;
+use App\Models\User;
+
 
 class ChallengeController extends Controller
 {
@@ -95,13 +98,24 @@ class ChallengeController extends Controller
             'end_date' => 'required|date|after:start_date',
         ]);
 
-        Challenge::create([
+        $challenge = Challenge::create([
             'name' => $request->name,
             'description' => $request->description,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'status' => 'pending',
         ]);
+
+        $users = User::all();
+
+        foreach ($users as $user) {
+            Notification::create([
+                'user_id' => $user->id,
+                'type' => 'new_challenge',
+                'message' => 'A new challenge has been created: ' . $challenge->name,
+                'read' => false,
+            ]);
+        }
 
         return redirect()->route('challenges.index')->with('success', 'Challenge created successfully!');
     }

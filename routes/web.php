@@ -30,13 +30,20 @@ Route::middleware('auth')->group(function () {
     });
 
     // Elements
-    Route::resource('elements', ElementController::class);
+    Route::get('/elements', [ElementController::class, 'index'])->name('elements.index');
+    Route::get('/elements/create', [ElementController::class, 'create'])->name('elements.create');
+    Route::post('/elements', [ElementController::class, 'store'])->name('elements.store');
+    Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');
 
     // Not working ?
     Route::prefix('steps/{step_id}')->name('steps.')->group(function () {
         Route::get('upload-result', [StepController::class, 'uploadResult'])->name('uploadResult');
         Route::post('upload-result', [StepController::class, 'storeResult'])->name('storeResult');
     });
+
+    // Steps deletion by user
+    Route::delete('/steps/{step_id}/delete-result', [StepController::class, 'destroyResult'])->name('steps.destroyResult');
+    Route::patch('/notifications/{notification}', [ProfileController::class, 'markAsRead'])->name('profile.markAsRead');
 
     Route::prefix('challenges')->name('challenges.')->group(function () {
         Route::get('/', [ChallengeController::class, 'index'])->name('index');
@@ -76,6 +83,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::patch('admin/challenge-results/{result}', [AdminController::class, 'approveChallengeResult'])->name('admin.approveChallengeResult');
     Route::get('admin/element-results', [AdminController::class, 'elementResultsIndex'])->name('admin.elementResults');
     Route::patch('admin/element-results/{result}', [AdminController::class, 'approveElementResult'])->name('admin.approveElementResult');
+    Route::delete('/delete-element-result/{result}', [AdminController::class, 'deleteElementResult'])->name('admin.deleteElementResult');
+
 });
 
 

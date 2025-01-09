@@ -16,9 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('step_id');
-            $table->string('video_url')->nullable();  // To store the video URL
-            $table->integer('reps')->nullable();      // For reps (if applicable)
-            $table->float('time')->nullable();        // For time (if applicable)
+            $table->string('video_url')->nullable();
+            $table->integer('reps_time');
             $table->timestamps();
 
             // Foreign keys

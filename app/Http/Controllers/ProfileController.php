@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Notification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class ProfileController extends Controller
 {
+    use Notifiable;
+
     public function index()
     {
-        return view('profile.index');
+        $notifications = auth()->user()->notifications()->latest()->get();
+
+        return view('profile.index', compact('notifications'));
     }
+
 
     public function edit(Request $request): View
     {
@@ -53,4 +62,17 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    public function dashboard()
+    {
+        $notifications = auth()->user()->notifications()->latest()->get();
+
+        return view('profile.dashboard', compact('notifications'));
+    }
+    public function markAsRead(Notification $notification)
+    {
+        $notification->update(['read' => true]);
+
+        return redirect()->route('profile.dashboard')->with('success', 'Notification marked as read.');
+    }
+
 }

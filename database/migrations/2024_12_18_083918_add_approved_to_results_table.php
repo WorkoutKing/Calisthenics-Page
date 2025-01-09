@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('results', function (Blueprint $table) {
-            $table->boolean('approved')->default(0)->after('time');
+            $table->boolean('approved')->default(0)->after('reps_time');
         });
     }
 

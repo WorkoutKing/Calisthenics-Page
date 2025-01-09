@@ -9,8 +9,6 @@
 @section('content')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <!-- Display Errors -->
             @if ($errors->any())
                 <div class="alert alert-danger mb-6 bg-red-100 border border-red-400 text-red-700 rounded-md p-4">
                     <ul>
@@ -18,6 +16,24 @@
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success mb-6 bg-green-100 border border-green-400 text-green-700 rounded-md p-4">
+                    <p>{{ session('success') }}</p>
+                </div>
+            @endif
+
+            @if (session('warning'))
+                <div class="alert alert-warning mb-6 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded-md p-4">
+                    <p>{{ session('warning') }}</p>
+                </div>
+            @endif
+
+            @if (session('info'))
+                <div class="alert alert-info mb-6 bg-blue-100 border border-blue-400 text-blue-700 rounded-md p-4">
+                    <p>{{ session('info') }}</p>
                 </div>
             @endif
 
@@ -53,7 +69,6 @@
                                                         </form>
                                                     </div>
                                                 @endif
-                                                {{-- Check if the user has uploaded a result for this step --}}
                                                 @php
                                                     $result = $step->results()->where('user_id', auth()->id())->first();
                                                 @endphp
@@ -61,7 +76,18 @@
                                                 @if ($result)
                                                     <div>
                                                         @if ($result->approved)
-                                                            <p class="text-green-600 font-medium">Your result has been approved!</p>
+                                                            <p class="text-green-600 font-medium">☆ You earned IT! ☆</p>
+
+                                                            <!-- Add Delete Button for approved results -->
+                                                            <div class="mt-4">
+                                                                <form action="{{ route('steps.destroyResult', $step->id) }}" method="POST" style="display:inline-block;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-sm btn-danger text-red-600 hover:bg-red-200 transition duration-150 px-4 py-2 rounded-lg w-full">
+                                                                        Delete Upload
+                                                                    </button>
+                                                                </form>
+                                                            </div>
                                                         @else
                                                             <p class="text-blue-600 font-medium">Your result is awaiting approval.</p>
                                                         @endif
