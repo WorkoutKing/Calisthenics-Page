@@ -43,7 +43,8 @@ Route::middleware('auth')->group(function () {
 
     // Steps deletion by user
     Route::delete('/steps/{step_id}/delete-result', [StepController::class, 'destroyResult'])->name('steps.destroyResult');
-    Route::patch('/notifications/{notification}', [ProfileController::class, 'markAsRead'])->name('profile.markAsRead');
+    Route::get('/profile/notifications', [ProfileController::class, 'notifications'])->name('profile.notifications');
+    Route::patch('/notifications/markAsRead', [ProfileController::class, 'markAsRead'])->name('profile.markAsRead');
 
     Route::prefix('challenges')->name('challenges.')->group(function () {
         Route::get('/', [ChallengeController::class, 'index'])->name('index');

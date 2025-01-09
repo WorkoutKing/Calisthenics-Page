@@ -9,21 +9,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
 
 class ProfileController extends Controller
 {
-    use Notifiable;
-
     public function index()
+    {
+        return view('profile.index', );
+    }
+    public function notifications()
     {
         $notifications = auth()->user()->notifications()->latest()->get();
 
-        return view('profile.index', compact('notifications'));
+        return view('profile.notifications', compact('notifications'));
     }
-
 
     public function edit(Request $request): View
     {
@@ -68,11 +66,12 @@ class ProfileController extends Controller
 
         return view('profile.dashboard', compact('notifications'));
     }
-    public function markAsRead(Notification $notification)
+    public function markAsRead()
     {
-        $notification->update(['read' => true]);
+        // Mark all unread notifications for the authenticated user as read
+        auth()->user()->notifications()->where('read', 0)->update(['read' => 1]);
 
-        return redirect()->route('profile.dashboard')->with('success', 'Notification marked as read.');
+        return redirect()->route('profile.notifications')->with('success', 'All notifications marked as read.');
     }
 
 }

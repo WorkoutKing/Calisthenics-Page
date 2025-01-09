@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ChallengeResult;
 use App\Models\Notification;
 use App\Models\User;
-
+use App\Notifications\ChallengeCreatedNotification;
 
 class ChallengeController extends Controller
 {
@@ -106,15 +106,10 @@ class ChallengeController extends Controller
             'status' => 'pending',
         ]);
 
-        $users = User::all();
-
+        // Notify all users about the new challenge
+        $users = User::all(); // Fetch all users
         foreach ($users as $user) {
-            Notification::create([
-                'user_id' => $user->id,
-                'type' => 'new_challenge',
-                'message' => 'A new challenge has been created: ' . $challenge->name,
-                'read' => false,
-            ]);
+            $user->notify(new ChallengeCreatedNotification($challenge));
         }
 
         return redirect()->route('challenges.index')->with('success', 'Challenge created successfully!');

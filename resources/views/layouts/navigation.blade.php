@@ -46,8 +46,14 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('profile.index')">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
                         <x-dropdown-link :href="route('profile.settings.edit')">
                             {{ __('Profile Settings') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.notifications')">
+                            {{ __('Notifications') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -102,9 +108,15 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.settings.edit')">
+                <x-dropdown-link :href="route('profile.index')">
+                    {{ __('Profile') }}
+                </x-dropdown-link>
+                <x-dropdown-link :href="route('profile.settings.edit')">
                     {{ __('Profile Settings') }}
-                </x-responsive-nav-link>
+                </x-dropdown-link>
+                <x-dropdown-link :href="route('profile.notifications')">
+                    {{ __('Notifications') }}
+                </x-dropdown-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
