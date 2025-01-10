@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('challenges.index')" :active="Str::startsWith(request()->route()->getName(), 'challenges')">
                         {{ __('Challenges') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('basics.index')" :active="Str::startsWith(request()->route()->getName(), 'basics')">
+                        {{ __('Basics') }}
+                    </x-nav-link>
                     @if (auth()->user()->role_id == 2)
                         <!-- New Admin Dashboard Link -->
                         <x-nav-link :href="route('admin.dashboard')" :active="Str::startsWith(request()->route()->getName(), 'admin')">
@@ -52,8 +55,18 @@
                         <x-dropdown-link :href="route('profile.settings.edit')">
                             {{ __('Profile Settings') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('profile.notifications')">
-                            {{ __('Notifications') }}
+                        <x-dropdown-link :href="route('profile.notifications')" class="flex items-center space-x-2">
+                            <span>{{ __('Notifications') }}</span>
+
+                            @php
+                                $unreadCount = Auth::user()->notifications()->where('read', 0)->count();
+                            @endphp
+
+                            @if ($unreadCount > 0)
+                                <span class="h-5 w-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                                    {{ $unreadCount }}
+                                </span>
+                            @endif
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -93,6 +106,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('challenges.index')" :active="Str::startsWith(request()->route()->getName(), 'challenges')">
                 {{ __('Challenges') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('basics.index')" :active="Str::startsWith(request()->route()->getName(), 'basics')">
+                {{ __('Basics') }}
             </x-responsive-nav-link>
             <!-- New Admin Dashboard Link for Mobile View -->
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="Str::startsWith(request()->route()->getName(), 'admin')">

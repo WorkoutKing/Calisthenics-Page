@@ -41,6 +41,9 @@
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <h1 class="text-2xl font-bold">Profile</h1>
             </div>
+
+            <a href="achievements"> ACHIEVEMENTS </a>
+
         </div>
     </div>
 @endsection

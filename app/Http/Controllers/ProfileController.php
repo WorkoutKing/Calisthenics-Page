@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Notifications\DatabaseNotification;
 
 class ProfileController extends Controller
 {
@@ -43,6 +44,7 @@ class ProfileController extends Controller
         return Redirect::route('profile.settings.edit')->with('status', 'profile-updated');
     }
 
+    // Logout
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
@@ -60,18 +62,42 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    // User profile dashboard
     public function dashboard()
     {
         $notifications = auth()->user()->notifications()->latest()->get();
 
         return view('profile.dashboard', compact('notifications'));
     }
+
+    // Mark read notifications
     public function markAsRead()
     {
-        // Mark all unread notifications for the authenticated user as read
         auth()->user()->notifications()->where('read', 0)->update(['read' => 1]);
 
         return redirect()->route('profile.notifications')->with('success', 'All notifications marked as read.');
     }
 
+    // Clear notifications
+    public function clearNotifications()
+    {
+        auth()->user()->notifications()->delete();
+
+        return redirect()->route('profile.notifications')->with('success', 'All notifications have been cleared.');
+    }
+
+    // Mark single notification as read
+    public function markAsReadSingle($id)
+    {
+        $notification = DatabaseNotification::find($id);
+
+        if ($notification && $notification->notifiable_id === auth()->id()) {
+            $notification->update(['read' => 1]);
+
+            return redirect()->back()->with('success', 'Notification marked as read.');
+        }
+
+        return redirect()->back()->withErrors('Notification not found or unauthorized.');
+    }
 }

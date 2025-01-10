@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BasicController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ElementController;
 use App\Http\Controllers\StepController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\AchievementsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 // Public Routes
 Route::get('/', function () {
@@ -29,6 +32,14 @@ Route::middleware('auth')->group(function () {
         });
     });
 
+    // Achievements
+    Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements.index');
+
+    // Basics
+    Route::get('/basics', [BasicController::class, 'index'])->name('basics.index');
+    Route::post('/basics', [BasicController::class, 'upload'])->name('basics.upload');
+    Route::get('/basics/statistics', [BasicController::class, 'statistics'])->name('basics.statistics');
+
     // Elements
     Route::get('/elements', [ElementController::class, 'index'])->name('elements.index');
     Route::get('/elements/create', [ElementController::class, 'create'])->name('elements.create');
@@ -45,6 +56,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/steps/{step_id}/delete-result', [StepController::class, 'destroyResult'])->name('steps.destroyResult');
     Route::get('/profile/notifications', [ProfileController::class, 'notifications'])->name('profile.notifications');
     Route::patch('/notifications/markAsRead', [ProfileController::class, 'markAsRead'])->name('profile.markAsRead');
+    Route::delete('/profile/notifications/clear', [ProfileController::class, 'clearNotifications'])->name('profile.clearNotifications');
+    Route::patch('/profile/notifications/{id}/mark-as-read', [ProfileController::class, 'markAsReadSingle'])->name('profile.markAsReadSingle');
 
     Route::prefix('challenges')->name('challenges.')->group(function () {
         Route::get('/', [ChallengeController::class, 'index'])->name('index');
@@ -81,12 +94,24 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     // Admin dashboard
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('admin/challenge-results', [AdminController::class, 'challengeResultsIndex'])->name('admin.challengeResults');
-    Route::patch('admin/challenge-results/{result}', [AdminController::class, 'approveChallengeResult'])->name('admin.approveChallengeResult');
     Route::get('admin/element-results', [AdminController::class, 'elementResultsIndex'])->name('admin.elementResults');
     Route::patch('admin/element-results/{result}', [AdminController::class, 'approveElementResult'])->name('admin.approveElementResult');
     Route::delete('/delete-element-result/{result}', [AdminController::class, 'deleteElementResult'])->name('admin.deleteElementResult');
-
+    Route::patch('/admin/challenge-results/{challengeResult}/approve', [AdminController::class, 'approveChallengeResult'])->name('admin.approveChallengeResult');
+    Route::delete('/admin/challenge-results/{challengeResult}', [AdminController::class, 'deleteChallengeResult'])->name('admin.deleteChallengeResult');
+    Route::get('/admin/basics', [AdminController::class, 'basicsResultsIndex'])->name('admin.basicsResultsIndex');
+    Route::patch('/admin/basics/{basic}/approve', [AdminController::class, 'basicsResultsApprove'])->name('admin.basicsResultsApprove');
+    Route::delete('/admin/basics/{basic}', [AdminController::class, 'basicsResultsDelete'])->name('admin.basicsResultsDelete');
 });
+
+// Route::get('/test-email', function () {
+//     Mail::raw('This is a test email!', function ($message) {
+//         $message->to('support@turnikas.eu')
+//             ->subject('Test Email');
+//     });
+
+//     return 'Email sent!';
+// });
 
 
 // Include Auth Routes

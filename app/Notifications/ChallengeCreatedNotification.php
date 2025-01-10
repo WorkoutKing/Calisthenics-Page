@@ -25,6 +25,7 @@ class ChallengeCreatedNotification extends Notification
         return [
             'message' => 'A new challenge has been created: ' . $this->challenge->name,
             'challenge_id' => $this->challenge->id,
+            'url' => route('challenges.show', $this->challenge->id), // Add the link to the challenge
         ];
     }
 }

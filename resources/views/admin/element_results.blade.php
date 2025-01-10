@@ -37,7 +37,7 @@
 
                 @foreach ($elementResults as $result)
                     <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-4">
-                        <h5 class="text-xl font-medium text-gray-800 mb-2">{{ $result->user->name }} - Element Result</h5>
+                        <h5 class="text-xl font-medium text-gray-800 mb-2">User: {{ $result->user->name }}</h5>
                         <p class="text-gray-700 mb-2"><strong>Element:</strong> {{ $result->step->element->name }}</p>
                         <p class="text-gray-700 mb-2"><strong>Result repetitions or time:</strong> {{ $result->reps_time }} </p>
 

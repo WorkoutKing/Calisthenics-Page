@@ -13,18 +13,27 @@ class ChallengeController extends Controller
 {
     public function index()
     {
-        $challenges = Challenge::when(auth()->check() && (auth()->user()->role_id != 1 && auth()->user()->role_id != 2), function ($query) {
-            $query->where('status', 'active')
+        if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2) {
+            $challenges = Challenge::where('status', '!=', 'completed')->get();
+        } else {
+            $challenges = Challenge::where('status', 'active')
                 ->whereDate('start_date', '<=', now())
                 ->whereDate('end_date', '>=', now())
-                ->orWhere('status', 'completed');
-        })->get();
+                ->get();
+        }
+
+        $previousChallenges = Challenge::where('status', 'completed')
+            ->withCount([
+                'challengeResults as completed_count' => function ($query) {
+                    $query->where('approved', true);
+                }
+            ])->get();
 
         $userResults = auth()->check()
             ? ChallengeResult::where('user_id', auth()->id())->get(['challenge_id', 'approved'])->keyBy('challenge_id')
             : collect();
 
-        return view('challenges.index', compact('challenges', 'userResults'));
+        return view('challenges.index', compact('challenges', 'previousChallenges', 'userResults'));
     }
 
     public function show($id)

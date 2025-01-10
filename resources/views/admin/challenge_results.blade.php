@@ -37,9 +37,8 @@
 
                 @foreach ($challengeResults as $result)
                     <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-4">
-                        <h5 class="text-xl font-medium text-gray-800 mb-2">{{ $result->user->name }} - Challenge Result</h5>
+                        <h5 class="text-xl font-medium text-gray-800 mb-2">User: {{ $result->user->name }}</h5>
                         <p class="text-gray-700 mb-2"><strong>Challenge:</strong> {{ $result->challenge->name }}</p>
-                        <p class="text-gray-700 mb-4"><strong>Result:</strong> {{ $result->result }}</p>
                         <!-- Video URL Display -->
                         @if ($result->result)
                             <p class="text-gray-700 mb-4"><strong>Video URL:</strong>
@@ -50,12 +49,20 @@
                         @else
                             <p class="text-gray-500 mb-4">No video URL provided.</p>
                         @endif
-                        <!-- Approve Button -->
+                        <!-- Buttons -->
                         <form action="{{ route('admin.approveChallengeResult', $result->id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('PATCH')
                             <button type="submit" class="btn btn-success bg-green-600 text-white py-2 px-4 rounded-md">
                                 Approve
+                            </button>
+                        </form>
+
+                        <form action="{{ route('admin.deleteChallengeResult', $result->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger bg-red-600 text-white py-2 px-4 rounded-md">
+                                Delete
                             </button>
                         </form>
                     </div>

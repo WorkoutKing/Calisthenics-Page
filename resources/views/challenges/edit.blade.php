@@ -24,22 +24,22 @@
 
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700">Challenge Name</label>
-                        <input type="text" name="name" id="name" class="form-input mt-1 block w-full" value="{{ old('name', $challenge->name) }}" required>
+                        <input type="text" name="name" id="name" class="form-input mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" value="{{ old('name', $challenge->name) }}" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea name="description" id="description" class="form-textarea mt-1 block w-full" required>{{ old('description', $challenge->description) }}</textarea>
+                        <textarea name="description" id="description" class="form-textarea mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required>{{ old('description', $challenge->description) }}</textarea>
                     </div>
 
                     <div class="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
-                            <input type="datetime-local" name="start_date" id="start_date" class="form-input mt-1 block w-full" value="{{ old('start_date', \Carbon\Carbon::parse($challenge->start_date)->format('Y-m-d\TH:i')) }}" required>
+                            <input type="datetime-local" name="start_date" id="start_date" class="form-input mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" value="{{ old('start_date', \Carbon\Carbon::parse($challenge->start_date)->format('Y-m-d\TH:i')) }}" required>
                         </div>
                         <div>
                             <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
-                            <input type="datetime-local" name="end_date" id="end_date" class="form-input mt-1 block w-full" value="{{ old('end_date', \Carbon\Carbon::parse($challenge->end_date)->format('Y-m-d\TH:i')) }}" required>
+                            <input type="datetime-local" name="end_date" id="end_date" class="form-input mt-1 p-2 block w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" value="{{ old('end_date', \Carbon\Carbon::parse($challenge->end_date)->format('Y-m-d\TH:i')) }}" required>
                         </div>
                     </div>
 

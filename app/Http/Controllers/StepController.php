@@ -6,27 +6,49 @@ use Illuminate\Http\Request;
 use App\Models\Step;
 use App\Models\Element;
 use App\Models\Result;
+use App\Models\Achievement;
+use App\Notifications\AchievementEarned;
 
 class StepController extends Controller
 {
     public function uploadResult($step_id)
     {
         $step = Step::findOrFail($step_id);
+        $element = $step->element;
 
-        $result = Result::where('user_id', auth()->id())
-            ->where('step_id', $step_id)
-            ->first();
+        $previousSteps = $element->steps()->where('id', '<', $step_id)->get();
+
+        foreach ($previousSteps as $previousStep) {
+            $previousResult = $previousStep->results()->where('user_id', auth()->id())->first();
+
+            if (!$previousResult || !$previousResult->approved) {
+                return redirect()->route('elements.index')->with('info', 'You must have all previous steps approved before uploading for this one.');
+            }
+        }
+
+        $result = Result::where('user_id', auth()->id())->where('step_id', $step_id)->first();
 
         if ($result) {
             $message = $result->approved
                 ? 'Your result has already been approved for this step.'
                 : 'Your result is awaiting approval.';
-            return redirect()->route('steps.index')->with('error', $message);
+            return redirect()->route('elements.index')->with('error', $message);
+        }
+
+        $isLastStep = $step->element->steps->last()->id == $step_id;
+
+        if ($isLastStep) {
+            $achievement = Achievement::create([
+                'user_id' => auth()->id(),
+                'element_id' => $element->id,
+                'completed_at' => now(),
+            ]);
+
+            auth()->user()->notify(new AchievementEarned($element));
         }
 
         return view('steps.upload_result', compact('step'));
     }
-
 
     public function storeResult(Request $request, $step_id)
     {

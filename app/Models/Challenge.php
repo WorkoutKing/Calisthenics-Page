@@ -22,5 +22,9 @@ class Challenge extends Model
         return $this->belongsToMany(User::class, 'user_challenges', 'challenge_id', 'user_id')
             ->withTimestamps();
     }
+    public function challengeResults()
+    {
+        return $this->hasMany(ChallengeResult::class);
+    }
 }
 

@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Basic;
 use App\Models\Result;
 use App\Models\ChallengeResult;
+use App\Models\Challenge;
+use App\Notifications\BasicApprovedNotification;
+use App\Notifications\BasicDeletedNotification;
 use App\Notifications\ElementApprovedNotification;
 use App\Notifications\ElementDeletedNotification;
+use App\Notifications\ChallengeApprovedNotification;
+use App\Notifications\ChallengeDeletedNotification;
 
 class AdminController extends Controller
 {
@@ -15,48 +21,100 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    // Show pending challenge results
+    // Challenge Results Index
     public function challengeResultsIndex()
     {
         $challengeResults = ChallengeResult::where('approved', 0)->get();
         return view('admin.challenge_results', compact('challengeResults'));
     }
 
-    // Approve challenge result
-    public function approveChallengeResult(ChallengeResult $result)
+    // Approve Challenge Result
+    public function approveChallengeResult(ChallengeResult $challengeResult)
     {
-        $result->approve();
+        $challengeResult->approve();
+
+        if ($challengeResult->user) {
+            $challengeResult->user->notify(new ChallengeApprovedNotification($challengeResult));
+        }
+
         return redirect()->route('admin.challengeResults')->with('success', 'Challenge result approved!');
     }
 
-    // Show pending element results
+
+    // Approve Challenge
+    public function approveChallenge(Challenge $challenge)
+    {
+        $challenge->update(['approved' => 1]);
+
+        $challenge->user->notify(new ChallengeApprovedNotification($challenge));
+
+        return redirect()->route('admin.challenges')->with('success', 'Challenge approved!');
+    }
+
+    // Delete Challenge
+    public function deleteChallengeResult(ChallengeResult $challengeResult)
+    {
+        if ($challengeResult->user) {
+            $challengeResult->user->notify(new ChallengeDeletedNotification($challengeResult));
+        }
+
+        $challengeResult->delete();
+
+        return redirect()->route('admin.challengeResults')->with('success', 'Challenge result deleted!');
+    }
+
+    // Element Results Index
     public function elementResultsIndex()
     {
         $elementResults = Result::where('approved', 0)->get();
         return view('admin.element_results', compact('elementResults'));
     }
 
-    // Delete element result
+    // Delete Element Result
     public function deleteElementResult(Result $result)
     {
-        // Delete the element result
         $result->delete();
 
-        // Notify the user who created the result
         $result->user->notify(new ElementDeletedNotification($result));
 
         return redirect()->route('admin.elementResults')->with('success', 'Element result deleted!');
     }
 
+    // Approve Element Result
     public function approveElementResult(Result $result)
     {
-        // Approve the element result
-        $result->approve();  // Assume you have an 'approve' method on your Result model
+        $result->approve();
 
-        // Notify the user who created the result
         $result->user->notify(new ElementApprovedNotification($result));
 
         return redirect()->route('admin.elementResults')->with('success', 'Element result approved!');
+    }
+
+    // Basics Results Index
+    public function basicsResultsIndex()
+    {
+        $pendingBasics = Basic::where('approved', false)->latest()->get();
+        return view('admin.basics_results', compact('pendingBasics'));
+    }
+
+    // Basics Results Approve
+    public function basicsResultsApprove(Basic $basic)
+    {
+        $basic->update(['approved' => true]);
+
+        $basic->user->notify(new BasicApprovedNotification($basic));
+
+        return redirect()->back()->with('success', 'Basic approved successfully.');
+    }
+
+    // Basics Results Delete
+    public function basicsResultsDelete(Basic $basic)
+    {
+        $basic->delete();
+
+        $basic->user->notify(new BasicDeletedNotification());
+
+        return redirect()->back()->with('success', 'Basic deleted successfully.');
     }
 
 }

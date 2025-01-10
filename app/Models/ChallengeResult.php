@@ -26,5 +26,6 @@ class ChallengeResult extends Model
     {
         $this->update(['approved' => true]);
     }
+
 }
 
