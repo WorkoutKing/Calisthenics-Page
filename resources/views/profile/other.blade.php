@@ -4,20 +4,12 @@
 <div class="container mx-auto py-12">
 
     <!-- User Profile Section -->
-    <div class="bg-white p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-center sm:items-start sm:space-x-6 space-y-6 sm:space-y-0 mb-8">
+    <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-6 mb-8">
         <!-- User Profile Image -->
-        <div class="flex-shrink-0">
-            <img src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('storage/profile_pictures/def.jpg') }}"
-                alt="Profile Picture"
-                class="w-32 h-32 rounded-full object-cover border-2 border-gray-300">
-        </div>
-
-        <!-- User Details -->
-        <div class="text-center sm:text-left">
-            <h1 class="text-3xl font-semibold text-gray-800">{{ auth()->user()->name }}</h1>
-            <p class="text-sm text-gray-600 mt-2">
-                Joined: {{ optional(auth()->user()->created_at)->format('M d, Y') ?? 'N/A' }}
-            </p>
+        <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('storage/profile_pictures/def.jpg') }}" alt="Profile Picture" class="w-32 h-32 rounded-full object-cover border-2 border-gray-300">
+        <div>
+            <h1 class="text-3xl font-semibold text-gray-800">{{ $user->name }}</h1>
+        <p class="text-sm text-gray-600">Joined: {{ optional($user->created_at)->format('M d, Y') ?? 'N/A' }}</p>
         </div>
     </div>
 
@@ -47,7 +39,7 @@
                 </div>
 
                 <!-- Special Achievements Section Inside Level Block -->
-              @if ($latestAchievements->isEmpty())
+                @if ($latestAchievements->isEmpty())
                     <p class="text-gray-600">This user has not earned any special achievements yet.</p>
                 @else
                     <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -163,45 +155,38 @@
                     </div>
                 </div>
             @endforeach
-
-            <!-- Link to Top Performers -->
-            <div class="mt-6 text-center">
-                <a href="/basics/statistics" class="text-blue-500 text-sm font-medium hover:underline">
-                    View Top Performers
-                </a>
-            </div>
         </div>
     </div>
 
     <!-- Achievements Section -->
-    <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-medium text-gray-800 mb-4">Earned Achievements</h3>
+    {{--  <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-medium text-gray-800 mb-4">Latest Earned Achievements</h3>
 
         @if ($latestAchievements->isEmpty())
-            <p class="text-gray-600">You have not earned any achievements yet.</p>
+            <p class="text-gray-600">This user has not earned any achievements yet.</p>
         @else
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <ul>
                 @foreach ($latestAchievements as $achievement)
-                    <div class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm">
-                        <i class="fas fa-medal text-blue-500 text-2xl mr-4"></i>
+                    <li class="flex items-center space-x-4 mb-4">
+                        <i class="fas fa-medal text-blue-500 text-xl"></i>
                         <div>
-                            <strong>{{ $achievement->element->name }}</strong>
+                            <strong>{{ $achievement->element->name }}:</strong>
                             <p class="text-sm text-gray-600">Earned on {{ $achievement->completed_at->format('M d, Y') }}</p>
                         </div>
-                    </div>
+                    </li>
                 @endforeach
-            </div>
+            </ul>
 
             <!-- Link to view all achievements -->
             @if ($allAchievementsCount > 6)
-                <div class="mt-4 text-sm text-center">
+                <div class="mt-4 text-sm">
                     <a href="achievements" class="text-blue-500 hover:underline">View All Achievements</a>
                 </div>
             @endif
         @endif
-    </div>
-</div>
+    </div>  --}}
 
+</div>
 <style>
 /* Custom class to create octagon shape */
 .clip-octagon {

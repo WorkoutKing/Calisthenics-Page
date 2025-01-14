@@ -13,16 +13,18 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.settings.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.settings.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
+        <!-- Name Field -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
+        <!-- Email Field -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
@@ -45,6 +47,13 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        <!-- Profile Picture Field -->
+        <div>
+            <x-input-label for="profile_picture" :value="__('Profile Picture')" />
+            <input type="file" name="profile_picture" id="profile_picture" class="mt-1 block w-full" />
+            <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
         </div>
 
         <div class="flex items-center gap-4">

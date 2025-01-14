@@ -36,25 +36,31 @@ class StepController extends Controller
         }
 
         $isLastStep = $step->element->steps->last()->id == $step_id;
-
         if ($isLastStep) {
-            $achievement = Achievement::create([
-                'user_id' => auth()->id(),
-                'element_id' => $element->id,
-                'completed_at' => now(),
-            ]);
+            $existingAchievement = Achievement::where('user_id', auth()->id())
+                ->where('element_id', $element->id)
+                ->first();
 
-            auth()->user()->notify(new AchievementEarned($element));
+            if (!$existingAchievement) {
+                $achievement = Achievement::create([
+                    'user_id' => auth()->id(),
+                    'element_id' => $element->id,
+                    'completed_at' => now(),
+                ]);
+
+                auth()->user()->notify(new AchievementEarned($element));
+            }
         }
 
         return view('steps.upload_result', compact('step'));
     }
 
+
     public function storeResult(Request $request, $step_id)
     {
         $request->validate([
-            'video_url' => 'nullable|url',
-            'reps_time' => 'nullable|integer',
+            'video_url' => 'url',
+            'reps_time' => 'integer',
         ]);
 
         Result::create([

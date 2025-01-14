@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'profile_picture',
     ];
 
     /**
@@ -51,9 +52,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
     public function basics()
     {
         return $this->hasMany(Basic::class);
     }
 
+    // Optionally, add an accessor to retrieve the profile picture URL
+    public function getProfilePictureUrlAttribute()
+    {
+        return $this->profile_picture
+            ? asset('storage/profile_pictures/' . $this->profile_picture)
+            : asset('images/default-avatar.png'); // Provide a default avatar image if no picture
+    }
 }

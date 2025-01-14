@@ -59,6 +59,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/notifications/clear', [ProfileController::class, 'clearNotifications'])->name('profile.clearNotifications');
     Route::patch('/profile/notifications/{id}/mark-as-read', [ProfileController::class, 'markAsReadSingle'])->name('profile.markAsReadSingle');
 
+    // Profile
+    Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
+
     Route::prefix('challenges')->name('challenges.')->group(function () {
         Route::get('/', [ChallengeController::class, 'index'])->name('index');
 
