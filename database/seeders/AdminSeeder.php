@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
                 'name' => 'Madstars',
                 'email' => 'madstars4ever@gmail.com',
                 'password' => Hash::make('123456789'),
-                'role' => '2',
+                'role_id' => '2',
             ]);
         }
     }
