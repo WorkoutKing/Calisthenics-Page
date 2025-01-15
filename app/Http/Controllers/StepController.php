@@ -43,6 +43,14 @@ class StepController extends Controller
             'reps_time' => 'integer',
         ]);
 
+        $existingResult = Result::where('user_id', auth()->id())
+            ->where('step_id', $step_id)
+            ->first();
+
+        if ($existingResult) {
+            return redirect()->route('elements.index')->with('info', 'Slow down! Spamming uploads is not allowed.');
+        }
+
         Result::create([
             'user_id' => auth()->id(),
             'step_id' => $step_id,

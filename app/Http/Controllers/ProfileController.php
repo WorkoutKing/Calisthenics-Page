@@ -60,7 +60,6 @@ class ProfileController extends Controller
         $latestAchievements = Achievement::where('user_id', $user->id)
             ->with('element')
             ->latest()
-            ->take(6)
             ->get();
 
         $allAchievementsCount = Achievement::where('user_id', $user->id)->count();
@@ -116,7 +115,6 @@ class ProfileController extends Controller
         $latestAchievements = Achievement::where('user_id', $user->id)
             ->with('element')
             ->latest()
-            ->take(6)
             ->get();
 
         $allAchievementsCount = Achievement::where('user_id', $user->id)->count();
