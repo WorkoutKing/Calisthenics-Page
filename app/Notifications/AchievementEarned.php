@@ -10,15 +10,18 @@ class AchievementEarned extends Notification
     use Queueable;
 
     protected $element;
+    protected $step;
 
     /**
      * Create a new notification instance.
      *
-     * @param $element
+     * @param object $element
+     * @param object $step
      */
-    public function __construct($element)
+    public function __construct($element, $step)
     {
         $this->element = $element;
+        $this->step = $step;
     }
 
     /**
@@ -42,8 +45,9 @@ class AchievementEarned extends Notification
     {
         return [
             'element_name' => $this->element->name,
-            'message' => "You earned the achievement for completing \"{$this->element->name}\"!",
-            'completed_at' => now(),
+            'step_name' => $this->step->name,
+            'message' => "Congratulations! You've earned the achievement for completing \"{$this->element->name}\".",
+            'completed_at' => now()->toDateTimeString(),
         ];
     }
 }

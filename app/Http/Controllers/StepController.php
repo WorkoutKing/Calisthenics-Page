@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Step;
 use App\Models\Element;
 use App\Models\Result;
-use App\Models\Achievement;
-use App\Notifications\AchievementEarned;
 
 class StepController extends Controller
 {
@@ -35,26 +33,8 @@ class StepController extends Controller
             return redirect()->route('elements.index')->with('error', $message);
         }
 
-        $isLastStep = $step->element->steps->last()->id == $step_id;
-        if ($isLastStep) {
-            $existingAchievement = Achievement::where('user_id', auth()->id())
-                ->where('element_id', $element->id)
-                ->first();
-
-            if (!$existingAchievement) {
-                $achievement = Achievement::create([
-                    'user_id' => auth()->id(),
-                    'element_id' => $element->id,
-                    'completed_at' => now(),
-                ]);
-
-                auth()->user()->notify(new AchievementEarned($element));
-            }
-        }
-
         return view('steps.upload_result', compact('step'));
     }
-
 
     public function storeResult(Request $request, $step_id)
     {

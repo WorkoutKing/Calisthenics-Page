@@ -12,6 +12,8 @@ use App\Notifications\ElementApprovedNotification;
 use App\Notifications\ElementDeletedNotification;
 use App\Notifications\ChallengeApprovedNotification;
 use App\Notifications\ChallengeDeletedNotification;
+use App\Models\Achievement;
+use App\Notifications\AchievementEarned;
 
 class AdminController extends Controller
 {
@@ -86,6 +88,27 @@ class AdminController extends Controller
         $result->approve();
 
         $result->user->notify(new ElementApprovedNotification($result));
+
+        $step = $result->step;
+        $element = $step->element;
+
+        $hardestStep = $element->steps()->orderBy('points', 'desc')->first();
+
+        if ($step->id === $hardestStep->id) {
+            $existingAchievement = Achievement::where('user_id', $result->user_id)
+                ->where('element_id', $element->id)
+                ->first();
+
+            if (!$existingAchievement) {
+                Achievement::create([
+                    'user_id' => $result->user_id,
+                    'element_id' => $element->id,
+                    'completed_at' => now(),
+                ]);
+
+                $result->user->notify(new AchievementEarned($element, $step));
+            }
+        }
 
         return redirect()->route('admin.elementResults')->with('success', 'Element result approved!');
     }

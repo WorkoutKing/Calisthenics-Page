@@ -46,91 +46,103 @@
                         @foreach ($latestAchievements as $spec)
                             @if($spec->element->id == 1)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/handstand-badge.jpg" alt="Handstand Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/hs.png') }}" alt="Handstand Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Handstand</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 2)
+                            @if($spec->element->id == 3)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/handstand-master-badge.jpg" alt="Handstand Master Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/hsm.png') }}" alt="Handstand Master Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Handstand Master</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 3)
+                            @if($spec->element->id == 6)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/front-lever-badge.jpg" alt="Front Lever Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/front.png') }}" alt="Front Lever Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Front Lever</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 4)
+                            @if($spec->element->id == 7)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/front-lever-master-badge.jpg" alt="Front Lever Master Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/frontm.png') }}" alt="Front Lever Master Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Front Lever Master</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 5)
+                            @if($spec->element->id == 8)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/planche-badge.jpg" alt="Planche Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/planche.png') }}" alt="Planche Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Planche</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 6)
+                            @if($spec->element->id == 99)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/planche-master-badge.jpg" alt="Planche Master Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/planchem.png') }}" alt="Planche Master Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Planche Master</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 7)
+                        @endforeach
+                        @foreach ($exerciseProgress as $progress)
+                            @if($progress['exercise'] ==  'pull ups' && $progress['userScore'] >= 40)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
+                                    <div class="w-20 h-20  clip-octagon relative ">
                                         <img src="path-to-your-image/pull-ups-god-badge.jpg" alt="Pull Ups God Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
-                                        <span>Pull Ups God 40</span>
+                                        <span>Pull Ups God</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 8)
+                            @if($progress['exercise'] == 'dips' && $progress['userScore'] >= 100)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/dips-god-badge.jpg" alt="Dips God Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/dip.png') }}" alt="Dips God Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
-                                        <span>Dips God 100</span>
+                                        <span>Dips God</span>
                                     </div>
                                 </div>
                             @endif
-                            @if($spec->element->id == 9)
+                            @if($progress['exercise'] == 'push ups' && $progress['userScore'] >= 200)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20 bg-gray-200 clip-octagon relative shadow-md">
-                                        <img src="path-to-your-image/push-ups-god-badge.jpg" alt="Push Ups God Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/pushups.png') }}" alt="Push Ups God Badge" class="w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
-                                        <span>Push Ups God 200</span>
+                                        <span>Push Ups God</span>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($progress['exercise'] == 'pistol squats' && $progress['userScore'] >= 20)
+                                <div class="flex flex-col items-center group">
+                                    <div class="w-20 h-20  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/pistolsquats.png') }}" alt="Push Ups God Badge" class="w-full h-full object-cover rounded-lg">
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <span>Pistol Squats Specialist</span>
                                     </div>
                                 </div>
                             @endif
@@ -150,7 +162,7 @@
                         <span class="text-sm text-gray-600">{{ $progress['userScore'] }} / {{ $progress['globalMax'] }} (Ranked {{ $progress['rank'] }})</span>
                     </div>
                     <!-- Progress bar -->
-                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden mt-2">
+                    <div class="h-2  rounded-full overflow-hidden mt-2">
                         <div class="h-full bg-green-500" style="width: {{ $progress['globalMax'] > 0 ? ($progress['userScore'] / $progress['globalMax']) * 100 : 0 }}%;"></div>
                     </div>
                 </div>
@@ -159,39 +171,24 @@
     </div>
 
     <!-- Achievements Section -->
-    {{--  <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-medium text-gray-800 mb-4">Latest Earned Achievements</h3>
+    <div class="bg-white p-6 rounded-lg ">
+        <h3 class="text-xl font-medium text-gray-800 mb-4">Earned Achievements</h3>
 
         @if ($latestAchievements->isEmpty())
-            <p class="text-gray-600">This user has not earned any achievements yet.</p>
+            <p class="text-gray-600">You have not earned any achievements yet.</p>
         @else
-            <ul>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 @foreach ($latestAchievements as $achievement)
-                    <li class="flex items-center space-x-4 mb-4">
-                        <i class="fas fa-medal text-blue-500 text-xl"></i>
+                    <div class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm">
+                        <i class="fas fa-medal text-blue-500 text-2xl mr-4"></i>
                         <div>
-                            <strong>{{ $achievement->element->name }}:</strong>
+                            <strong>{{ $achievement->element->name }}</strong>
                             <p class="text-sm text-gray-600">Earned on {{ $achievement->completed_at->format('M d, Y') }}</p>
                         </div>
-                    </li>
+                    </div>
                 @endforeach
-            </ul>
-
-            <!-- Link to view all achievements -->
-            @if ($allAchievementsCount > 6)
-                <div class="mt-4 text-sm">
-                    <a href="achievements" class="text-blue-500 hover:underline">View All Achievements</a>
-                </div>
-            @endif
+            </div>
         @endif
-    </div>  --}}
-
+    </div>
 </div>
-<style>
-/* Custom class to create octagon shape */
-.clip-octagon {
-    clip-path: polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0% 80%, 0% 20%);
-}
-
-</style>
 @endsection

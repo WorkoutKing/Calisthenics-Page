@@ -30,10 +30,12 @@ class ElementSeeder extends Seeder
                 ['name' => 'Advance Back Lever', 'criteria' => 'Hold the advanced back lever position for 20 seconds.', 'points' => 6],
                 ['name' => 'Straddle Back Lever', 'criteria' => 'Hold the straddle back lever position for 10 seconds.', 'points' => 22],
                 ['name' => 'Full Back Lever', 'criteria' => 'Hold the full back lever position for 3 seconds.', 'points' => 23],
-                ['name' => 'Full Back Lever Pull-Ups', 'criteria' => 'Perform pull-ups in the full back lever position for 10 repetitions.', 'points' => 29],
+            ],
+            'Back Lever Advance Progression' => [
+                ['name' => 'Full Back Lever Pull-Ups', 'criteria' => 'Perform pull-ups in the full back lever position for 10 repetitions.', 'points' => 29]
             ],
             'Front Lever Progression' => [
-                ['name' => 'Australian Pull-Ups', 'criteria' => 'Perform Australian pull-ups for 30 repetitions.', 'points' => 3],
+                ['name' => 'Australian Pull-Ups', 'criteria' => 'Perform Australian pull-ups for 30 repetitions, easy start.', 'points' => 3],
                 ['name' => 'Tuck Front Lever', 'criteria' => 'Hold the tuck front lever position for 30 seconds.', 'points' => 9],
                 ['name' => 'Advance Front Lever', 'criteria' => 'Hold the advanced front lever position for 20 seconds.', 'points' => 19],
                 ['name' => 'Straddle Front Lever', 'criteria' => 'Hold the straddle front lever position for 10 seconds.', 'points' => 26],
