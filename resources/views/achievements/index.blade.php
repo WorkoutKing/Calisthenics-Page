@@ -45,6 +45,9 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="mt-6">
+                        {{ $achievements->links() }} <!-- Add Pagination Links -->
+                    </div>
                 @endif
             </div>
         </div>

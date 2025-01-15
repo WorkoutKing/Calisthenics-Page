@@ -96,15 +96,29 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
     // Admin dashboard
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('admin/challenge-results', [AdminController::class, 'challengeResultsIndex'])->name('admin.challengeResults');
+
+    // Elements
     Route::get('admin/element-results', [AdminController::class, 'elementResultsIndex'])->name('admin.elementResults');
     Route::patch('admin/element-results/{result}', [AdminController::class, 'approveElementResult'])->name('admin.approveElementResult');
     Route::delete('/delete-element-result/{result}', [AdminController::class, 'deleteElementResult'])->name('admin.deleteElementResult');
+
+    // Challenges
+    Route::get('admin/challenge-results', [AdminController::class, 'challengeResultsIndex'])->name('admin.challengeResults');
     Route::patch('/admin/challenge-results/{challengeResult}/approve', [AdminController::class, 'approveChallengeResult'])->name('admin.approveChallengeResult');
     Route::delete('/admin/challenge-results/{challengeResult}', [AdminController::class, 'deleteChallengeResult'])->name('admin.deleteChallengeResult');
+
+    // Basics
     Route::get('/admin/basics', [AdminController::class, 'basicsResultsIndex'])->name('admin.basicsResultsIndex');
     Route::patch('/admin/basics/{basic}/approve', [AdminController::class, 'basicsResultsApprove'])->name('admin.basicsResultsApprove');
     Route::delete('/admin/basics/{basic}', [AdminController::class, 'basicsResultsDelete'])->name('admin.basicsResultsDelete');
+
+    // Users
+    Route::get('/admin/users', [AdminController::class, 'indexUsers'])->name('admin.users.index');
+    Route::get('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
+    Route::get('/admin/users/{user}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
+    Route::put('/admin/users/{user}', [AdminController::class, 'updateUser'])->name('admin.users.update');
+    Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 });
 
 // Route::get('/test-email', function () {

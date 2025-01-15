@@ -43,7 +43,7 @@
                 @foreach ($pendingBasics as $basic)
                     <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-4">
                         <h5 class="text-xl font-medium text-gray-800 mb-2">User: {{ $basic->user->name }}</h5>
-                        <p class="text-gray-700 mb-2"><strong>Excercise: {{ $basic->exercise }}</strong></p>
+                        <p class="text-gray-700 mb-2"><strong>Exercise: {{ $basic->exercise }}</strong></p>
                         <p class="text-gray-700 mb-2"><strong>Video URL:</strong>
                             <a href="{{ $basic->video_url }}" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener noreferrer">
                                 {{ $basic->video_url }}
@@ -69,6 +69,11 @@
                         </form>
                     </div>
                 @endforeach
+
+                <!-- Pagination Links -->
+                <div class="mt-6">
+                    {{ $pendingBasics->links() }}
+                </div>
             </div>
         </div>
 

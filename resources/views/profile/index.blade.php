@@ -54,8 +54,8 @@
                         @foreach ($latestAchievements as $spec)
                             @if($spec->element->id == 1)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/hs.png') }}" alt="Handstand Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/hs.png') }}" alt="Handstand Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Handstand</span>
@@ -64,8 +64,8 @@
                             @endif
                             @if($spec->element->id == 3)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/hsm.png') }}" alt="Handstand Master Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/hsm.png') }}" alt="Handstand Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Handstand Master</span>
@@ -74,8 +74,8 @@
                             @endif
                             @if($spec->element->id == 6)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/front.png') }}" alt="Front Lever Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/front.png') }}" alt="Front Lever Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Front Lever</span>
@@ -84,8 +84,8 @@
                             @endif
                             @if($spec->element->id == 7)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/frontm.png') }}" alt="Front Lever Master Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/frontm.png') }}" alt="Front Lever Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Front Lever Master</span>
@@ -94,8 +94,8 @@
                             @endif
                             @if($spec->element->id == 8)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/planche.png') }}" alt="Planche Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/planche.png') }}" alt="Planche Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Planche</span>
@@ -104,8 +104,8 @@
                             @endif
                             @if($spec->element->id == 99)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/planchem.png') }}" alt="Planche Master Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/planchem.png') }}" alt="Planche Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Planche Master</span>
@@ -116,8 +116,8 @@
                         @foreach ($exerciseProgress as $progress)
                             @if($progress['exercise'] ==  'pull ups' && $progress['userScore'] >= 40)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="path-to-your-image/pull-ups-god-badge.jpg" alt="Pull Ups God Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="path-to-your-image/pull-ups-god-badge.jpg" alt="Pull Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Pull Ups God</span>
@@ -126,8 +126,8 @@
                             @endif
                             @if($progress['exercise'] == 'dips' && $progress['userScore'] >= 100)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/dip.png') }}" alt="Dips God Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/dip.png') }}" alt="Dips God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Dips God</span>
@@ -136,8 +136,8 @@
                             @endif
                             @if($progress['exercise'] == 'push ups' && $progress['userScore'] >= 200)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/pushups.png') }}" alt="Push Ups God Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/pushups.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Push Ups God</span>
@@ -146,8 +146,8 @@
                             @endif
                             @if($progress['exercise'] == 'pistol squats' && $progress['userScore'] >= 20)
                                 <div class="flex flex-col items-center group">
-                                    <div class="w-20 h-20  clip-octagon relative ">
-                                        <img src="{{ asset('storage/badges/pistolsquats.png') }}" alt="Push Ups God Badge" class="w-full h-full object-cover rounded-lg">
+                                    <div class="w-21 h-21  clip-octagon relative ">
+                                        <img src="{{ asset('storage/badges/pistolsquats.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                     </div>
                                     <div class="mt-2 text-center">
                                         <span>Pistol Squats Specialist</span>

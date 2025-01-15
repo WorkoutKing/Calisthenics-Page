@@ -99,6 +99,9 @@
                             </li>
                         @endforeach
                     </ul>
+                    <div class="mt-8">
+                        {{ $notifications->links() }}
+                    </div>
                 @endif
             </div>
         </div>

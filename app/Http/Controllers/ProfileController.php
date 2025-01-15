@@ -130,10 +130,11 @@ class ProfileController extends Controller
 
     public function notifications()
     {
-        $notifications = auth()->user()->notifications()->latest()->get();
+        $notifications = auth()->user()->notifications()->latest()->paginate(10);
 
         return view('profile.notifications', compact('notifications'));
     }
+
 
     public function edit(Request $request): View
     {

@@ -63,7 +63,7 @@
                                         @endif
 
                                         <!-- User Name -->
-                                        <p class="font-semibold text-gray-800">{{ $entry->user->name }}</p>
+                                        <p class="font-semibold text-gray-800"><a href="/profile/{{ $entry->user->id }}">{{ $entry->user->name }}</a></p>
                                     </div>
 
                                     <!-- Reps -->

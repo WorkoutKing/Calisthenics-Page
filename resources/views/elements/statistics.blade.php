@@ -67,7 +67,7 @@
                                                             {{ $index + 1 }}
                                                         @endif
                                                     </td>
-                                                    <td class="px-4 py-2 border border-gray-300">{{ $result->user->name }}</td>
+                                                    <td class="px-4 py-2 border border-gray-300"><a href="/profile/{{ $result->user->id }}">{{ $result->user->name }}</a></td>
                                                     <td class="px-4 py-2 border border-gray-300">{{ $result->reps_time }}</td>
                                                     {{--  <td class="px-4 py-2 border border-gray-300 text-center">
                                                         <a href="{{ $result->video_url }}" target="_blank" class="text-blue-500 hover:underline">

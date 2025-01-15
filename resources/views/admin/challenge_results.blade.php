@@ -30,6 +30,7 @@
                 <p>{{ session('info') }}</p>
             </div>
         @endif
+
         <!-- Pending Challenge Results Section -->
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
@@ -67,6 +68,11 @@
                         </form>
                     </div>
                 @endforeach
+
+                <!-- Pagination Links -->
+                <div class="mt-6">
+                    {{ $challengeResults->links() }}
+                </div>
             </div>
         </div>
     </div>
