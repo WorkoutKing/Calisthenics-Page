@@ -1,66 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Calisthenics Challenges Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Welcome to the **Calisthenics Challenges Platform**, a web application designed to promote fitness through exciting and engaging challenges. Users can join challenges, upload their results, and earn points while competing with others.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### For Authenticated Users:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Join Active Challenges**: Browse and join currently active challenges.
+-   **Upload Results**: Submit your results for approval and track your performance.
+-   **View Progress**: See your status and whether your results are approved or pending.
+-   **Admin Management**: Admins can create, edit, and delete challenges and manage their statuses.
 
-## Learning Laravel
+### For Guests:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   **Explore Challenges**: View active and previous challenges.
+-   **Call to Action**: Encouraged to register or log in to participate and upload results.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Built With
 
-## Laravel Sponsors
+-   **Framework**: Laravel
+-   **Frontend**: TailwindCSS for modern and responsive design
+-   **Database**: MySQL (Eloquent ORM)
+-   **Authentication**: Laravel Breeze
+-   **Icons**: Font Awesome
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Installation and Setup
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. **Clone the Repository**
 
-## Contributing
+    ```bash
+    git clone https://github.com/WorkoutKing/Calisthenics-Page.git
+    cd calisthenics-challenges
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Install Dependencies**
 
-## Code of Conduct
+    ```bash
+    composer install
+    npm install
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. **Set Up Environment**
 
-## Security Vulnerabilities
+    - Copy the `.env.example` file and rename it to `.env`:
+        ```bash
+        cp .env.example .env
+        ```
+    - Configure the `.env` file with your database credentials and other settings.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. **Generate Application Key**
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5. **Migrate and Seed the Database**
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+6. **Build Assets**
+
+    ```bash
+    npm run build
+    ```
+
+7. **Start the Server**
+    ```bash
+    php artisan serve
+    ```
+
+Visit the application at `http://localhost:8000`.
+
+---
+
+## Usage
+
+1. **Register an Account**: Sign up to start participating in challenges.
+2. **Join Challenges**: Explore active challenges and join the ones that interest you.
+3. **Upload Results**: Submit your performance to earn points and track your progress.
+4. **Admin Panel**: If you’re an admin, manage challenges and their statuses.
+
+---
+
+## Folder Structure
+
+-   **`app/`**: Core application files (Controllers, Models, Middleware).
+-   **`resources/views/`**: Blade templates for frontend pages.
+-   **`routes/`**: Web routes defined in `web.php`.
+-   **`public/`**: Publicly accessible assets (compiled CSS/JS).
+-   **`database/`**: Migrations, seeders, and factories.
+
+---
+
+## Contribution Guidelines
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit changes and push to your branch.
+4. Open a pull request to the main branch.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+## Contact
+
+For questions, feedback, or support:
+
+-   **GitHub**: https://github.com/WorkoutKing
