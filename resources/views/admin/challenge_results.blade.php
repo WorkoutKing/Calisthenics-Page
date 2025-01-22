@@ -2,10 +2,12 @@
 
 @section('content')
 <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
+
+        <!-- Alerts Section -->
         @if ($errors->any())
-            <div class="alert alert-danger mb-6 bg-red-100 border border-red-400 text-red-700 rounded-md p-4">
-                <ul>
+            <div class="bg-red-100 border border-red-400 text-red-700 rounded-md p-4">
+                <ul class="list-disc pl-5 space-y-1">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -14,63 +16,78 @@
         @endif
 
         @if (session('success'))
-            <div class="alert alert-success mb-6 bg-green-100 border border-green-400 text-green-700 rounded-md p-4">
+            <div class="bg-green-100 border border-green-400 text-green-700 rounded-md p-4">
                 <p>{{ session('success') }}</p>
             </div>
         @endif
 
         @if (session('warning'))
-            <div class="alert alert-warning mb-6 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded-md p-4">
+            <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 rounded-md p-4">
                 <p>{{ session('warning') }}</p>
             </div>
         @endif
 
         @if (session('info'))
-            <div class="alert alert-info mb-6 bg-blue-100 border border-blue-400 text-blue-700 rounded-md p-4">
+            <div class="bg-blue-100 border border-blue-400 text-blue-700 rounded-md p-4">
                 <p>{{ session('info') }}</p>
             </div>
         @endif
 
         <!-- Pending Challenge Results Section -->
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="bg-white shadow-sm sm:rounded-lg overflow-hidden">
             <div class="p-6 text-gray-900">
                 <h2 class="text-3xl font-semibold mb-6">Pending Challenge Results</h2>
 
-                @foreach ($challengeResults as $result)
-                    <div class="bg-gray-100 p-4 rounded-lg shadow-md mb-4">
-                        <h5 class="text-xl font-medium text-gray-800 mb-2">User: {{ $result->user->name }}</h5>
-                        <p class="text-gray-700 mb-2"><strong>Challenge:</strong> {{ $result->challenge->name }}</p>
-                        <!-- Video URL Display -->
-                        @if ($result->result)
-                            <p class="text-gray-700 mb-4"><strong>Video URL:</strong>
-                                <a href="{{ $result->result }}" class="text-blue-500 hover:text-blue-700" target="_blank" rel="noopener noreferrer">
-                                    {{ $result->result }}
-                                </a>
-                            </p>
-                        @else
-                            <p class="text-gray-500 mb-4">No video URL provided.</p>
-                        @endif
-                        <!-- Buttons -->
-                        <form action="{{ route('admin.approveChallengeResult', $result->id) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('PATCH')
-                            <button type="submit" class="btn btn-success bg-green-600 text-white py-2 px-4 rounded-md">
-                                Approve
-                            </button>
-                        </form>
+                <!-- Results List -->
+                <div class="space-y-6">
+                    @foreach ($challengeResults as $result)
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                            <!-- User and Challenge Info -->
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                                <div>
+                                    <h5 class="text-xl font-medium text-gray-800 mb-1">
+                                        User: {{ $result->user->name }}
+                                    </h5>
+                                    <p class="text-gray-700"><strong>Challenge:</strong> {{ $result->challenge->name }}</p>
+                                </div>
+                                <!-- Video URL -->
+                                <div class="mt-4 md:mt-0">
+                                    @if ($result->result)
+                                        <p class="text-gray-700">
+                                            <strong>Video URL:</strong>
+                                            <a href="{{ $result->result }}" class="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">
+                                                {{ $result->result }}
+                                            </a>
+                                        </p>
+                                    @else
+                                        <p class="text-gray-500">No video URL provided.</p>
+                                    @endif
+                                </div>
+                            </div>
 
-                        <form action="{{ route('admin.deleteChallengeResult', $result->id) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger bg-red-600 text-white py-2 px-4 rounded-md">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
-                @endforeach
+                            <!-- Action Buttons -->
+                            <div class="mt-4 flex space-x-4">
+                                <form action="{{ route('admin.approveChallengeResult', $result->id) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="bg-green-600 text-white py-2 px-4 rounded-md shadow hover:bg-green-700 transition">
+                                        Approve
+                                    </button>
+                                </form>
+                                <form action="{{ route('admin.deleteChallengeResult', $result->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-600 text-white py-2 px-4 rounded-md shadow hover:bg-red-700 transition">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
 
                 <!-- Pagination Links -->
-                <div class="mt-6">
+                <div class="mt-8">
                     {{ $challengeResults->links() }}
                 </div>
             </div>

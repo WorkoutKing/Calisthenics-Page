@@ -25,5 +25,9 @@ class Result extends Model
     {
         $this->update(['approved' => true]);
     }
+    public function meta()
+    {
+        return $this->morphOne(Meta::class, 'metaable');
+    }
 }
 

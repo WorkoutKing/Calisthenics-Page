@@ -20,4 +20,8 @@ class UserChallenge extends Model
     {
         return $this->belongsTo(Challenge::class);
     }
+    public function meta()
+    {
+        return $this->morphOne(Meta::class, 'metaable');
+    }
 }

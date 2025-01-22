@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
-@section('header')
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Dashboard') }}
-    </h2>
-@endsection
+@section('meta_title', 'Dashboard | Calisthenics')
+@section('meta_description', 'Stay up-to-date with the latest news, blog articles, and team updates. Learn more about the company and the team behind the scenes.')
+@section('meta_keywords', 'calisthenics, dashboard, news, blog, articles, team, company')
 
 @section('content')
     <div class="py-12">

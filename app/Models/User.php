@@ -24,6 +24,9 @@ class User extends Authenticatable
         'password',
         'role_id',
         'profile_picture',
+        'last_login_ip',
+        'last_login_at',
+        'is_online',
     ];
 
     /**
@@ -46,6 +49,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_login_at' => 'datetime',
         ];
     }
     public function role()
@@ -64,5 +68,9 @@ class User extends Authenticatable
         return $this->profile_picture
             ? asset('storage/profile_pictures/' . $this->profile_picture)
             : asset('images/default-avatar.png'); // Provide a default avatar image if no picture
+    }
+    public function meta()
+    {
+        return $this->morphOne(Meta::class, 'metaable');
     }
 }

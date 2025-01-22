@@ -8,16 +8,24 @@
 
 @section('content')
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-semibold mb-6">
-                <i class="fa-brands fa-react"></i> {{ __('Upload Result for Step:') }}  {{$step->name }}
-            </h1>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <!-- Added px-4 for mobile padding -->
+
+            <!-- Page Title and Description -->
+            <div class="bg-gradient-to-r from-green-500 via-green-400 to-green-600 text-white p-6 rounded-lg shadow-lg mb-8">
+                <h1 class="text-3xl sm:text-4xl font-bold text-center mb-4 flex items-center justify-center">
+                    Upload Your Result
+                </h1>
+                <p class="text-base sm:text-lg text-center sm:text-xl">
+                    Share your progress for the step <strong>{{ $step->name }}</strong>. Upload a video or enter your reps/time to keep track of your achievements and continue advancing in your fitness journey.
+                </p>
+            </div>
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-4 sm:p-6 text-gray-900"> <!-- Adjusted padding for mobile -->
 
                     <!-- Display Errors -->
                     @if ($errors->any())
-                        <div class="mb-4 text-sm font-medium text-red-600 bg-red-100 p-4 rounded-lg">
+                        <div class="mb-4 text-sm font-medium text-red-600 bg-red-100 p-4 sm:rounded-lg">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>

@@ -13,15 +13,22 @@ class ChallengeController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2) {
+        // Determine challenges based on user role or authentication status
+        if (auth()->check() && (auth()->user()->role_id == 1 || auth()->user()->role_id == 2)) {
             $challenges = Challenge::where('status', '!=', 'completed')->get();
         } else {
             $challenges = Challenge::where('status', 'active')
-                ->whereDate('start_date', '<=', now())
-                ->whereDate('end_date', '>=', now())
+                ->where('start_date', '<=', now())
+                ->where('end_date', '>=', now())
+                ->orWhere(function ($query) {
+                    $query->where('status', 'active')
+                        ->whereBetween('start_date', [now()->subMinutes(0), now()])
+                        ->where('end_date', '>=', now());
+                })
                 ->get();
         }
 
+        // Fetch previous challenges
         $previousChallenges = Challenge::where('status', 'completed')
             ->withCount([
                 'challengeResults as completed_count' => function ($query) {
@@ -29,6 +36,7 @@ class ChallengeController extends Controller
                 }
             ])->get();
 
+        // Get user results only if authenticated
         $userResults = auth()->check()
             ? ChallengeResult::where('user_id', auth()->id())->get(['challenge_id', 'approved'])->keyBy('challenge_id')
             : collect();
@@ -41,7 +49,8 @@ class ChallengeController extends Controller
         $challenge = Challenge::findOrFail($id);
 
         $canJoin = $challenge->status == 'active' &&
-            now()->between($challenge->start_date, $challenge->end_date);
+            (now()->between($challenge->start_date, $challenge->end_date) ||
+                now()->subMinutes(0)->lte($challenge->start_date));
 
         $userJoined = $challenge->participants->contains(auth()->id());
 

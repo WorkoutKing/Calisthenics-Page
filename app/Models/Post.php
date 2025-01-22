@@ -2,20 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Element extends Model
+class Post extends Model
 {
-    protected $fillable = ['name', 'description'];
+    use HasFactory;
 
-    //
-    public function steps()
-    {
-        return $this->hasMany(Step::class);
-    }
+    protected $fillable = ['title', 'content', 'main_picture'];
+
     public function meta()
     {
         return $this->morphOne(Meta::class, 'metaable');
     }
 }
-

@@ -17,4 +17,8 @@ class Step extends Model
     {
         return $this->hasMany(Result::class);
     }
+    public function meta()
+    {
+        return $this->morphOne(Meta::class, 'metaable');
+    }
 }

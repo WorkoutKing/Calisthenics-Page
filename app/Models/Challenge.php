@@ -26,5 +26,9 @@ class Challenge extends Model
     {
         return $this->hasMany(ChallengeResult::class);
     }
+    public function meta()
+    {
+        return $this->morphOne(Meta::class, 'metaable');
+    }
 }
 

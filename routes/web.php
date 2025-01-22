@@ -9,11 +9,21 @@ use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\AchievementsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\PostController;
+
 
 // Public Routes
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/elements', [ElementController::class, 'index'])->name('elements.index');
+Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');
+Route::get('/basics/statistics', action: [BasicController::class, 'statistics'])->name('basics.statistics');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
+Route::get('/challenges/{id}', [ChallengeController::class, 'show'])->name('challenges.show');
+Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -38,13 +48,10 @@ Route::middleware('auth')->group(function () {
     // Basics
     Route::get('/basics', [BasicController::class, 'index'])->name('basics.index');
     Route::post('/basics', [BasicController::class, 'upload'])->name('basics.upload');
-    Route::get('/basics/statistics', [BasicController::class, 'statistics'])->name('basics.statistics');
 
     // Elements
-    Route::get('/elements', [ElementController::class, 'index'])->name('elements.index');
     Route::get('/elements/create', [ElementController::class, 'create'])->name('elements.create');
     Route::post('/elements', [ElementController::class, 'store'])->name('elements.store');
-    Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');
 
     // Not working ?
     Route::prefix('steps/{step_id}')->name('steps.')->group(function () {
@@ -59,12 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/notifications/clear', [ProfileController::class, 'clearNotifications'])->name('profile.clearNotifications');
     Route::patch('/profile/notifications/{id}/mark-as-read', [ProfileController::class, 'markAsReadSingle'])->name('profile.markAsReadSingle');
 
-    // Profile
-    Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
-
     Route::prefix('challenges')->name('challenges.')->group(function () {
-        Route::get('/', [ChallengeController::class, 'index'])->name('index');
-
         Route::middleware(['auth', 'role:Admin'])->group(function () {
             Route::get('create', [ChallengeController::class, 'create'])->name('create');
             Route::post('/', [ChallengeController::class, 'store'])->name('store');
@@ -74,7 +76,6 @@ Route::middleware('auth')->group(function () {
             Route::delete('{id}', [ChallengeController::class, 'destroy'])->name('destroy');
         });
 
-        Route::get('{id}', [ChallengeController::class, 'show'])->name('show');
         Route::post('{id}/join', [ChallengeController::class, 'join'])->name('join');
         Route::post('{id}/complete', [ChallengeController::class, 'complete'])->name('complete');
     });
@@ -119,6 +120,14 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/users/{user}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
     Route::put('/admin/users/{user}', [AdminController::class, 'updateUser'])->name('admin.users.update');
     Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+
+    // Posts
+    Route::get('/admin/posts', [PostController::class, 'adminIndex'])->name('admin.posts.index');
+    Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
+    Route::post('/admin/posts', [PostController::class, 'store'])->name('admin.posts.store');
+    Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
+    Route::put('/admin/posts/{post}', [PostController::class, 'update'])->name('admin.posts.update');
+    Route::delete('/admin/posts/{post}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 });
 
 // Route::get('/test-email', function () {

@@ -4,9 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
+        <meta name="description" content="@yield('meta_description', 'Madstars | Calisthenics')">
+        <meta name="keywords" content="@yield('meta_keywords', 'calisthenics, madstars')">
+        <title>@yield('meta_title', 'Madstars | Calisthenics')</title>
+        @stack('head')
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

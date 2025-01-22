@@ -12,7 +12,7 @@
             <!-- Flash Messages -->
             @if ($errors->any())
                 <div class="alert alert-danger mb-6 bg-red-100 border border-red-400 text-red-700 rounded-md p-4">
-                    <ul>
+                    <ul class="space-y-1">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
@@ -28,7 +28,7 @@
 
             <!-- Notifications Header -->
             <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-                <div class="flex justify-between items-center">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
                     <h1 class="text-2xl font-bold text-gray-800">Notifications</h1>
                     <div class="flex gap-2">
                         <!-- Mark All as Read Button -->
@@ -43,7 +43,7 @@
                         </form>
 
                         <!-- Clear All Notifications Button -->
-                        <form action="{{ route('profile.clearNotifications') }}" method="POST" class="inline-block ml-2">
+                        <form action="{{ route('profile.clearNotifications') }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
@@ -65,9 +65,9 @@
                         @foreach ($notifications as $notification)
                             <li class="p-4 rounded-lg shadow border
                                 {{ $notification->read ? 'bg-gray-100 border-gray-300' : 'bg-yellow-50 border-yellow-400' }}">
-                                <div class="flex justify-between items-center">
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                                     <!-- Notification Message -->
-                                    <p class="text-gray-800">
+                                    <p class="text-gray-800 flex-1">
                                         @if (isset($notification->data['url']))
                                             <a href="{{ $notification->data['url'] }}" class="text-blue-600 hover:underline">
                                                 {{ $notification->data['message'] }}

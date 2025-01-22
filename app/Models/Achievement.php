@@ -30,4 +30,8 @@ class Achievement extends Model
     {
         return $this->belongsTo(Element::class);
     }
+    public function meta()
+    {
+        return $this->morphOne(Meta::class, 'metaable');
+    }
 }
