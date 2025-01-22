@@ -10,13 +10,12 @@ use App\Http\Controllers\AchievementsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\HomeController;
 
 // Public Routes
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/elements', [ElementController::class, 'index'])->name('elements.index');
+Route::get('/', action: [HomeController::class, 'index'])->name('welcome');
+Route::get('/elements', action: [ElementController::class, 'index'])->name('elements.index');
 Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');
 Route::get('/basics/statistics', action: [BasicController::class, 'statistics'])->name('basics.statistics');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
@@ -83,6 +82,14 @@ Route::middleware('auth')->group(function () {
 
 // Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
+    // Quote Routes
+    Route::get('admin/quotes', [QuoteController::class, 'index'])->name('admin.quotes.index');
+    Route::get('admin/quotes/create', [QuoteController::class, 'create'])->name('admin.quotes.create');
+    Route::post('admin/quotes', [QuoteController::class, 'store'])->name('admin.quotes.store');
+    Route::get('admin/quotes/{quote}/edit', [QuoteController::class, 'edit'])->name('admin.quotes.edit');
+    Route::put('admin/quotes/{quote}', [QuoteController::class, 'update'])->name('admin.quotes.update');
+    Route::delete('admin/quotes/{quote}', [QuoteController::class, 'destroy'])->name('admin.quotes.destroy');
+
     // Step Routes (Nested under Elements)
     Route::prefix('elements/{element_id}/steps')->name('steps.')->group(function () {
         Route::get('create', [StepController::class, 'create'])->name('create');

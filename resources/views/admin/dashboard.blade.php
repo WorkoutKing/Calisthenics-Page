@@ -68,18 +68,21 @@
                             Create Challenge
                         </a>
                     </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+                    <div class="group bg-purple-500 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                        <h3 class="text-2xl font-semibold mb-4">Motivational quotes</h3>
+                        <p class="text-sm mb-6">Manage quotes.</p>
+                        <a href="{{ route('admin.quotes.index') }}" class="bg-white text-purple-600 py-2 px-4 rounded-md font-medium shadow-md hover:bg-purple-100 transition duration-200">
+                            View Details
+                        </a>
+                    </div>
+                </div>
 
 
                     <!-- Create New Challenge Card -->
                     {{--
-
-                    <div class="group bg-purple-500 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
-                        <h3 class="text-2xl font-semibold mb-4">Users Administration</h3>
-                        <p class="text-sm mb-6">Manage and review users' profiles.</p>
-                        <a href="{{ route('admin.users.index') }}" class="bg-white text-purple-600 py-2 px-4 rounded-md font-medium shadow-md hover:bg-purple-100 transition duration-200">
-                            View Details
-                        </a>
-                    </div>
 
                     <div class="group bg-blue-800 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
                         <h3 class="text-2xl font-semibold mb-4">Users Administration</h3>
@@ -97,7 +100,6 @@
                         </a>
                     </div>
                     --}}
-                </div>
             </div>
         </div>
     </div>
