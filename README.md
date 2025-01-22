@@ -119,4 +119,5 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 For questions, feedback, or support:
 
+-   **Email**: madstars4ever@gmail.com
 -   **GitHub**: https://github.com/WorkoutKing
