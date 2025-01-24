@@ -15,10 +15,10 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation') <!-- Main Navigation -->
+    <body class="font-sans antialiased" style="background: #000;">
+        @include('layouts.navigation')
 
+        <div class="min-h-screen" style="width: calc(100% - 80px); margin-left: 80px;">
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">
@@ -36,6 +36,10 @@
 
         <!-- Include the Footer -->
         @include('layouts.footer') <!-- This includes the footer.blade.php -->
-
     </body>
 </html>
+<style>
+main {
+    background: #000;
+}
+</style>

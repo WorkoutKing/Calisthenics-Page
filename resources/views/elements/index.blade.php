@@ -10,7 +10,7 @@
 
         <!-- Flash Messages -->
         @if ($errors->any())
-            <div class="alert bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-md">
+            <div class="alert bg-red-900 border-l-4 border-red-600 text-red-100 p-4 mb-6 rounded-md">
                 <strong>Oops!</strong>
                 <ul class="mt-2 space-y-1">
                     @foreach ($errors->all() as $error)
@@ -21,48 +21,48 @@
         @endif
 
         @if (session('success'))
-            <div class="alert bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-md">
+            <div class="alert bg-green-900 border-l-4 border-green-600 text-green-100 p-4 mb-6 rounded-md">
                 <strong>Success!</strong> {{ session('success') }}
             </div>
         @endif
 
         @if (session('info'))
-            <div class="alert bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-6 rounded-md">
+            <div class="alert bg-blue-900 border-l-4 border-blue-600 text-blue-100 p-4 mb-6 rounded-md">
                 <strong>Info!</strong> {{ session('info') }}
             </div>
         @endif
 
         <!-- Page Title and Description -->
-        <div class="bg-gradient-to-r from-green-500 via-green-400 to-green-600 text-white p-6 rounded-lg shadow-lg mb-8">
-            <h1 class="text-4xl font-bold text-center mb-4 flex items-center justify-center">
+        <div class="bg-gray-800 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mb-8">
+            <h1 class="text-4xl font-bold text-center mb-4 text-white">
                 Explore Elements
             </h1>
-            <p class="text-center text-lg sm:text-xl">
+            <p class="text-center text-lg sm:text-xl text-gray-300">
                 Dive into the fascinating world of calisthenics! Learn, practice, and master various elements step by step. Earn points and track your progress as you grow.
             </p>
         </div>
 
         <!-- Elements List -->
-        <div class="bg-white shadow-lg rounded-lg p-4 mb-8">
+        <div class="bg-gray-900 shadow-lg rounded-lg p-4 mb-8">
             <ul class="space-y-8">
                 @foreach ($elements as $element)
-                    <li class="bg-gray-50 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
-                        <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                    <li class="bg-gray-800 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200">
+                        <h2 class="text-xl font-semibold text-gray-200 flex items-center">
                             <i class="fa-solid fa-cube mr-2"></i> {{ $element->name }}
                         </h2>
-                        <p class="text-gray-700 mt-2">{{ $element->description }}</p>
+                        <p class="text-gray-300 mt-2">{{ $element->description }}</p>
 
                         <!-- Steps Section -->
-                        <h3 class="mt-6 text-lg font-medium text-gray-800">Steps:</h3>
+                        <h3 class="mt-6 text-lg font-medium text-gray-200">Steps:</h3>
                         <ul class="space-y-4 mt-4">
                             @foreach ($element->steps as $step)
-                                <li class="p-3 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 transition duration-200">
+                                <li class="p-3 bg-gray-700 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-600 transition duration-200">
                                     <div class="flex flex-wrap justify-between items-center">
                                         <div class="mb-4 sm:mb-0">
-                                            <p class="font-medium text-gray-800">{{ $step->name }}
-                                                <span class="text-sm text-gray-500">({{ $step->points }} points)</span>
+                                            <p class="font-medium text-gray-200">{{ $step->name }}
+                                                <span class="text-sm text-gray-400">({{ $step->points }} points)</span>
                                             </p>
-                                            <p class="text-gray-600 text-sm mt-1">{{ $step->criteria }}</p>
+                                            <p class="text-gray-400 text-sm mt-1">{{ $step->criteria }}</p>
                                         </div>
 
                                         @auth
@@ -70,13 +70,13 @@
                                             <div class="flex flex-wrap space-x-3 items-center">
                                                 @if (auth()->user()->role_id == 2)
                                                     <!-- Admin Actions -->
-                                                    <a href="{{ route('steps.edit', $step->id) }}" class="btn bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition duration-150">
+                                                    <a href="{{ route('steps.edit', $step->id) }}" class="btn bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition duration-150">
                                                         Edit
                                                     </a>
                                                     <form action="{{ route('steps.destroy', $step->id) }}" method="POST" class="inline-block">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-150">
+                                                        <button type="submit" class="btn bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-150">
                                                             Delete
                                                         </button>
                                                     </form>
@@ -89,25 +89,25 @@
                                                 @if ($result)
                                                     <div>
                                                         @if ($result->approved)
-                                                            <p class="text-green-600 font-medium">
+                                                            <p class="text-green-500 font-medium">
                                                                 <i class="fa-solid fa-check-circle"></i> ☆ You earned it! ☆
                                                             </p>
                                                             <!-- Delete Upload -->
                                                             <form action="{{ route('steps.destroyResult', $step->id) }}" method="POST" class="mt-2">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-150 w-full">
+                                                                <button type="submit" class="btn bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-150 w-full">
                                                                     Delete Upload
                                                                 </button>
                                                             </form>
                                                         @else
-                                                            <p class="text-blue-600 font-medium">
+                                                            <p class="text-blue-500 font-medium">
                                                                 <i class="fa-solid fa-clock"></i> Awaiting approval.
                                                             </p>
                                                         @endif
                                                     </div>
                                                 @else
-                                                    <a href="{{ route('steps.uploadResult', $step->id) }}" class="btn bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-150">
+                                                    <a href="{{ route('steps.uploadResult', $step->id) }}" class="btn bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-150">
                                                         Upload Result
                                                     </a>
                                                 @endif
