@@ -27,4 +27,9 @@
             </div>
         </div>
     </body>
+    <style>
+        .min-h-screen {
+            padding: 10px;
+        }
+    </style>
 </html>

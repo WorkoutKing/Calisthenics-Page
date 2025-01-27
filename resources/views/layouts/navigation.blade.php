@@ -142,6 +142,9 @@
         .sidebar.collapsed .sidebar-header {
             position: absolute;
             border: 1px solid;
+            background-color: #242424;
+            width: 60px;
+            height: 60px;
         }
         .sidebar {
             width: 100%;
@@ -152,6 +155,7 @@
         }
         main {
             margin-top: 40px;
+            padding: 0px 10px;
         }
     }
 </style>
