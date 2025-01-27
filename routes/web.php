@@ -13,17 +13,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\HomeController;
 
-// Public Routes
-Route::get('/', action: [HomeController::class, 'index'])->name('welcome');
-Route::get('/elements', action: [ElementController::class, 'index'])->name('elements.index');
-Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');
-Route::get('/basics/statistics', action: [BasicController::class, 'statistics'])->name('basics.statistics');
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
-Route::get('/challenges/{id}', [ChallengeController::class, 'show'])->name('challenges.show');
-Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -136,16 +125,17 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('/admin/posts/{post}', [PostController::class, 'update'])->name('admin.posts.update');
     Route::delete('/admin/posts/{post}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 });
-
-// Route::get('/test-email', function () {
-//     Mail::raw('This is a test email!', function ($message) {
-//         $message->to('support@turnikas.eu')
-//             ->subject('Test Email');
-//     });
-
-//     return 'Email sent!';
-// });
-
+// Public Profile (Must to be last becouse then user cant open notifications)
+// Public Routes
+Route::get('/', action: [HomeController::class, 'index'])->name('welcome');
+Route::get('/elements', action: [ElementController::class, 'index'])->name('elements.index');
+Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');
+Route::get('/basics/statistics', action: [BasicController::class, 'statistics'])->name('basics.statistics');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
+Route::get('/challenges/{id}', [ChallengeController::class, 'show'])->name('challenges.show');
+Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
 
 // Include Auth Routes
 require __DIR__ . '/auth.php';

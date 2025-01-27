@@ -20,34 +20,6 @@
                 </div>
             </div>
 
-            <!-- Active Challenges Section -->
-            <div class="active_challenges mt-10 px-6">
-                <span class="font-semibold text-2xl text-gray-300">Active Challenges</span>
-                @auth
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
-                        @foreach ($challenges as $challenge)
-                            <div class="challenge p-4 bg-gray-800 rounded-lg shadow">
-                                <div class="challenge_name text-xl font-semibold text-gray-200">{{ $challenge->name }}</div>
-                                <div class="challenge_description text-sm text-gray-400">
-                                    {{ \Illuminate\Support\Str::limit($challenge->description, 100) }}
-                                </div>
-                                <a href="{{ route('challenges.show', $challenge->id) }}"
-                                   class="mt-4 inline-block bg-gradient-to-r from-blue-500 to-blue-700 text-white text-center px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition duration-150 ease-in-out">
-                                    View Challenge
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <div class="text-center mt-6">
-                        <p class="text-lg text-gray-400">
-                            Please <a href="{{ route('login') }}" class="text-blue-400 hover:underline">login</a> or
-                            <a href="{{ route('register') }}" class="text-blue-400 hover:underline">register</a> to join active challenges.
-                        </p>
-                    </div>
-                @endauth
-            </div>
-
             <!-- Top 3 Challenges from Each Category -->
             <div class="top_3 mt-10 px-6">
                 <span class="font-semibold text-2xl text-gray-300">Top 3 Challenges</span>

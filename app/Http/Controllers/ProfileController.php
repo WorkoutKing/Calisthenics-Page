@@ -128,14 +128,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function notifications()
-    {
-        $notifications = auth()->user()->notifications()->latest()->paginate(10);
-
-        return view('profile.notifications', compact('notifications'));
-    }
-
-
     public function edit(Request $request): View
     {
         return view('profile.settings.edit', [
@@ -196,6 +188,12 @@ class ProfileController extends Controller
         $notifications = auth()->user()->notifications()->latest()->get();
 
         return view('profile.dashboard', compact('notifications'));
+    }
+    public function notifications()
+    {
+        $notifications = auth()->user()->notifications()->latest()->paginate(10);
+
+        return view('profile.notifications', compact('notifications'));
     }
 
     // Mark read notifications
