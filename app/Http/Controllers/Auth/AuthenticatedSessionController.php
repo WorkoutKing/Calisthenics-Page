@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
             'is_online' => true, // Mark user as online
         ]);
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('welcome', absolute: false));
     }
 
     /**

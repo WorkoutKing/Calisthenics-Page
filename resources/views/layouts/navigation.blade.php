@@ -7,6 +7,7 @@
     </div>
     <ul class="sidebar-menu">
         @if(Auth::user())
+        <hr>
         @if (auth()->user()->role_id == 2)
             <li><a href="/admin/dashboard"><i class="fas fa-user-tie"></i><span>Admin Dashboard</span></a></li>
         @endif
@@ -36,14 +37,17 @@
         <li><a href="/challenges"><i class="fas fa-person-running"></i> <span>challenges</span></a></li>
         <li><a href="/basics"><i class="fas fa-ranking-star"></i></i> <span>Basics</span></a></li>
         <li><a href="/posts"><i class="fas fa-newspaper"></i> <span>News & Updates</span></a></li>
+        <hr>
         @else
+        <hr>
+        <li><a href="/login"><i class="fas fa-user"></i> <span>Login</span></a></li>
+        <hr>
         <li><a href="/"><i class="fas fa-house"></i> <span>Home</span></a></li>
         <li><a href="/elements"><i class="fas fa-stairs"></i> <span>Elements</span></a></li>
         <li><a href="/challenges"><i class="fas fa-person-running"></i> <span>challenges</span></a></li>
         <li><a href="/basics/statistics"><i class="fas fa-ranking-star"></i></i> <span>Basics</span></a></li>
         <li><a href="/posts"><i class="fas fa-newspaper"></i> <span>News & Updates</span></a></li>
         <hr>
-        <li><a href="/login"><i class="fas fa-user"></i> <span>Login</span></a></li>
         @endif
     </ul>
 </div>
@@ -126,7 +130,30 @@
     .sidebar.collapsed .sidebar-menu li a span {
     display: none;
     }
-
+    @media screen and (max-width: 700px) {
+        .sidebar.collapsed {
+            width: unset;
+            background-color: transparent;
+            border: unset;
+        }
+        .sidebar.collapsed .sidebar-menu {
+            display: none;
+        }
+        .sidebar.collapsed .sidebar-header {
+            position: absolute;
+            border: 1px solid;
+        }
+        .sidebar {
+            width: 100%;
+        }
+        .min-h-screen {
+            width: 100%!important;
+            margin-left: 0px!important;
+        }
+        main {
+            margin-top: 40px;
+        }
+    }
 </style>
 
 <script>

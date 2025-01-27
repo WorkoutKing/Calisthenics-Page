@@ -13,9 +13,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\HomeController;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/welcome', function () {
+    return view('welcome');
+})->middleware(['auth', 'verified'])->name('welcome');
 
 // Authenticated User Routes
 Route::middleware('auth')->group(function () {
