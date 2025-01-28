@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -31,20 +33,31 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(8) // Minimum length of 8 characters
+                    ->letters() // Must contain at least one letter
+                    ->mixedCase() // Must contain at least one uppercase letter
+                    ->numbers() // Must contain at least one number
+                    ->symbols(), // Must contain at least one symbol
+            ],
+            'privacy_policy' => ['required'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'privacy_policy_accepted' => $request->has('privacy_policy') ? 1 : 0,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('welcome', absolute: false));
     }
+
 }

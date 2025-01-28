@@ -5,7 +5,7 @@
 @section('meta_keywords', 'calisthenics, challenges, fitness, active lifestyle')
 
 @section('content')
-    <div class="py-12">
+    <div >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
             <!-- Success and Error Messages -->
@@ -30,7 +30,9 @@
                 <p class="text-center text-lg sm:text-xl text-gray-300">
                     Embark on a journey of exciting calisthenics challenges! Learn techniques step-by-step to conquer various elements.
                     Track your progress and earn rewards as you complete each challenge.
-                    <span class="font-semibold">Sign up or log in</span> now to unlock your full potential and join the community!
+                    @guest
+                        <span class="font-semibold">Sign up or log in</span> now to unlock your full potential and join the community!
+                    @endguest
                 </p>
             </div>
 

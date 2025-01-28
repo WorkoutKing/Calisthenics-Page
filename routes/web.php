@@ -13,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\HomeController;
 
+
 Route::get('/welcome', function () {
     return view('welcome');
 })->middleware(['auth', 'verified'])->name('welcome');
@@ -136,6 +137,10 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
 Route::get('/challenges/{id}', [ChallengeController::class, 'show'])->name('challenges.show');
 Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
+
 
 // Include Auth Routes
 require __DIR__ . '/auth.php';

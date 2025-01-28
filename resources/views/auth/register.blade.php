@@ -53,6 +53,13 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-red-600 dark:text-red-400" />
         </div>
 
+        <div class="mt-4">
+            <label for="privacy_policy">
+                <input type="checkbox" name="privacy_policy" id="privacy_policy" value="1" required>
+                I accept the <a href="{{ route('privacy-policy') }}" target="_blank">Privacy Policy</a>
+            </label>
+        </div>
+
         <!-- Already Registered Link -->
         <div class="mt-4 text-center">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 rounded-md focus:outline-none dark:focus:ring-indigo-400"
@@ -63,7 +70,7 @@
 
         <!-- Register Button -->
         <div class="mt-6">
-            <x-primary-button class="block w-full text-center justify-center py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md shadow-sm">
+            <x-primary-button class="block w-full text-center justify-center py-2 px-4 bg-black hover:bg-white text-white hover:text-black border border-white rounded-md shadow-sm">
                 {{ __('Register') }}
             </x-primary-button>
         </div>

@@ -5,7 +5,7 @@
 @section('meta_keywords', 'calisthenics, elements, statistics, results, steps')
 
 @section('content')
-<div class="py-8 sm:py-12">
+<div >
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
         <!-- Element Statistics Section -->

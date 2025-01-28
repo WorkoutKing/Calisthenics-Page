@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="py-12">
+    <div >
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Achievements Card Section -->
             <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md mb-8">

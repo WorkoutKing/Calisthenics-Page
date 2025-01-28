@@ -5,7 +5,7 @@
 @section('meta_keywords', $post->seo_keywords ?? '')
 
 @section('content')
-    <div class="py-12">
+    <div >
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Post Content -->
             <div class="bg-gray-900 p-8 rounded-lg shadow-xl mb-8">

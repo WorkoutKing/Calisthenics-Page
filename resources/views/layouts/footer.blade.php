@@ -4,16 +4,7 @@
         <div class="hidden sm:flex justify-between items-center">
             <!-- Links Section -->
             <div class="flex space-x-8">
-                <a href="{{ route('profile.index') }}" class="text-gray-400 hover:text-white transition">
-                    {{ __('Profile') }}
-                </a>
-                <a href="{{ route('elements.index') }}" class="text-gray-400 hover:text-white transition">
-                    {{ __('Elements') }}
-                </a>
-                <a href="{{ route('challenges.index') }}" class="text-gray-400 hover:text-white transition">
-                    {{ __('Challenges') }}
-                </a>
-                <a href="/privacy" class="text-gray-400 hover:text-white transition">
+                <a href="/privacy-policy" class="text-gray-400 hover:text-white transition">
                     {{ __('Privacy Policy') }}
                 </a>
                 <a href="/terms" class="text-gray-400 hover:text-white transition">
@@ -34,16 +25,7 @@
                     <p class="text-gray-400 text-center">&copy; {{ date('Y') }} Madstars</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 text-center">
-                    <a href="{{ route('profile.index') }}" class="text-gray-400 hover:text-white transition block">
-                        {{ __('Profile') }}
-                    </a>
-                    <a href="{{ route('elements.index') }}" class="text-gray-400 hover:text-white transition block">
-                        {{ __('Elements') }}
-                    </a>
-                    <a href="{{ route('challenges.index') }}" class="text-gray-400 hover:text-white transition block">
-                        {{ __('Challenges') }}
-                    </a>
-                    <a href="/privacy" class="text-gray-400 hover:text-white transition block">
+                    <a href="/privacy-policy" class="text-gray-400 hover:text-white transition block">
                         {{ __('Privacy Policy') }}
                     </a>
                     <a href="/terms" class="text-gray-400 hover:text-white transition block">

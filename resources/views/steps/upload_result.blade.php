@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="py-12">
+    <div >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <!-- Added px-4 for mobile padding -->
 
             <!-- Page Title and Description -->

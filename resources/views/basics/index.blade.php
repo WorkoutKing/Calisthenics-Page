@@ -49,6 +49,8 @@
             </h1>
             <p class="text-center text-lg sm:text-xl text-gray-300">
                 Track your progress by uploading results for your basic calisthenics exercises. Watch instructional videos and stay consistent!
+                <br><br> <!-- Add line breaks for spacing -->
+                <a href="/basics/statistics" class="font-bold text-blue-400 hover:text-blue-300 underline">Check out the top pantheon of basics</a>
             </p>
         </div>
 

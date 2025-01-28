@@ -5,7 +5,7 @@
 @section('meta_keywords', 'calisthenics, elements, steps, results, points')
 
 @section('content')
-<div class="py-12">
+<div >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Flash Messages -->
@@ -39,6 +39,8 @@
             </h1>
             <p class="text-center text-lg sm:text-xl text-gray-300">
                 Dive into the fascinating world of calisthenics! Learn, practice, and master various elements step by step. Earn points and track your progress as you grow.
+                <br><br> <!-- Add line breaks for spacing -->
+                <a href="/elements/statistics" class="font-bold text-blue-400 hover:text-blue-300 underline">Check out the top pantheon of elements</a>
             </p>
         </div>
 

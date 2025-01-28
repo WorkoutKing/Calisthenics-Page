@@ -27,6 +27,7 @@ class User extends Authenticatable
         'last_login_ip',
         'last_login_at',
         'is_online',
+        'privacy_policy_accepted'
     ];
 
     /**

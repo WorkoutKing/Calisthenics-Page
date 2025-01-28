@@ -19,6 +19,30 @@
         @include('layouts.navigation')
 
         <div class="min-h-screen" style="width: calc(100% - 80px); margin-left: 80px;">
+            <div class="second-nav flex items-center justify-between bg-gray-900 border-b border-gray-800 px-4 py-3 top-0 z-50">
+                <!-- Logo -->
+                <div class="logo-container">
+                    <a href="/"><img src="https://www.animagrafica.aq.it/wp-content/uploads/2020/12/Calisthenics-logo-1.jpg" alt="logo" class="h-10"></a>
+                </div>
+
+                <!-- Navigation Links -->
+                @if(!Auth::user())
+                    <div class="nav-links flex gap-6">
+                        <!-- Login Button -->
+                        <a href="/login"
+                        class="text-white font-medium border border-white bg-black px-4 py-2 rounded-md transition-colors
+                        hover:bg-white hover:text-black">
+                            Login
+                        </a>
+                        <!-- Register Button -->
+                        <a href="/register"
+                        class="text-white font-medium bg-blue-600 px-4 py-2 rounded-md transition-colors
+                        hover:bg-white hover:text-blue-600 border border-transparent">
+                            Register
+                        </a>
+                    </div>
+                @endif
+            </div>
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">
@@ -32,10 +56,9 @@
             <main>
                 @yield('content') <!-- This will display content from child views -->
             </main>
+            <!-- Include the Footer -->
+            @include('layouts.footer') <!-- This includes the footer.blade.php -->
         </div>
-
-        <!-- Include the Footer -->
-        @include('layouts.footer') <!-- This includes the footer.blade.php -->
     </body>
 </html>
 <style>

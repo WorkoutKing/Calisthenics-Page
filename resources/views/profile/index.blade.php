@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8">
+<div class="container mx-auto p-4">
 
     <!-- User Profile Section -->
     <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-md flex flex-col sm:flex-row items-center sm:items-start sm:space-x-6 space-y-6 sm:space-y-0 mb-8">
@@ -80,7 +80,7 @@
                         @if($spec->element->id == 7)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/frontm.png') }}" alt="Front Lever Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Front Lever Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Front Lever Master</span>
@@ -100,7 +100,7 @@
                         @if($spec->element->id == 99)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/planchem.png') }}" alt="Planche Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Planche Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Planche Master</span>
@@ -112,7 +112,7 @@
                         @if($progress['exercise'] ==  'pull ups' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="path-to-your-image/pull-ups-god-badge.jpg" alt="Pull Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/pullups.png') }}" alt="Pull Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Pull Ups God</span>
@@ -122,7 +122,7 @@
                         @if($progress['exercise'] == 'dips' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/dip.png') }}" alt="Dips God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Dips God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Dips God</span>
@@ -142,7 +142,7 @@
                         @if($progress['exercise'] == 'pistol squats' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/pistolsquats.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Pistol Squats Specialist</span>

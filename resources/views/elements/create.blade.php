@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="py-8 sm:py-12">
+    <div >
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
                 <!-- Create Element Form -->

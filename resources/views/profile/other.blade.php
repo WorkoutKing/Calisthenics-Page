@@ -1,16 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto py-12">
+<div class="container mx-auto p-4">
 
     <!-- User Profile Section -->
-    <div class="bg-white p-6 rounded-lg shadow-md flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0 mb-8">
+        <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-md flex flex-col sm:flex-row items-center sm:items-start sm:space-x-6 space-y-6 sm:space-y-0 mb-8">
         <!-- User Profile Image -->
+        <div class="flex-shrink-0">
         <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('storage/profile_pictures/def.jpg') }}" alt="Profile Picture" class="w-24 sm:w-32 h-24 sm:h-32 rounded-full object-cover border-2 border-gray-300">
+        </div>
+
+        <!-- User Details -->
         <div class="text-center sm:text-left">
-            <h1 class="text-2xl sm:text-3xl font-semibold text-gray-800">{{ $user->name }}</h1>
-            <p class="text-sm text-gray-600">Joined: {{ optional($user->created_at)->format('M d, Y') ?? 'N/A' }}</p>
-            <p class="text-sm text-gray-600">
+            <h1 class="text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-gray-200">{{ $user->name }}</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                Joined: {{ optional($user->created_at)->format('M d, Y') ?? 'N/A' }}
+            </p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt">
                 @if($user->is_online)
                     <span class="text-green-500 font-bold">Online</span>
                 @else
@@ -22,11 +28,11 @@
     </div>
 
     <!-- Profile Overview Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <!-- User Level and Achievements Section -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-medium text-gray-800 mb-4">User Level</h3>
-            <p class="text-lg text-gray-600 mb-2">
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- Total Points Section -->
+        <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-md">
+            <h3 class="text-xl font-medium text-gray-800 dark:text-gray-200">User Level</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mt-2">
                 @if ($totalPoints >= 700)
                     <strong>Level 5: Expert</strong> (Max Level)
                 @elseif ($totalPoints >= 500)
@@ -39,13 +45,13 @@
                     <strong>Level 1: Novice</strong>
                 @endif
             </p>
-            <p class="text-sm font-semibold text-gray-700 mb-4">My earned points: {{ $totalPoints }} Points</p>
+            <p class="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-2">User earned points: {{ $totalPoints }} Points</p>
 
             <!-- Special Achievements Section -->
             @if ($latestAchievements->isEmpty())
-                <p class="text-gray-600">This user has not earned any special achievements yet.</p>
+                <p class="text-gray-600 mt-4">You have not earned any special achievements yet.</p>
             @else
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                     @foreach ($latestAchievements as $spec)
                         @if($spec->element->id == 1)
                             <div class="flex flex-col items-center group">
@@ -53,7 +59,7 @@
                                     <img src="{{ asset('storage/badges/hs.png') }}" alt="Handstand Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Handstand</span>
+                                    <span class="text-sm text-white">Handstand</span>
                                 </div>
                             </div>
                         @endif
@@ -63,7 +69,7 @@
                                     <img src="{{ asset('storage/badges/hsm.png') }}" alt="Handstand Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Handstand Master</span>
+                                    <span class="text-sm text-white">Handstand Master</span>
                                 </div>
                             </div>
                         @endif
@@ -73,17 +79,17 @@
                                     <img src="{{ asset('storage/badges/front.png') }}" alt="Front Lever Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Front Lever</span>
+                                    <span class="text-sm text-white">Front Lever</span>
                                 </div>
                             </div>
                         @endif
                         @if($spec->element->id == 7)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/frontm.png') }}" alt="Front Lever Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Front Lever Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Front Lever Master</span>
+                                    <span class="text-sm text-white">Front Lever Master</span>
                                 </div>
                             </div>
                         @endif
@@ -93,59 +99,59 @@
                                     <img src="{{ asset('storage/badges/planche.png') }}" alt="Planche Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Planche</span>
+                                    <span class="text-sm text-white">Planche</span>
                                 </div>
                             </div>
                         @endif
                         @if($spec->element->id == 99)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/planchem.png') }}" alt="Planche Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Planche Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Planche Master</span>
+                                    <span class="text-sm text-white">Planche Master</span>
                                 </div>
                             </div>
                         @endif
                     @endforeach
                     @foreach ($exerciseProgress as $progress)
-                        @if($progress['exercise'] ==  'pull ups' && $progress['userScore'] >= 40)
+                        @if($progress['exercise'] ==  'pull ups' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="path-to-your-image/pull-ups-god-badge.jpg" alt="Pull Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/pullups.png') }}" alt="Pull Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Pull Ups God</span>
+                                    <span class="text-sm text-white">Pull Ups God</span>
                                 </div>
                             </div>
                         @endif
-                        @if($progress['exercise'] == 'dips' && $progress['userScore'] >= 100)
+                        @if($progress['exercise'] == 'dips' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/dip.png') }}" alt="Dips God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Dips God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Dips God</span>
+                                    <span class="text-sm text-white">Dips God</span>
                                 </div>
                             </div>
                         @endif
-                        @if($progress['exercise'] == 'push ups' && $progress['userScore'] >= 200)
+                        @if($progress['exercise'] == 'push ups' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
                                     <img src="{{ asset('storage/badges/pushups.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Push Ups God</span>
+                                    <span class="text-sm text-white">Push Ups God</span>
                                 </div>
                             </div>
                         @endif
-                        @if($progress['exercise'] == 'pistol squats' && $progress['userScore'] >= 20)
+                        @if($progress['exercise'] == 'pistol squats' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/pistolsquats.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
-                                    <span class="text-sm">Pistol Squats Specialist</span>
+                                    <span class="text-sm text-white">Pistol Squats Specialist</span>
                                 </div>
                             </div>
                         @endif
@@ -155,16 +161,16 @@
         </div>
 
         <!-- Exercise Progress Section -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-medium text-gray-800 mb-4">Exercise Progress</h3>
+        <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-md">
+            <h3 class="text-xl font-medium text-gray-800 dark:text-gray-200 mb-4">Exercise Progress</h3>
             @foreach ($exerciseProgress as $progress)
                 <div class="mb-4">
                     <div class="flex justify-between items-center">
-                        <h4 class="text-lg font-medium text-gray-800">{{ ucfirst($progress['exercise']) }}</h4>
-                        <span class="text-sm text-gray-600">{{ $progress['userScore'] }} / {{ $progress['globalMax'] }} (Ranked {{ $progress['rank'] }})</span>
+                        <h4 class="text-lg font-medium text-gray-800 dark:text-gray-200">{{ ucfirst($progress['exercise']) }}</h4>
+                        <span class="text-sm text-gray-600 dark:text-gray-400">{{ $progress['userScore'] }} / {{ $progress['globalMax'] }} (Ranked {{ $progress['rank'] }})</span>
                     </div>
                     <!-- Progress bar -->
-                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden mt-2">
+                    <div class="h-2 rounded-full overflow-hidden mt-2 bg-gray-200 dark:bg-gray-700">
                         <div class="h-full bg-green-500" style="width: {{ $progress['globalMax'] > 0 ? ($progress['userScore'] / $progress['globalMax']) * 100 : 0 }}%;"></div>
                     </div>
                 </div>
@@ -173,19 +179,19 @@
     </div>
 
     <!-- Achievements Section -->
-    <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-medium text-gray-800 mb-4">All Earned Achievements</h3>
+    <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-md">
+        <h3 class="text-xl font-medium text-gray-800 dark:text-gray-200 mb-4">Earned Achievements</h3>
 
         @if ($latestAchievements->isEmpty())
-            <p class="text-gray-600">This user has not earned any achievements yet.</p>
+            <p class="text-gray-600 dark:text-gray-400">This user has not earned any achievements yet.</p>
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ($latestAchievements as $achievement)
-                    <div class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-sm">
                         <i class="fas fa-medal text-blue-500 text-2xl mr-4"></i>
                         <div>
-                            <strong>{{ $achievement->element->name }}</strong>
-                            <p class="text-sm text-gray-600">Earned on {{ $achievement->completed_at->format('M d, Y') }}</p>
+                            <strong class="text-gray-800 dark:text-gray-300">{{ $achievement->element->name }}</strong>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Earned on {{ $achievement->completed_at->format('M d, Y') }}</p>
                         </div>
                     </div>
                 @endforeach

@@ -5,12 +5,80 @@
 @section('meta_keywords', 'calisthenics, dashboard, news, blog, articles, team, company')
 
 @section('content')
-<div class="py-12" style="background-color: #000;">
+<div class="p-4" style="background-color: #000;">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="overflow-hidden shadow-sm sm:rounded-lg">
 
+            <!-- Hero Section -->
+            <div class="hero_section px-6 py-16 bg-cover bg-center rounded-lg shadow" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/045/826/339/small/the-dark-stage-shows-dark-background-an-empty-dark-scene-neon-light-and-spotlights-the-concrete-floor-and-studio-room-with-smoke-float-up-the-interior-texture-high-quality-photo.jpg');">
+                <div class="max-w-3xl mx-auto text-center">
+                    <!-- For Authenticated Users -->
+                    @auth
+                        <h1 class="text-4xl font-bold text-white">Welcome Back, {{ Auth::user()->name }}!</h1>
+                        <p class="mt-4 text-lg text-gray-300">Continue your calisthenics journey and achieve new milestones.</p>
+                        <a href="{{ route('profile.index') }}" class="mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Go to Dashboard</a>
+                    @endauth
+
+                    <!-- For Non-Authenticated Users -->
+                    @guest
+                        <h1 class="text-4xl font-bold text-white">Transform Your Body with Calisthenics</h1>
+                        <p class="mt-4 text-lg text-gray-300">Join our community and start your journey to a healthier, stronger you.</p>
+                        <a href="{{ route('login') }}" class="mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Get Started</a>
+                    @endguest
+                </div>
+            </div>
+
+            <!-- About Calisthenics Section -->
+            <div class="about_cali_section mt-10 px-6 py-12 bg-gray-800 rounded-lg shadow-lg">
+                <div class="max-w-7xl mx-auto">
+                    <!-- Section Heading -->
+                    <span class="about_h_heading text-3xl font-bold text-gray-300 text-center block mb-8">About Calisthenics & Our Mission</span>
+
+                    <!-- Grid Layout for Content -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <!-- Left Side: Image or Illustration -->
+                        <div class="about_image flex justify-center">
+                            <img src="{{ asset('images/about-calisthenics.jpg') }}" alt="About Calisthenics" class="rounded-lg shadow-md w-full max-w-md h-auto object-cover">
+                        </div>
+
+                        <!-- Right Side: Content -->
+                        <div class="about_content">
+                            <!-- Introduction -->
+                            <p class="text-lg text-gray-400 mb-6">
+                                Calisthenics is more than just a workout—its a lifestyle. By using only your body weight, you can build strength, flexibility, and endurance while connecting with a global community of fitness enthusiasts.
+                            </p>
+
+                            <!-- Mission Statement -->
+                            <div class="mission_statement bg-gray-700 p-6 rounded-lg mb-6">
+                                <h3 class="text-xl font-semibold text-gray-200 mb-3">Our Mission</h3>
+                                <p class="text-gray-400">
+                                    We are dedicated to empowering individuals to achieve their fitness goals through calisthenics. Our platform provides the tools, resources, and community support needed to help you unlock your full potential.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 3 Challenges from Each Category -->
+            <div class="top_3 mt-10">
+                <span class="font-semibold text-2xl text-gray-300">Top 3 Challenges</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                    @foreach (['pull ups', 'push ups', 'dips', 'pistol squats'] as $exercise)
+                        <div class="top_exercise p-4 bg-gray-800 rounded-lg shadow">
+                            <h3 class="font-semibold text-xl text-gray-200">Top 3 {{ ucfirst($exercise) }}</h3>
+                            <ul class="mt-4 text-sm text-gray-400">
+                                @foreach (${"top".ucfirst(str_replace(' ', '', $exercise))} as $index => $user)
+                                    <li>{{ $index + 1 }}. <a href="/profile/{{ $user->user->id }}" class="font-bold">{{ Str::title($user->user->name) }}</a> - {{ $user->reps }} reps</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
             <!-- Daily Motivation Section -->
-            <div class="daily_motivation px-6 py-4 bg-gray-900 rounded-lg shadow">
+            <div class="daily_motivation py-4 bg-gray-900 rounded-lg shadow mt-10 px-6">
                 <span class="daily_motivation_head text-xl font-semibold text-gray-300">Daily Motivation</span>
                 <div class="quote_daily mt-4">
                     <blockquote class="text-lg italic text-gray-400">
@@ -20,25 +88,8 @@
                 </div>
             </div>
 
-            <!-- Top 3 Challenges from Each Category -->
-            <div class="top_3 mt-10 px-6">
-                <span class="font-semibold text-2xl text-gray-300">Top 3 Challenges</span>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-                    @foreach (['pull ups', 'push ups', 'dips', 'pistol squats'] as $exercise)
-                        <div class="top_exercise p-4 bg-gray-800 rounded-lg shadow">
-                            <h3 class="font-semibold text-xl text-gray-200">Top 3 {{ ucfirst($exercise) }}</h3>
-                            <ul class="mt-4 text-sm text-gray-400">
-                                @foreach (${"top".ucfirst(str_replace(' ', '', $exercise))} as $index => $user)
-                                    <li>{{ $index + 1 }}. {{ $user->user->name }} - {{ $user->reps }} reps</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
             <!-- Newest Posts Section with Slider -->
-            <div class="newest_post_of_page mt-10 px-6">
+            <div class="newest_post_of_page mt-10">
                 <span class="posts_h_heading text-2xl font-semibold text-gray-300">Newest Posts</span>
                 <div class="all_newest_posts_h mt-6">
                     <div class="swiper-container">
@@ -67,13 +118,20 @@
                 </div>
             </div>
 
-            <!-- About Calisthenics Section -->
-            <div class="about_cali_section mt-10 px-6 py-8 bg-gray-800 rounded-lg shadow">
-                <span class="about_h_heading text-2xl font-semibold text-gray-300">About Calisthenics</span>
-                <div class="about_us_info mt-4 text-gray-400">
-                    <p>Calisthenics is a type of strength training using only your body weight. It’s a fun and engaging way to stay fit. Learn more about how we help people achieve their fitness goals and become the best versions of themselves.</p>
+            <!-- Social Media Feed Section -->
+            {{--  <div class="social_media_feed mt-10 px-6 py-8 bg-gray-800 rounded-lg shadow">
+                <span class="font-semibold text-2xl text-gray-300">Follow Us on Social Media</span>
+                <div class="mt-6">
+                    <!-- Instagram Feed -->
+                    <div class="instagram_feed">
+                        <!-- Embed Instagram feed here -->
+                    </div>
+                    <!-- Twitter Feed -->
+                    <div class="twitter_feed mt-6">
+                        <!-- Embed Twitter feed here -->
+                    </div>
                 </div>
-            </div>
+            </div>  --}}
 
         </div>
     </div>
