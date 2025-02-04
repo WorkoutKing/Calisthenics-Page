@@ -71,10 +71,31 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+                    <!-- Daily motivation -->
                     <div class="group bg-purple-600 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
                         <h3 class="text-2xl font-semibold mb-4">Motivational quotes</h3>
                         <p class="text-sm mb-6">Manage quotes.</p>
                         <a href="{{ route('admin.quotes.index') }}" class="bg-gray-800 text-white py-2 px-4 rounded-md font-medium shadow-md hover:bg-purple-500 transition duration-200">
+                            View Details
+                        </a>
+                    </div>
+
+                    <!-- Muscle groups crud -->
+                    <div class="group bg-orange-600 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                        <h3 class="text-2xl font-semibold mb-4">Muscle groups</h3>
+                        <p class="text-sm mb-6">Manage muscle groups for exercises.</p>
+                        <a href="{{ route('admin.muscle_groups.index') }}" class="bg-gray-800 text-white py-2 px-4 rounded-md font-medium shadow-md hover:bg-orange-500 transition duration-200">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+                    <!-- Manage exercises -->
+                    <div class="group bg-teal-600 text-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                        <h3 class="text-2xl font-semibold mb-4">Exercises control</h3>
+                        <p class="text-sm mb-6">Manage exercises library.</p>
+                        <a href="{{ route('admin.exercises.index') }}" class="bg-gray-800 text-white py-2 px-4 rounded-md font-medium shadow-md hover:bg-teal-500 transition duration-200">
                             View Details
                         </a>
                     </div>

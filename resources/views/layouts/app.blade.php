@@ -12,13 +12,16 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <!-- Add the TinyMCE CDN -->
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased" style="background: #000;">
+    <body class="font-sans antialiased">
         @include('layouts.navigation')
 
-        <div class="min-h-screen" style="width: calc(100% - 80px); margin-left: 80px;">
+        <div class="min-h-screen">
             <div class="second-nav flex items-center justify-between bg-gray-900 border-b border-gray-800 px-4 py-3 top-0 z-50">
                 <!-- Logo -->
                 <div class="logo-container">

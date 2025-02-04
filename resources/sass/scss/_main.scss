@@ -1,0 +1,20 @@
+main {
+    margin: 40px 0px;
+}
+body,
+.welcome-bg {
+    background-color: #000;
+}
+.min-h-screen {
+    width: calc(100% - 80px);
+    margin-left: 80px;
+}
+.change-format {
+    h2 {
+        margin: 10px 0px;
+        font-size: 20px;
+    }
+    ul {
+        padding: 10px;
+    }
+}

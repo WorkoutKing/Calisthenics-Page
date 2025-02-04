@@ -5,7 +5,7 @@
 @section('meta_keywords', 'calisthenics, dashboard, news, blog, articles, team, company')
 
 @section('content')
-<div class="p-4" style="background-color: #000;">
+<div class="p-4 welcome-bg">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="overflow-hidden shadow-sm sm:rounded-lg">
 
@@ -38,7 +38,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <!-- Left Side: Image or Illustration -->
                         <div class="about_image flex justify-center">
-                            <img src="{{ asset('images/about-calisthenics.jpg') }}" alt="About Calisthenics" class="rounded-lg shadow-md w-full max-w-md h-auto object-cover">
+                            <img src="{{ asset('storage/pagePictures/ring.jpg') }}" alt="About Calisthenics" class="rounded-lg shadow-md w-full max-w-md h-auto object-cover">
                         </div>
 
                         <!-- Right Side: Content -->
@@ -54,6 +54,17 @@
                                 <p class="text-gray-400">
                                     We are dedicated to empowering individuals to achieve their fitness goals through calisthenics. Our platform provides the tools, resources, and community support needed to help you unlock your full potential.
                                 </p>
+                            </div>
+
+                            <!-- Why Choose Us -->
+                            <div class="why_choose_us">
+                                <h3 class="text-xl font-semibold text-gray-200 mb-3">Why Choose Us?</h3>
+                                <ul class="list-disc list-inside text-gray-400 space-y-2">
+                                    <li>Expert-designed workout plans for all skill levels.</li>
+                                    <li>A supportive and inclusive community.</li>
+                                    <li>Access to exclusive challenges and events.</li>
+                                    <li>Personalized progress tracking and analytics.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

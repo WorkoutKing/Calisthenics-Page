@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\MuscleGroupController;
 
 
 Route::get('/welcome', function () {
@@ -125,6 +127,23 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
     Route::put('/admin/posts/{post}', [PostController::class, 'update'])->name('admin.posts.update');
     Route::delete('/admin/posts/{post}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+
+    // Exercises
+    Route::get('/admin/exercises', [ExerciseController::class, 'index'])->name('admin.exercises.index');
+    Route::get('/admin/exercises/create', [ExerciseController::class, 'create'])->name('admin.exercises.create');
+    Route::get('/admin/exercises/{exercise}', [ExerciseController::class, 'show'])->name('admin.exercises.show');
+    Route::post('/admin/exercises', [ExerciseController::class, 'store'])->name('admin.exercises.store');
+    Route::get('/admin/exercises/{exercise}/edit', [ExerciseController::class, 'edit'])->name('admin.exercises.edit');
+    Route::put('/admin/exercises/{exercise}', [ExerciseController::class, 'update'])->name('admin.exercises.update');
+    Route::delete('/admin/exercises/{exercise}', [ExerciseController::class, 'destroy'])->name('admin.exercises.destroy');
+
+    // Muscle Groups
+    Route::get('/admin/muscle-groups', [MuscleGroupController::class, 'index'])->name('admin.muscle_groups.index');
+    Route::get('/admin/muscle-groups/create', [MuscleGroupController::class, 'create'])->name('admin.muscle_groups.create');
+    Route::post('/admin/muscle-groups', [MuscleGroupController::class, 'store'])->name('admin.muscle_groups.store');
+    Route::get('/admin/muscle-groups/{muscleGroup}/edit', [MuscleGroupController::class, 'edit'])->name('admin.muscle_groups.edit');
+    Route::put('/admin/muscle-groups/{muscleGroup}', [MuscleGroupController::class, 'update'])->name('admin.muscle_groups.update');
+    Route::delete('/admin/muscle-groups/{muscleGroup}', [MuscleGroupController::class, 'destroy'])->name('admin.muscle_groups.destroy');
 });
 // Public Profile (Must to be last becouse then user cant open notifications)
 // Public Routes
@@ -137,6 +156,8 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
 Route::get('/challenges/{id}', [ChallengeController::class, 'show'])->name('challenges.show');
 Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
+Route::get('/exercises', [ExerciseController::class, 'publicIndex'])->name('exercises.index');
+Route::get('/exercises/{exercise}', [ExerciseController::class, 'publicShow'])->name('exercises.show');
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy-policy');
