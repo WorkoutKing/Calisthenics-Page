@@ -44,7 +44,7 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'seo_title' => 'nullable|string|max:255',
-            'seo_description' => 'nullable|string|max:160',
+            'seo_description' => 'nullable|string|max:255',
             'seo_keywords' => 'nullable|string|max:255',
             'main_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

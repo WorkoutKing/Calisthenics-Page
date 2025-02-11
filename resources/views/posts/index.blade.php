@@ -10,7 +10,7 @@
 
         <!-- Page Title and Description -->
         <div class="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white p-6 rounded-lg shadow-lg mb-8">
-            <h1 class="text-4xl font-bold text-center mb-4">Latest News & Updates</h1>
+            <h1 class="text-4xl font-bold text-center mb-4">Our Blog</h1>
             <p class="text-center text-lg sm:text-xl">
                 Stay up-to-date with the latest news, tips, and insights from the calisthenics community. Discover new techniques, inspiring stories, and much more.
             </p>
@@ -21,7 +21,7 @@
             <h2 class="text-2xl font-semibold text-white mb-6">Explore Our Articles</h2>
 
             <!-- Grid Layout for Posts -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse ($posts as $post)
                     <a href="{{ route('posts.show', $post->id) }}" class="bg-gray-700 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform transform hover:scale-105 flex flex-col text-white">
                         <!-- Post Image -->
@@ -32,11 +32,11 @@
                         </div>
 
                         <!-- Post Title -->
-                        <h3 class="text-lg font-semibold mb-2 truncate">{{ $post->title }}</h3>
+                        <h3 class="text-lg font-semibold mb-2">{{ $post->title }}</h3>
 
                         <!-- Post Excerpt -->
-                        <p class="text-sm text-gray-400 flex-grow mb-4">
-                            {{ Str::limit($post->content, 100, '...') }}
+                        <p class="text-sm text-gray-400 flex-grow mb-4 text-format">
+                            {{ Str::limit(strip_tags($post->content), 100, '...') }}
                         </p>
                     </a>
                 @empty

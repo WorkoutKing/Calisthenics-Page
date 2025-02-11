@@ -30,7 +30,7 @@
             </ul>
 
             <h2 class="text-xl font-semibold mt-6">Third-Party Services</h2>
-            <p class="text-gray-300">Our website may contain links to external sites, products, or services not owned or controlled by [Your Calisthenics Page]. We are not responsible for the privacy practices or the content of any third-party websites, and any data shared with them is done at your own risk.</p>
+            <p class="text-gray-300">Our website may contain links to external sites, products, or services not owned or controlled by Kalistenika VšĮ. We are not responsible for the privacy practices or the content of any third-party websites, and any data shared with them is done at your own risk.</p>
 
             <p class="text-gray-300">You acknowledge that we have no control over the privacy policies, security, or data handling practices of third-party services and cannot be held liable for any breaches of privacy or data exposure resulting from your interactions with these services.</p>
 
@@ -63,6 +63,6 @@
             <p class="text-gray-300">Email: madstars4ever@gmail.com</p>
 
             <hr class="border-gray-600 my-8">
-        </div>
+        </div> darius jurenas
     </div>
 @endsection

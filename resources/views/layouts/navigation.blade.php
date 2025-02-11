@@ -8,11 +8,12 @@
     <ul class="sidebar-menu">
         @if(Auth::user())
             <li><a href="/"><i class="fas fa-house"></i> <span>Home</span></a></li>
-            <li><a href="/elements"><i class="fas fa-stairs"></i> <span>Skills Progress</span></a></li>
-            <li><a href="/challenges"><i class="fas fa-person-running"></i> <span>Challenges</span></a></li>
-            <li><a href="/basics"><i class="fas fa-ranking-star"></i></i> <span>Basics</span></a></li>
-            <li><a href="/posts"><i class="fas fa-newspaper"></i> <span>Articles</span></a></li>
-            <li><a href="/exercises"><i class="fas fa-newspaper"></i> <span>Exercises library</span></a></li>
+            <li><a href="/elements"><i class="fa-solid fa-bars-progress"></i> <span>Progressions</span></a></li>
+            <li><a href="/challenges"><i class="fa-solid fa-hand-fist"></i> <span>Challenges</span></a></li>
+            <li><a href="/basics"><i class="fa-solid fa-trophy"></i> <span>Basics</span></a></li>
+            <li><a href="/exercises"><i class="fa-solid fa-book-open"></i> <span>Exercises library</span></a></li>
+            <li><a href="/posts"><i class="fas fa-newspaper"></i> <span>Our Blog</span></a></li>
+            <li><a href="/about-us"><i class="fa-solid fa-circle-info"></i> <span>About Us</span></a></li>
             <br>
             @if (auth()->user()->role_id == 2)
                 <li><a href="/admin/dashboard"><i class="fas fa-user-tie"></i><span>Admin Dashboard</span></a></li>
@@ -39,11 +40,11 @@
             </li>
         @else
             <li><a href="/"><i class="fas fa-house"></i> <span>Home</span></a></li>
-            <li><a href="/elements"><i class="fas fa-stairs"></i> <span>Skills</span></a></li>
-            <li><a href="/challenges"><i class="fas fa-person-running"></i> <span>Challenges</span></a></li>
-            <li><a href="/basics/statistics"><i class="fas fa-ranking-star"></i></i> <span>Basics</span></a></li>
-            <li><a href="/posts"><i class="fas fa-newspaper"></i> <span>Articles</span></a></li>
-            <li><a href="/exercises"><i class="fas fa-newspaper"></i> <span>Exercises library</span></a></li>
+            <li><a href="/elements"><i class="fa-solid fa-bars-progress"></i> <span>Progressions</span></a></li>
+            <li><a href="/basics/statistics"><i class="fa-solid fa-trophy"></i> <span>Basics</span></a></li>
+            <li><a href="/exercises"><i class="fa-solid fa-book-open"></i> <span>Exercises library</span></a></li>
+            <li><a href="/posts"><i class="fas fa-newspaper"></i> <span>Our Blog</span></a></li>
+            <li><a href="/about-us"><i class="fa-solid fa-circle-info"></i> <span>About Us</span></a></li>
             <!-- Add Register and Login buttons for mobile -->
             <li class="mobile-auth-links">
                 <a href="/register"><i class="fas fa-user-plus"></i> <span>Register</span></a>

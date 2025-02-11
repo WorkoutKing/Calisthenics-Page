@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="py-12 bg-gray-900">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <!-- Alerts Section -->
@@ -44,9 +44,34 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="content" class="block text-sm font-medium text-gray-300">Content</label>
-                        <textarea name="content" id="content" rows="5" class="block w-full px-4 py-2 border rounded-lg text-white bg-gray-700" required>{{ old('content') }}</textarea>
+                        <label for="content" class="block text-sm font-medium text-gray-300">Content:</label>
+
+                        <!-- Textarea for description -->
+                        <textarea name="content" id="content" class="hidden">{!! old('content') !!}</textarea>
+
+                        <!-- Quill editor container -->
+                        <div id="editor" style="height: 500px; background: white; color: black;"></div>
                     </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            var quill = new Quill("#editor", {
+                                theme: "snow",
+                                placeholder: "Write the exercise description here...",
+                            });
+
+                            var descriptionTextarea = document.querySelector("#content");
+                            quill.root.innerHTML = descriptionTextarea.value;
+
+                            quill.on("text-change", function () {
+                                descriptionTextarea.value = quill.root.innerHTML.trim();
+                            });
+
+                            document.querySelector("form").addEventListener("submit", function () {
+                                descriptionTextarea.value = quill.root.innerHTML.trim();
+                            });
+                        });
+                    </script>
 
                     <!-- SEO Fields -->
                     <div class="mb-4">

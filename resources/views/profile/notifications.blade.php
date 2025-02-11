@@ -69,7 +69,7 @@
                                     <!-- Notification Message -->
                                     <p class="text-gray-800 dark:text-gray-200 flex-1">
                                         @if (isset($notification->data['url']))
-                                            <a href="{{ $notification->data['url'] }}" class="text-blue-600 hover:underline">
+                                            <a href="{{ $notification->data['url'] }}" class="color-white hover:underline">
                                                 {{ $notification->data['message'] }}
                                             </a>
                                         @else

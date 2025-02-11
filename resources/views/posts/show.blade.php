@@ -20,7 +20,7 @@
                 </div>
 
                 <!-- Post Content (Full width) -->
-                <p class="text-lg text-gray-300 leading-relaxed mb-4">{!! nl2br(e($post->content)) !!}</p>
+                <div class="text-lg text-gray-300 leading-relaxed mb-4 change-format">{!! $post->content !!}</div>
 
                 <!-- Date Information -->
                 <div class="text-sm text-gray-500 mb-4">

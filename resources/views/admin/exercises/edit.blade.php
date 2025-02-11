@@ -15,14 +15,18 @@
                     <input type="text" name="title" value="{{ old('title', $exercise->title) }}" required class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
                 </div>
 
-                <!-- Exercise Description -->
+                <!-- Exercise Description (Quill Editor) -->
                 <div class="mb-6">
                     <label for="description" class="block text-sm font-medium text-gray-300">Description:</label>
-                    <textarea name="description" style="height:500px;" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" required>{{ old('description', $exercise->description) }}</textarea>
+
+                    <!-- Textarea that will store Quill content -->
+                    <textarea name="description" id="description" class="hidden">{!! old('description', $exercise->description) !!}</textarea>
+
+                    <!-- Quill editor container -->
+                    <div id="editor" style="height: 500px; background: white; color: black;"></div>
                 </div>
 
-
-                <!-- Primary Muscle Group Selection -->
+                <!-- Primary Muscle Group -->
                 <div class="mb-4">
                     <label for="primary_muscle_group_id" class="block text-white">Primary Muscle Group:</label>
                     <select name="primary_muscle_group_id" required class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
@@ -36,7 +40,7 @@
                     </select>
                 </div>
 
-                <!-- Secondary Muscle Groups (multiple select) -->
+                <!-- Secondary Muscle Groups -->
                 <div class="mb-4">
                     <label for="secondary_muscle_groups" class="block text-white">Secondary Muscle Groups:</label>
                     <select name="secondary_muscle_groups[]" style="height:600px;" multiple class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
@@ -49,7 +53,7 @@
                     </select>
                 </div>
 
-                <!-- Main Picture Upload -->
+                <!-- Main Picture -->
                 <div class="mb-4">
                     <label for="main_picture" class="block text-white">Main Picture:</label>
                     <input type="file" name="main_picture" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
@@ -88,13 +92,27 @@
     </div>
 @endsection
 
+<!-- Quill Editor Script -->
 <script>
-    tinymce.init({
-        selector: 'textarea[name="description"]',  // Target the textarea by name
-        height: 500,  // Set the height of the editor
-        plugins: 'advlist autolink lists link image charmap print preview anchor',  // Add useful plugins
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',  // Customize the toolbar
-        menubar: false,  // Optionally disable the menu bar
-        content_style: "body { font-family:Arial, sans-serif; font-size:14px; }"  // Optional: Set the font style
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Quill
+        var quill = new Quill("#editor", {
+            theme: "snow",
+            placeholder: "Write the exercise description here...",
+        });
+
+        // Get the textarea and pre-fill Quill with its value
+        var descriptionTextarea = document.querySelector("#description");
+        quill.root.innerHTML = descriptionTextarea.value;
+
+        // Sync Quill content to the textarea whenever it changes
+        quill.on("text-change", function () {
+            descriptionTextarea.value = quill.root.innerHTML.trim();
+        });
+
+        // Ensure content is saved before form submission
+        document.querySelector("form").addEventListener("submit", function () {
+            descriptionTextarea.value = quill.root.innerHTML.trim();
+        });
     });
 </script>

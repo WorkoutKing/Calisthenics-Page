@@ -44,8 +44,37 @@
 
                 <div class="mb-6">
                     <label for="description" class="block text-sm font-medium text-gray-300">Description:</label>
-                    <textarea name="description" style="height:500px;" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" required></textarea>
+
+                    <!-- Textarea for description -->
+                    <textarea name="description" id="description" class="hidden">{!! old('description', isset($exercise) ? $exercise->description : '') !!}</textarea>
+
+                    <!-- Quill editor container -->
+                    <div id="editor" style="height: 500px; background: white; color: black;"></div>
                 </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Initialize Quill editor
+                        var quill = new Quill("#editor", {
+                            theme: "snow",
+                            placeholder: "Write the exercise description here...",
+                        });
+
+                        // Get the textarea and pre-fill Quill with its value
+                        var descriptionTextarea = document.querySelector("#description");
+                        quill.root.innerHTML = descriptionTextarea.value;
+
+                        // Sync Quill content to the textarea whenever it changes
+                        quill.on("text-change", function () {
+                            descriptionTextarea.value = quill.root.innerHTML.trim();
+                        });
+
+                        // Ensure content is saved before form submission
+                        document.querySelector("form").addEventListener("submit", function () {
+                            descriptionTextarea.value = quill.root.innerHTML.trim();
+                        });
+                    });
+                </script>
 
                 <div class="mb-6">
                     <label for="primary_muscle_group_id" class="block text-sm font-medium text-gray-300">Primary Muscle Group:</label>
@@ -91,13 +120,3 @@
     </div>
 @endsection
 
-<script>
-    tinymce.init({
-        selector: 'textarea[name="description"]',  // Target the textarea by name
-        height: 500,  // Set the height of the editor
-        plugins: 'advlist autolink lists link image charmap print preview anchor',  // Add useful plugins
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',  // Customize the toolbar
-        menubar: false,  // Optionally disable the menu bar
-        content_style: "body { font-family:Arial, sans-serif; font-size:14px; }"  // Optional: Set the font style
-    });
-</script>

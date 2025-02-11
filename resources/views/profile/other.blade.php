@@ -20,8 +20,8 @@
                 @if($user->is_online)
                     <span class="text-green-500 font-bold">Online</span>
                 @else
+                    Last Login: {{ $user->last_login_at ? $user->last_login_at->diffForHumans() : 'N/A' }} <br>
                     <span class="text-gray-500">Offline</span>
-                    Last Login: {{ $user->last_login_at ? $user->last_login_at->diffForHumans() : 'N/A' }}
                 @endif
             </p>
         </div>
@@ -163,18 +163,22 @@
         <!-- Exercise Progress Section -->
         <div class="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-md">
             <h3 class="text-xl font-medium text-gray-800 dark:text-gray-200 mb-4">Exercise Progress</h3>
-            @foreach ($exerciseProgress as $progress)
-                <div class="mb-4">
-                    <div class="flex justify-between items-center">
-                        <h4 class="text-lg font-medium text-gray-800 dark:text-gray-200">{{ ucfirst($progress['exercise']) }}</h4>
-                        <span class="text-sm text-gray-600 dark:text-gray-400">{{ $progress['userScore'] }} / {{ $progress['globalMax'] }} (Ranked {{ $progress['rank'] }})</span>
+            @if (!$exerciseProgress)
+                <p class="text-gray-600 dark:text-gray-400">This user has not completed any exercises yet.</p>
+            @else
+                @foreach ($exerciseProgress as $progress)
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center">
+                            <h4 class="text-lg font-medium text-gray-800 dark:text-gray-200">{{ ucfirst($progress['exercise']) }}</h4>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">{{ $progress['userScore'] }} / {{ $progress['globalMax'] }} (Ranked {{ $progress['rank'] }})</span>
+                        </div>
+                        <!-- Progress bar -->
+                        <div class="h-2 rounded-full overflow-hidden mt-2 bg-gray-200 dark:bg-gray-700">
+                            <div class="h-full bg-green-500" style="width: {{ $progress['globalMax'] > 0 ? ($progress['userScore'] / $progress['globalMax']) * 100 : 0 }}%;"></div>
+                        </div>
                     </div>
-                    <!-- Progress bar -->
-                    <div class="h-2 rounded-full overflow-hidden mt-2 bg-gray-200 dark:bg-gray-700">
-                        <div class="h-full bg-green-500" style="width: {{ $progress['globalMax'] > 0 ? ($progress['userScore'] / $progress['globalMax']) * 100 : 0 }}%;"></div>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
     </div>
 

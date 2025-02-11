@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="py-12 bg-gray-900">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Manage Posts Card Section -->
             <div class="bg-gray-800 p-6 sm:p-8 rounded-lg shadow-xl">

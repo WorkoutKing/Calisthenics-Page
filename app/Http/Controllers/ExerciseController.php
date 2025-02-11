@@ -66,17 +66,17 @@ class ExerciseController extends Controller
 
     public function store(Request $request)
     {
-        // Validation for description (will allow HTML content)
+        // Validation for description (ensuring it is present but allowing HTML)
         $request->validate([
             'title' => 'required|unique:exercises|max:255',
-            'description' => 'required',  // No need for additional validation for HTML content
+            'description' => 'required|string|min:5', // Enforcing min length to ensure meaningful content
             'primary_muscle_group_id' => 'required|exists:muscle_groups,id',
             'secondary_muscle_groups' => 'nullable|array',
             'secondary_muscle_groups.*' => 'exists:muscle_groups,id',
             'main_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'seo_title' => 'nullable|max:255',
-            'seo_description' => 'nullable',
-            'seo_keywords' => 'nullable',
+            'seo_description' => 'nullable|string',
+            'seo_keywords' => 'nullable|string',
         ]);
 
         // Store the exercise data excluding 'main_picture' and 'secondary_muscle_groups'
@@ -121,7 +121,7 @@ class ExerciseController extends Controller
     {
         $request->validate([
             'title' => "required|max:255|unique:exercises,title,{$exercise->id}",
-            'description' => 'required',
+            'description' => 'required|string|min:5',
             'primary_muscle_group_id' => 'required|exists:muscle_groups,id',
             'secondary_muscle_groups' => 'nullable|array',
             'secondary_muscle_groups.*' => 'exists:muscle_groups,id',

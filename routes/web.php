@@ -14,6 +14,7 @@ use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\MuscleGroupController;
+use App\Http\Controllers\PagesController;
 
 
 Route::get('/welcome', function () {
@@ -158,10 +159,8 @@ Route::get('/challenges/{id}', [ChallengeController::class, 'show'])->name('chal
 Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
 Route::get('/exercises', [ExerciseController::class, 'publicIndex'])->name('exercises.index');
 Route::get('/exercises/{exercise}', [ExerciseController::class, 'publicShow'])->name('exercises.show');
-Route::get('/privacy-policy', function () {
-    return view('privacy-policy');
-})->name('privacy-policy');
-
+Route::get('/about-us', [PagesController::class, 'indexAboutUs'])->name('pages.about-us');
+Route::get('/privacy-policy', [PagesController::class, 'indexPrivacy'])->name('pages.privacy-policy');
 
 // Include Auth Routes
 require __DIR__ . '/auth.php';

@@ -51,7 +51,7 @@
             <!-- Description -->
             <div class="mb-6">
                 <h2 class="text-2xl font-semibold text-gray-200">Description</h2>
-                <div class="change-format">{!! $exercise->description !!}</div>
+                <div class="change-format" id="editor">{!! $exercise->description !!}</div>
             </div>
 
             <!-- Back to Exercises Link -->

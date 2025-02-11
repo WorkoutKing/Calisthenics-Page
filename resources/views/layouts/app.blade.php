@@ -12,8 +12,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Add the TinyMCE CDN -->
-        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -25,7 +25,7 @@
             <div class="second-nav flex items-center justify-between bg-gray-900 border-b border-gray-800 px-4 py-3 top-0 z-50">
                 <!-- Logo -->
                 <div class="logo-container">
-                    <a href="/"><img src="https://www.animagrafica.aq.it/wp-content/uploads/2020/12/Calisthenics-logo-1.jpg" alt="logo" class="h-10"></a>
+                    <a href="/"><img src="{{ asset('storage/pageLogo/logo.png') }}" alt="logo" class="h-10"></a>
                 </div>
 
                 <!-- Navigation Links -->

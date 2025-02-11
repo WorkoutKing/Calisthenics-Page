@@ -55,7 +55,7 @@
             <!-- Description -->
             <div class="mb-6">
                 <h2 class="text-2xl font-semibold text-gray-200">Description</h2>
-                <p class="text-gray-300 change-format">{{ $exercise->description }}</p>
+                <p class="text-gray-300 change-format">{!! $exercise->description !!}</p>
             </div>
 
             <!-- Back to Exercises Link -->
