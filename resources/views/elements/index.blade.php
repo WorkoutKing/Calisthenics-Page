@@ -43,7 +43,7 @@
                 <a href="/elements/statistics" class="font-bold text-blue-400 hover:text-blue-300 underline">Check out the top pantheon of elements</a>
             </p>
         </div>
-
+        @if (auth()->user())
         @php
             $totalElements = $elements->count();
             $completedElements = $elements->filter(function($element) {
@@ -66,6 +66,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         <!-- Elements List -->
         <div class="bg-gray-900 shadow-lg rounded-lg p-4 mb-8">
@@ -86,7 +87,7 @@
                                 <i :class="open ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
                             </button>
                         </h2>
-
+                        @if (auth()->user())
                         <!-- Completion Progress -->
                         <div class="mt-2">
                             <p class="text-sm text-gray-400">Completion: {{ $completionRate }}%</p>
@@ -94,6 +95,7 @@
                                 <div class="bg-green-500 h-2 rounded-full" style="width: {{ $completionRate }}%"></div>
                             </div>
                         </div>
+                        @endif
 
                         <p class="text-gray-300 mt-2">{{ $element->description }}</p>
 

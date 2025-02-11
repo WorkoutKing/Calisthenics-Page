@@ -7,6 +7,17 @@
         <meta name="description" content="@yield('meta_description', 'Madstars | Calisthenics')">
         <meta name="keywords" content="@yield('meta_keywords', 'calisthenics, madstars')">
         <title>@yield('meta_title', 'Madstars | Calisthenics')</title>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R20Z8VZ953"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-R20Z8VZ953');
+        </script>
+
         @stack('head')
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

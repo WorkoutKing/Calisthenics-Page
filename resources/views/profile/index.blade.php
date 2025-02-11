@@ -171,11 +171,14 @@
             @endforeach
 
             <!-- Link to Top Performers -->
+            @if($exerciseProgress)
             <div class="mt-6 text-center">
-                <a href="/basics/statistics" class="text-blue-500 dark:text-blue-400 text-sm font-medium hover:underline">
+                <a href="/basics/statistics"
+                    class="text-blue-500 dark:text-blue-400 text-sm font-medium hover:underline">
                     View Top Performers
                 </a>
             </div>
+            @endif
         </div>
     </div>
 

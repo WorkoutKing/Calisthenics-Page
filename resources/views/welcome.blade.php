@@ -37,14 +37,14 @@
             </div>
 
             <!-- Learn & Achieve Section -->
-            <div class="flex flex-col md:flex-row items-center mt-16 space-y-10 md:space-y-0 md:space-x-10">
-                <div class="w-full md:w-1/2 bg-gray-800 p-6 rounded-lg shadow-md text-white">
+            <div class="flex flex-col md:flex-row items-stretch gap-6 md:gap-10 mt-10">
+                <div class="w-full md:w-1/2 bg-gray-800 p-6 rounded-lg shadow-md text-white flex flex-col justify-between min-h-full">
                     <h2 class="text-3xl font-bold flex items-center"><span class="mr-3">💻</span> Learn</h2>
-                    <p class="mt-4 text-lg text-gray-400">Turn knowledge into power. The Cali Skills library contains all the information you need to excel in your bodyweight fitness journey.</p>
+                    <p class="mt-4 text-lg text-gray-400 flex-grow">Turn knowledge into power. The Cali Skills library contains all the information you need to excel in your bodyweight fitness journey.</p>
                 </div>
-                <div class="w-full md:w-1/2 bg-gray-800 p-6 rounded-lg shadow-md text-white">
+                <div class="w-full md:w-1/2 bg-gray-800 p-6 rounded-lg shadow-md text-white flex flex-col justify-between min-h-full">
                     <h2 class="text-3xl font-bold flex items-center"><span class="mr-3">🏆</span> Achieve</h2>
-                    <p class="mt-4 text-lg text-gray-400">Track your progress and achieve milestones through our progression roadmaps. Stay motivated and reach new heights!</p>
+                    <p class="mt-4 text-lg text-gray-400 flex-grow">Track your progress and achieve milestones through our progression roadmaps. Stay motivated and reach new heights!</p>
                 </div>
             </div>
 
