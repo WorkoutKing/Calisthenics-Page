@@ -56,7 +56,7 @@
         <div class="mt-4">
             <label for="privacy_policy">
                 <input type="checkbox" name="privacy_policy" id="privacy_policy" value="1" required>
-                I accept the <a href="{{ route('privacy-policy') }}" target="_blank">Privacy Policy</a>
+                I accept the <a href="{{ route('pages.privacy-policy') }}" target="_blank">Privacy Policy</a>
             </label>
         </div>
 

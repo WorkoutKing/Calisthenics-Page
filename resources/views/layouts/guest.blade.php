@@ -18,7 +18,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500 dark:text-gray-300" />
+                    <a href="/"><img src="{{ asset('storage/pageLogo/logo.png') }}" alt="logo" class="h-16"></a>
                 </a>
             </div>
 

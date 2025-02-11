@@ -7,9 +7,6 @@
                 <a href="/privacy-policy" class="text-gray-400 hover:text-white transition">
                     {{ __('Privacy Policy') }}
                 </a>
-                <a href="/terms" class="text-gray-400 hover:text-white transition">
-                    {{ __('Terms of Service') }}
-                </a>
             </div>
 
             <!-- Contact Section -->
@@ -27,9 +24,6 @@
                 <div class="grid grid-cols-2 gap-4 text-center">
                     <a href="/privacy-policy" class="text-gray-400 hover:text-white transition block">
                         {{ __('Privacy Policy') }}
-                    </a>
-                    <a href="/terms" class="text-gray-400 hover:text-white transition block">
-                        {{ __('Terms of Service') }}
                     </a>
                 </div>
             </div>

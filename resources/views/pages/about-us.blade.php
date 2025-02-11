@@ -52,7 +52,7 @@
         </div>
 
         <!-- Team Section -->
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        {{--  <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Team</h2>
             <p class="text-lg text-gray-400 mb-4">
                 Meet the passionate team behind Madstars. We are a diverse group of fitness enthusiasts, trainers, and experts who are committed to helping you on your calisthenics journey. With over 10 years of experience, we share a common vision of improving fitness and well-being through bodyweight exercises.
@@ -90,7 +90,7 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div>  --}}
 
         <!-- Funny Calisthenics Facts -->
         <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
