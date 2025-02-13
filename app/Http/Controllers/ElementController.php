@@ -4,29 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Element;
+use App\Models\Exercise;
 
 class ElementController extends Controller
 {
     //
     public function index()
     {
-        $elements = Element::with('steps')->get();
+        $elements = Element::with(['steps', 'exercise'])->get();
         return view('elements.index', compact('elements'));
     }
 
     public function create()
     {
-        return view('elements.create');
+        $exercises = Exercise::orderBy('title')->get();
+        return view('elements.create', compact('exercises'));
     }
+
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'exercise_id' => 'nullable|exists:exercises,id',
         ]);
 
-        Element::create($request->all());
+        Element::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'exercise_id' => $request->exercise_id
+        ]);
+
         return redirect()->back()->with('success', 'Element created successfully');
     }
 
@@ -50,5 +59,32 @@ class ElementController extends Controller
             }
         ])->get();
         return view('elements.statistics', compact('elements'));
+    }
+
+    public function edit($element_id)
+    {
+        $element = Element::findOrFail($element_id);
+        $exercises = Exercise::orderBy('title')->get();
+
+        return view('elements.edit', compact('element', 'exercises'));
+    }
+
+    public function update(Request $request, $element_id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'exercise_id' => 'nullable|exists:exercises,id',
+        ]);
+
+        $element = Element::findOrFail($element_id);
+
+        $element->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'exercise_id' => $request->exercise_id,
+        ]);
+
+        return redirect()->route('elements.index')->with('success', 'Element updated successfully');
     }
 }

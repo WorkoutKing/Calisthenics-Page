@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Step;
 use App\Models\Element;
 use App\Models\Result;
+use App\Models\Exercise;
 
 class StepController extends Controller
 {
@@ -63,8 +64,9 @@ class StepController extends Controller
 
     public function create($element_id)
     {
+        $exercises = Exercise::orderBy('title', 'asc')->get();
         $element = Element::findOrFail($element_id);
-        return view('steps.create', compact('element'));
+        return view('steps.create', compact('element', 'exercises'));
     }
 
     public function store(Request $request, $element_id)
@@ -75,6 +77,7 @@ class StepController extends Controller
             'name' => 'required|string|max:255',
             'criteria' => 'required|string',
             'points' => 'required|integer|min:0',
+            'exercise_id' => 'nullable|exists:exercises,id'  // Added validation for exercise_id
         ]);
 
         Step::create([
@@ -82,16 +85,16 @@ class StepController extends Controller
             'name' => $request->name,
             'criteria' => $request->criteria,
             'points' => $request->points,
+            'exercise_id' => $request->exercise_id  // Save selected exercise
         ]);
-
-        return redirect()->route('elements.index')->with('success', 'Step added successfully.');
+        return redirect()->back()->with('success', 'Step added successfully.');
     }
-
 
     public function edit($step_id)
     {
+        $exercises = Exercise::orderBy('title', 'asc')->get();
         $step = Step::findOrFail($step_id);
-        return view('steps.edit', compact('step'));
+        return view('steps.edit', compact('step', 'exercises'));
     }
 
     public function update(Request $request, $step_id)
@@ -102,12 +105,14 @@ class StepController extends Controller
             'name' => 'required|string|max:255',
             'criteria' => 'required|string',
             'points' => 'required|integer|min:0',
+            'exercise_id' => 'nullable|exists:exercises,id',  // Added validation for exercise_id
         ]);
 
         $step->update([
             'name' => $request->name,
             'criteria' => $request->criteria,
             'points' => $request->points,
+            'exercise_id' => $request->exercise_id, // Save selected exercise
         ]);
 
         return redirect()->route('elements.index')->with('success', 'Step updated successfully.');

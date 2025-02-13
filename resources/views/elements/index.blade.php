@@ -77,16 +77,30 @@
                         $completedSteps = $element->steps->filter(function($step) {
                             return $step->results()->where('user_id', auth()->id())->where('approved', true)->exists();
                         })->count();
-
                         $completionRate = $totalSteps ? round(($completedSteps / $totalSteps) * 100) : 0;
                     @endphp
                     <li class="bg-gray-800 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200" x-data="{ open: {{ $index == 0 ? 'true' : 'false' }} }">
                         <h2 class="text-xl font-semibold text-gray-200 flex items-center justify-between">
-                            <span><i class="fa-solid fa-cube mr-2"></i> {{ $element->name }}</span>
+                            <span>
+                                <i class="fa-solid fa-cube mr-2"></i> {{ $element->name }}
+
+                                @if ($element->exercise) <!-- Check if the element has an associated exercise -->
+                                    <a href="/exercises/{{ $element->exercise->id }}" class="ml-2 text-sm text-gray-400">
+                                        (<i class="fa-solid fa-link"></i> {{ $element->exercise->title }})
+                                    </a>
+                                    {{--  <span class="ml-1 relative group">
+                                        <i class="fa-solid fa-circle-question text-blue-400 cursor-pointer"></i>
+                                        <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-64 p-2 rounded-lg shadow-lg text-xs text-white bg-gray-800 opacity-0 group-hover:opacity-100 transition duration-300">
+                                            This element is linked to the exercise: {{ $element->exercise->title }}
+                                        </span>
+                                    </span>  --}}
+                                @endif
+                            </span>
                             <button @click="open = !open" class="text-gray-300">
                                 <i :class="open ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
                             </button>
                         </h2>
+
                         @if (auth()->user())
                         <!-- Completion Progress -->
                         <div class="mt-2">
@@ -107,14 +121,29 @@
                                     <li class="p-3 bg-gray-700 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-600 transition duration-200">
                                         <div class="flex flex-wrap justify-between items-center">
                                             <div class="mb-4 sm:mb-0">
-                                                <p class="font-medium text-gray-200">{{ $step->name }}
-                                                    <span class="text-sm text-gray-400">({{ $step->points }} points)</span>
+                                                <!-- Step Name, Exercise Link, and Tooltip side by side -->
+                                                <div class="flex flex-wrap items-center">
+                                                    <p class="font-medium text-gray-200 mr-2">{{ $step->name }}</p>
+
+                                                    @if ($step->exercise)
+                                                        <!-- Inline on desktop, breaks to next line if it doesnt fit -->
+                                                        <a href="/exercises/{{ $step->exercise->id }}" class="text-sm text-gray-400 hover:text-gray-200 transition duration-200">
+                                                            (<i class="fa-solid fa-link"></i> {{ $step->exercise->title }})
+                                                        </a>
+                                                    @endif
+                                                </div>
+
+                                                @auth
+                                                <!-- Points Section - Below the Step Name -->
+                                                <p class="text-sm text-gray-400 mt-1">
+                                                    After approval, you will get <span class="font-medium text-gray-200">{{ $step->points }} points</span>.
                                                 </p>
+                                                @endauth
+
+                                                <!-- Step Criteria -->
                                                 <p class="text-gray-400 text-sm mt-1">{{ $step->criteria }}</p>
                                             </div>
-
                                             @auth
-                                                <!-- Actions for Authenticated Users -->
                                                 <div class="flex flex-wrap space-x-3 items-center">
                                                     @if (auth()->user()->role_id == 2)
                                                         <!-- Admin Actions -->
@@ -140,7 +169,6 @@
                                                                 <p class="text-green-500 font-medium">
                                                                     <i class="fa-solid fa-check-circle"></i> ☆ You earned it! ☆
                                                                 </p>
-                                                                <!-- Delete Upload -->
                                                                 <form action="{{ route('steps.destroyResult', $step->id) }}" method="POST" class="mt-2">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -168,7 +196,7 @@
                         </div>
                         @auth
                             @if (auth()->user()->role_id == 2)
-                                <div class="mt-6 text-right">
+                                <div class="mt-6 mb-4 text-right">
                                     <a href="{{ route('steps.create', $element->id) }}" class="btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition duration-150">
                                         Add Step
                                     </a>
@@ -192,4 +220,16 @@
         @endauth
     </div>
 </div>
+<style>
+    .btn {
+        background-color: #1F2937;
+        color: #edf2f4;
+        border: 1px solid #ef233c;
+    }
+
+    .btn:hover {
+        background-color: #d90429;
+        color: #ffffff;
+    }
+</style>
 @endsection

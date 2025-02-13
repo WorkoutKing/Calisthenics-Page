@@ -15,12 +15,12 @@
                     @auth
                         <h1 class="text-4xl font-bold text-white">Welcome Back, {{ Auth::user()->name }}!</h1>
                         <p class="mt-4 text-lg text-gray-300">Continue your calisthenics journey and achieve new milestones.</p>
-                        <a href="{{ route('profile.index') }}" class="mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Go to Dashboard</a>
+                        <a href="{{ route('profile.index') }}" class="btn mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Go to Dashboard</a>
                     @endauth
                     @guest
                         <h1 class="text-4xl font-bold text-white">Transform Your Body with Calisthenics</h1>
                         <p class="mt-4 text-lg text-gray-300">Join our community and start your journey to a healthier, stronger you.</p>
-                        <a href="{{ route('login') }}" class="mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Get Started</a>
+                        <a href="{{ route('login') }}" class="btn mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Get Started</a>
                     @endguest
                 </div>
             </div>
@@ -49,47 +49,77 @@
             </div>
 
             <!-- Newest Posts Section with Slider -->
-            <div class="newest_post_of_page mt-10">
-                <span class="posts_h_heading text-2xl font-semibold text-gray-300">Newest Posts</span>
-                <div class="all_newest_posts_h mt-6">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach ($newestPosts as $post)
-                                <a href="{{ route('posts.show', $post->id) }}" class="swiper-slide block group">
-                                    <div class="relative bg-gray-800 rounded-lg overflow-hidden shadow-md transition transform group-hover:scale-105">
-                                        <img src="{{ asset('storage/'.$post->main_picture) }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
-                                        <div class="p-4">
-                                            <h5 class="text-lg font-semibold text-white">{{ $post->title }}</h5>
-                                            <p class="text-sm text-gray-400 mt-2 line-clamp-2">{{ Str::limit(strip_tags($post->content), 100, '...') }}</p>
-                                        </div>
-                                        <div class="absolute inset-0 bg-transparent group-hover:bg-black group-hover:bg-opacity-25"></div>
-                                    </div>
-                                </a>
-                            @endforeach
-                        </div>
-                        <!-- Pagination -->
-                        <div class="swiper-pagination"></div>
-                    </div>
+            <div class="swiper-container mt-10">
+                <div class="swiper-wrapper">
+                    @foreach ($newestPosts as $post)
+                        <a href="{{ route('posts.show', $post->id) }}" class="swiper-slide block group">
+                            <div class="relative bg-gray-800 rounded-lg overflow-hidden shadow-md transition transform group-hover:scale-105">
+                                <img src="{{ asset('storage/'.$post->main_picture) }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
+                                <div class="p-4">
+                                    <h5 class="text-lg font-semibold text-white">{{ $post->title }}</h5>
+                                    <p class="text-sm text-gray-400 mt-2 line-clamp-2">{{ Str::limit(strip_tags($post->content), 100, '...') }}</p>
+                                </div>
+                                <div class="absolute inset-0 bg-transparent group-hover:bg-black group-hover:bg-opacity-25"></div>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
+                <!-- Navigation & Pagination Wrapper -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-
 <style>
 body {
     background-color: #000;
     color: #f3f4f6;
 }
+.swiper-container {
+    position: relative;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    z-index: 1;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    background: #1F2937;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    border:1px solid #ef233c;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: #d90429;
+}
+
+.swiper-pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.swiper-pagination-bullet:hover {
+    opacity: 1;
+}
 
 .swiper-container.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
     height: fit-content;
-}
-
-.challenge:hover {
-    cursor: pointer;
-    background: radial-gradient(circle at center, var(--color-cta-glow-effect, #3b82f6), transparent 50%);
 }
 
 .swiper-slide {
@@ -102,11 +132,15 @@ body {
     transform: scale(1.05);
 }
 
-.swiper-pagination-bullet {
-    background: #3b82f6;
+.btn {
+    background-color: #1F2937;
+    color: #edf2f4;
+    border: 1px solid #ef233c;
 }
 
-.swiper-pagination-bullet-active {
-    background: #2563eb;
+.btn:hover {
+    background-color: #d90429;
+    color: #ffffff;
 }
 </style>
+@endsection

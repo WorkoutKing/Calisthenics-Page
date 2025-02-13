@@ -60,7 +60,7 @@ class ExerciseController extends Controller
 
     public function create()
     {
-        $muscleGroups = MuscleGroup::all();
+        $muscleGroups = MuscleGroup::orderBy('title', 'asc')->get();
         return view('admin.exercises.create', compact('muscleGroups'));
     }
 
@@ -113,7 +113,7 @@ class ExerciseController extends Controller
 
     public function edit(Exercise $exercise)
     {
-        $muscleGroups = MuscleGroup::all();
+        $muscleGroups = MuscleGroup::orderBy('title', 'asc')->get();
         return view('admin.exercises.edit', compact('exercise', 'muscleGroups'));
     }
 

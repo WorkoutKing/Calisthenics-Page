@@ -24,8 +24,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
@@ -73,10 +72,11 @@
             <!-- Include the Footer -->
             @include('layouts.footer') <!-- This includes the footer.blade.php -->
         </div>
+        <style>
+        main {
+            background: #000;
+        }
+        </style>
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     </body>
 </html>
-<style>
-main {
-    background: #000;
-}
-</style>

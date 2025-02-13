@@ -102,6 +102,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/element-results', [AdminController::class, 'elementResultsIndex'])->name('admin.elementResults');
     Route::patch('admin/element-results/{result}', [AdminController::class, 'approveElementResult'])->name('admin.approveElementResult');
     Route::delete('/delete-element-result/{result}', [AdminController::class, 'deleteElementResult'])->name('admin.deleteElementResult');
+    Route::get('/elements/{element_id}/edit', [ElementController::class, 'edit'])->name('elements.edit');
+    Route::put('/elements/{element_id}', [ElementController::class, 'update'])->name('elements.update');
+
 
     // Challenges
     Route::get('admin/challenge-results', [AdminController::class, 'challengeResultsIndex'])->name('admin.challengeResults');

@@ -30,4 +30,13 @@ class Exercise extends Model
     {
         return $this->belongsToMany(MuscleGroup::class, 'exercise_muscle_group');
     }
+    public function steps()
+    {
+        return $this->hasMany(Step::class);
+    }
+
+    public function elements()
+    {
+        return $this->hasMany(Element::class);
+    }
 }

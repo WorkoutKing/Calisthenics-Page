@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Step extends Model
 {
-    protected $fillable = ['element_id', 'name', 'criteria', 'points'];
+    protected $fillable = ['element_id', 'name', 'criteria', 'points', 'exercise_id'];
 
     //
     public function element()
@@ -21,4 +21,9 @@ class Step extends Model
     {
         return $this->morphOne(Meta::class, 'metaable');
     }
+    public function exercise()
+    {
+        return $this->belongsTo(Exercise::class);
+    }
+
 }

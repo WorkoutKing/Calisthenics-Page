@@ -64,7 +64,7 @@
                 <div class="flex flex-col items-center bg-gray-700 p-6 rounded-lg shadow-sm mb-4 sm:mb-0">
                     <img src="#!" alt="Team Member 1" class="w-24 h-24 rounded-full mb-4">
                     <h3 class="text-lg font-semibold text-white">John Doe</h3>
-                    <p class="text-sm text-gray-400">Lead Trainer</p>
+                    <p class="text-sm text-gray-400">Expert in statics</p>
                     <p class="text-center text-gray-400 text-sm mt-2">
                         John has been training for over 8 years, specializing in strength training and mobility. Hes passionate about guiding others to achieve their fitness goals.
                     </p>
