@@ -15,7 +15,7 @@
         </div>
 
         <!-- Mission Section -->
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Mission</h2>
             <p class="text-lg text-gray-400 leading-relaxed">
                 Our mission is simple: to make calisthenics accessible and enjoyable for everyone, regardless of age or fitness level. We aim to provide high-quality resources, tutorials, and workout plans that help people build strength, improve flexibility, and enhance endurance without the need for fancy equipment or gym memberships.
@@ -23,7 +23,7 @@
         </div>
 
         <!-- Goal Section -->
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Goal</h2>
             <p class="text-lg text-gray-400 leading-relaxed">
                 Our goal is to foster a community of passionate fitness enthusiasts who support and inspire one another in their calisthenics journey. We believe in the power of consistency and dedication, and we’re here to help you push your limits and achieve your fitness goals. Whether you're a beginner or an advanced practitioner, we're committed to providing guidance and motivation every step of the way.
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Vision Section -->
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Vision</h2>
             <p class="text-lg text-gray-400 leading-relaxed">
                 We envision a world where everyone can experience the benefits of calisthenics, living healthier, stronger, and more confident lives. We aim to become a global hub for calisthenics education and inspiration, providing a platform where people can share their progress, learn new techniques, and achieve personal milestones together.
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Founder Section -->
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Founder</h2>
             <div class="flex flex-col items-center mb-8">
                 <img src="{{ asset('storage/pagePictures/fl.jpg') }}" alt="Raimundas" class="w-48 h-48 rounded-full mb-4">
@@ -52,7 +52,7 @@
         </div>
 
         <!-- Team Section -->
-        {{--  <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        {{--  <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Team</h2>
             <p class="text-lg text-gray-400 mb-4">
                 Meet the passionate team behind Madstars. We are a diverse group of fitness enthusiasts, trainers, and experts who are committed to helping you on your calisthenics journey. With over 10 years of experience, we share a common vision of improving fitness and well-being through bodyweight exercises.
@@ -93,7 +93,7 @@
         </div>  --}}
 
         <!-- Funny Calisthenics Facts -->
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Funny Calisthenics Facts</h2>
             <ul class="list-disc pl-8 text-lg text-gray-400 space-y-4">
                 <li>Did you know? The world record for the most push-ups in one go is over 5000! Talk about endurance!</li>
@@ -105,7 +105,7 @@
         </div>
 
         <!-- Contact Section (optional) -->
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl mb-8">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
             <h2 class="text-3xl font-semibold text-gray-100 mb-6">Contact Us</h2>
             <p class="text-lg text-gray-400 mb-4">
                 Have questions or want to learn more about calisthenics? Feel free to reach out to us anytime! We’d love to connect and assist you on your fitness journey.

@@ -14,6 +14,8 @@ class Exercise extends Model
         'description',
         'main_picture',
         'primary_muscle_group_id',
+        'media_first_frame',
+        'media_url',
         'seo_title',
         'seo_description',
         'seo_keywords',

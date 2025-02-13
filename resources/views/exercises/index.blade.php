@@ -5,7 +5,7 @@
 @section('meta_keywords', 'calisthenics, exercises, workout, strength training, muscle groups')
 
 @section('content')
-    <div class="container mx-auto px-6 sm:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="space-y-4">
             @if ($errors->any())
                 <div class="alert alert-danger mb-6 bg-red-800 border border-red-600 text-red-300 rounded-md p-4">
@@ -36,7 +36,7 @@
             @endif
         </div>
 
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
             <h1 class="text-3xl font-semibold text-gray-100 mb-6">Exercise Library</h1>
 
             <!-- Search Form -->
@@ -56,27 +56,45 @@
             <!-- Exercises List -->
             <ul class="space-y-4">
                 @foreach($exercises as $exercise)
-                    <li class="bg-gray-700 p-4 rounded-lg shadow-sm hover:bg-gray-600 transition duration-300">
-                        <!-- Make the entire block clickable -->
-                        <a href="{{ route('exercises.show', $exercise->id) }}" class="block text-white">
-                            <div class="flex justify-between items-center">
-                                <h2 class="text-xl">{{ $exercise->title }}</h2>
-                            </div>
+                    <a href="{{ route('exercises.show', $exercise->id) }}" class="block">
+                        <li class="image-gif-position bg-gray-700 p-4 rounded-lg shadow-sm hover:bg-gray-600 transition duration-300">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center">
 
-                            <!-- Display Primary and Secondary Muscle Groups -->
-                            <div class="text-gray-400 mt-2">
-                                <strong>Primary Muscle Group:</strong> {{ $exercise->primaryMuscleGroup->name ?? 'N/A' }}
-                            </div>
-                            <div class="text-gray-400">
-                                <strong>Secondary Muscle Groups:</strong>
-                                @if ($exercise->secondaryMuscleGroups->count() > 0)
-                                    {{ implode(', ', $exercise->secondaryMuscleGroups->pluck('name')->toArray()) }}
-                                @else
-                                    N/A
+                                <!-- Media URL or Main Picture (Left Side) -->
+                                @if($exercise->media_first_frame && $exercise->media_url)
+                                    <div class="w-[135px] h-[116px] flex-shrink-0 rounded-lg overflow-hidden mb-4 sm:mb-0 sm:mr-4 relative">
+                                        @if ($exercise->media_first_frame)
+                                            <img src="{{ $exercise->media_first_frame }}" alt="Media for {{ $exercise->title }}" class="main-image">
+                                        @endif
+                                        @if ($exercise->media_url)
+                                            <img src="{{ $exercise->media_url }}" alt="Media for {{ $exercise->title }}" class="media-image">
+                                        @endif
+                                    </div>
+                                @elseif ($exercise->media_first_frame && !$exercise->media_url)
+                                    <div class="w-[135px] h-[116px] flex-shrink-0 rounded-lg overflow-hidden mb-4 sm:mb-0 sm:mr-4">
+                                        <img src="{{ $exercise->media_first_frame }}" alt="Media for {{ $exercise->title }}" class="w-full h-full object-cover">
+                                    </div>
                                 @endif
+
+                                <!-- Textual Content (Right Side) -->
+                                <div class="flex-1">
+                                    <h2 class="text-xl text-white font-semibold">{{ $exercise->title }}</h2>
+
+                                    <div class="text-gray-400 mt-2">
+                                        <strong>Primary Muscle Group:</strong> {{ $exercise->primaryMuscleGroup->name ?? 'N/A' }}
+                                    </div>
+                                    <div class="text-gray-400">
+                                        <strong>Secondary Muscle Groups:</strong>
+                                        @if ($exercise->secondaryMuscleGroups->count() > 0)
+                                            {{ implode(', ', $exercise->secondaryMuscleGroups->pluck('name')->toArray()) }}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                    </li>
+                        </li>
+                    </a>
                 @endforeach
             </ul>
 
@@ -86,4 +104,14 @@
             </div>
         </div>
     </div>
+
+    <style>
+        img.media-image, img.main-image {
+            object-fit: cover;
+            height: -webkit-fill-available;
+        }
+        li.image-gif-position:hover img.main-image {
+            display: none;
+        }
+    </style>
 @endsection

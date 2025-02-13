@@ -31,7 +31,7 @@
                 </div>
             @endif
         </div>
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
             <h1 class="text-3xl font-semibold text-gray-100 mb-6">Create Muscle Group</h1>
 
             <form action="{{ route('admin.muscle_groups.store') }}" method="POST">

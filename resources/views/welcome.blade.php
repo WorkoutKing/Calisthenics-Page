@@ -8,7 +8,6 @@
 <div class="p-4 welcome-bg">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="overflow-hidden shadow-sm sm:rounded-lg">
-
             <!-- Hero Section -->
             <div class="hero_section px-6 py-16 bg-cover bg-center rounded-lg shadow" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/045/826/339/small/the-dark-stage-shows-dark-background-an-empty-dark-scene-neon-light-and-spotlights-the-concrete-floor-and-studio-room-with-smoke-float-up-the-interior-texture-high-quality-photo.jpg');">
                 <div class="max-w-3xl mx-auto text-center">
@@ -17,6 +16,8 @@
                         <p class="mt-4 text-lg text-gray-300">Continue your calisthenics journey and achieve new milestones.</p>
                         <a href="{{ route('profile.index') }}" class="btn mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Go to Dashboard</a>
                     @endauth
+                        <img src="https://drive.google.com/file/d/1dl0vrLXdegPsSSuixKBDdKnsRvWfplGE/view?usp=drive_link" alt="">
+
                     @guest
                         <h1 class="text-4xl font-bold text-white">Transform Your Body with Calisthenics</h1>
                         <p class="mt-4 text-lg text-gray-300">Join our community and start your journey to a healthier, stronger you.</p>
@@ -65,8 +66,8 @@
                     @endforeach
                 </div>
                 <!-- Navigation & Pagination Wrapper -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev" aria-label="Swiper button prev"></div>
+                <div class="swiper-button-next" aria-label="Swiper button next"></div>
             </div>
         </div>
     </div>

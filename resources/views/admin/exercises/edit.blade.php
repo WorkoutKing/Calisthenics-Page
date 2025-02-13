@@ -54,7 +54,7 @@
                 </div>
 
                 <!-- Main Picture -->
-                <div class="mb-4">
+                {{--  <div class="mb-4">
                     <label for="main_picture" class="block text-white">Main Picture:</label>
                     <input type="file" name="main_picture" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
                     @if($exercise->main_picture)
@@ -62,6 +62,19 @@
                             <img src="{{ Storage::disk('public')->url($exercise->main_picture) }}" alt="Exercise Image" width="150">
                         </div>
                     @endif
+                    <small class="text-gray-500">First iframe picture for gif hover.</small>
+                </div>  --}}
+
+               <div class="mb-6">
+                    <label for="media_first_frame" class="block text-sm font-medium text-gray-300">Media URL first frame(GIF):</label>
+                    <input type="url" name="media_first_frame" id="media_first_frame" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2" value="{{ old('media_first_frame', $exercise->media_first_frame ?? '') }}">
+                    <small class="text-gray-500">Provide a direct URL to an first frame image of GIF.</small>
+                </div>
+
+                <div class="mb-4">
+                    <label for="media_url" class="block text-white">Media URL (Image or GIF):</label>
+                    <input type="url" name="media_url" id="media_url" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2" value="{{ old('media_url', $exercise->media_url ?? '') }}">
+                    <small class="text-gray-500">Provide a direct URL to an image or GIF (optional).</small>
                 </div>
 
                 <!-- SEO Fields -->

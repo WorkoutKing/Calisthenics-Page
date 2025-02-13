@@ -31,7 +31,7 @@
                 </div>
             @endif
         </div>
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
             <h1 class="text-3xl font-semibold text-gray-100 mb-6">Muscle Groups</h1>
 
             <a href="{{ route('admin.muscle_groups.create') }}" class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 mb-4 inline-block">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mx-auto px-6 sm:px-8 py-12">
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
             <h1 class="text-3xl font-semibold mb-6">Edit Muscle Group</h1>
 
             <form action="{{ route('admin.muscle_groups.update', $muscleGroup->id) }}" method="POST">

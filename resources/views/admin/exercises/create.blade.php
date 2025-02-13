@@ -31,7 +31,7 @@
                 </div>
             @endif
         </div>
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
             <h1 class="text-3xl font-semibold text-gray-100 mb-6">Create Exercise</h1>
 
             <form action="{{ route('admin.exercises.store') }}" method="POST" enctype="multipart/form-data">
@@ -94,9 +94,22 @@
                     </select>
                 </div>
 
-                <div class="mb-6">
-                    <label for="main_picture" class="block text-sm font-medium text-gray-300">Main Picture:</label>
+                {{--  <div class="mb-6">
+                    <label for="main_picture" class="block text-sm font-medium text-gray-300">Main Picture (Upload on server):</label>
                     <input type="file" name="main_picture" class="block w-full px-4 py-2 border rounded-lg shadow-sm text-gray-800">
+                    <small class="text-gray-500">Upload only if you are not using GIF upload!!!</small>
+                </div>  --}}
+
+                <div class="mb-6">
+                    <label for="media_first_frame" class="block text-sm font-medium text-gray-300">Media URL first frame(GIF):</label>
+                    <input type="url" name="media_first_frame" id="media_first_frame" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" value="{{ old('media_first_frame', $exercise->media_first_frame ?? '') }}">
+                    <small class="text-gray-500">Provide a direct URL to an first frame image of GIF.</small>
+                </div>
+
+                <div class="mb-6">
+                    <label for="media_url" class="block text-sm font-medium text-gray-300">Media URL (GIF):</label>
+                    <input type="url" name="media_url" id="media_url" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" value="{{ old('media_url', $exercise->media_url ?? '') }}">
+                    <small class="text-gray-500">Provide a direct URL to an GIF.</small>
                 </div>
 
                 <div class="mb-6">

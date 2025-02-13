@@ -20,13 +20,16 @@
             @endif
         </div>
 
-        <div class="bg-gray-800 text-white p-8 rounded-lg shadow-xl">
+        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
             <h1 class="text-3xl font-semibold text-gray-100 mb-6">{{ $exercise->title }}</h1>
 
-            <!-- Display Main Picture -->
-            @if($exercise->main_picture)
+            @if ($exercise->media_url)
                 <div class="mb-6 flex justify-center">
-                    <img src="{{ asset('storage/' . $exercise->main_picture) }}" alt="{{ $exercise->title }}" class="w-full max-w-2xl rounded-lg shadow-md">
+                    <img src="{{ $exercise->media_url }}" alt="Media for {{ $exercise->title }}" class="rounded-lg shadow-lg max-w-full h-auto">
+                </div>
+            @elseif ($exercise->media_first_frame)
+                <div class="mb-6 flex justify-center">
+                    <img src="{{ $exercise->media_first_frame }}" alt="Media for {{ $exercise->title }}" class="rounded-lg shadow-lg max-w-full h-auto">
                 </div>
             @endif
 
