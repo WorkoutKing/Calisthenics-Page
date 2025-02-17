@@ -49,7 +49,7 @@
 
             <!-- Special Achievements Section -->
             @if ($latestAchievements->isEmpty())
-                <p class="text-gray-600 mt-4">You have not earned any special achievements yet.</p>
+                <p class="text-gray-600 dark:text-gray-400 mt-4">There are no special achievements earned yet.</p>
             @else
                 <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                     @foreach ($latestAchievements as $spec)

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-12 bg-gray-900">
+<div class="py-12">
     <div class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold text-gray-100 mb-4">Edit User</h1>
         <form action="{{ route('admin.users.update', $user) }}" method="POST">
