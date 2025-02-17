@@ -86,7 +86,7 @@
                         @if($spec->element->id == 7)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Front Lever Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/flm.png') }}" alt="Front Lever Master Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Front Lever Master</span>
@@ -128,7 +128,7 @@
                         @if($progress['exercise'] == 'dips' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Dips God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/dip.png') }}" alt="Dips God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Dips God</span>
@@ -148,7 +148,7 @@
                         @if($progress['exercise'] == 'pistol squats' && $progress['userScore'] >= 10)
                             <div class="flex flex-col items-center group">
                                 <div class="w-21 h-21  clip-octagon relative ">
-                                    <img src="{{ asset('storage/badges/fill.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
+                                    <img src="{{ asset('storage/badges/squat.png') }}" alt="Push Ups God Badge" class="px-3 w-full h-full object-cover rounded-lg">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <span class="text-sm text-white">Pistol Squats Specialist</span>
