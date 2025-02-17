@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\MuscleGroupController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ReleaseController;
 
 
 Route::get('/welcome', function () {
@@ -75,6 +76,15 @@ Route::middleware('auth')->group(function () {
 
 // Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
+
+    // Release Routes
+    Route::get('releases/create', [ReleaseController::class, 'create'])->name('releases.create');
+    Route::post('releases', [ReleaseController::class, 'store'])->name('releases.store');
+    Route::get('releases/{release}', [ReleaseController::class, 'show'])->name('releases.show');
+    Route::get('releases/{release}/edit', [ReleaseController::class, 'edit'])->name('releases.edit');
+    Route::put('releases/{release}', [ReleaseController::class, 'update'])->name('releases.update');
+    Route::delete('releases/{release}', [ReleaseController::class, 'destroy'])->name('releases.destroy');
+
     // Quote Routes
     Route::get('admin/quotes', [QuoteController::class, 'index'])->name('admin.quotes.index');
     Route::get('admin/quotes/create', [QuoteController::class, 'create'])->name('admin.quotes.create');
@@ -151,6 +161,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 });
 // Public Profile (Must to be last becouse then user cant open notifications)
 // Public Routes
+Route::get('releases', [ReleaseController::class, 'index'])->name('releases.index');
 Route::get('/', action: [HomeController::class, 'index'])->name('welcome');
 Route::get('/elements', action: [ElementController::class, 'index'])->name('elements.index');
 Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');

@@ -47,11 +47,37 @@
                         <input type="text" name="title" id="title" value="{{ $post->title }}" class="block w-full px-4 py-3 border rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" required>
                     </div>
 
-                    <!-- Content Field -->
+                    <!-- Content Field with Quill Editor -->
                     <div class="mb-6">
                         <label for="content" class="block text-sm font-medium text-gray-300">Content</label>
-                        <textarea name="content" id="content" rows="5" class="block w-full px-4 py-3 border rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" required>{{ $post->content }}</textarea>
+
+                        <!-- Hidden Textarea for form submission -->
+                        <textarea name="content" id="content" class="hidden">{!! old('content', $post->content) !!}</textarea>
+
+                        <!-- Quill editor container -->
+                        <div id="editor" style="height: 500px; background: white; color: black;"></div>
                     </div>
+
+                    <!-- Quill Editor Script -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            var quill = new Quill("#editor", {
+                                theme: "snow",
+                                placeholder: "Write the post content here...",
+                            });
+
+                            var contentTextarea = document.querySelector("#content");
+                            quill.root.innerHTML = contentTextarea.value;
+
+                            quill.on("text-change", function () {
+                                contentTextarea.value = quill.root.innerHTML.trim();
+                            });
+
+                            document.querySelector("form").addEventListener("submit", function () {
+                                contentTextarea.value = quill.root.innerHTML.trim();
+                            });
+                        });
+                    </script>
 
                     <!-- Main Picture Field -->
                     <div class="mb-6">

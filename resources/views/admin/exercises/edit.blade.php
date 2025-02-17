@@ -108,22 +108,18 @@
 <!-- Quill Editor Script -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Initialize Quill
         var quill = new Quill("#editor", {
             theme: "snow",
             placeholder: "Write the exercise description here...",
         });
 
-        // Get the textarea and pre-fill Quill with its value
         var descriptionTextarea = document.querySelector("#description");
         quill.root.innerHTML = descriptionTextarea.value;
 
-        // Sync Quill content to the textarea whenever it changes
         quill.on("text-change", function () {
             descriptionTextarea.value = quill.root.innerHTML.trim();
         });
 
-        // Ensure content is saved before form submission
         document.querySelector("form").addEventListener("submit", function () {
             descriptionTextarea.value = quill.root.innerHTML.trim();
         });

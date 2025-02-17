@@ -7,6 +7,9 @@
                 <a href="/privacy-policy" class="text-gray-400 hover:text-white transition">
                     {{ __('Privacy Policy') }}
                 </a>
+                <a href="/releases" class="text-gray-400 hover:text-white transition">
+                    {{ __('Latest Releases') }}
+                </a>
             </div>
 
             <!-- Contact Section -->

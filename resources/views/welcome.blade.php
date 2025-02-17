@@ -16,8 +16,6 @@
                         <p class="mt-4 text-lg text-gray-300">Continue your calisthenics journey and achieve new milestones.</p>
                         <a href="{{ route('profile.index') }}" class="btn mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Go to Dashboard</a>
                     @endauth
-                        <img src="https://drive.google.com/file/d/1dl0vrLXdegPsSSuixKBDdKnsRvWfplGE/view?usp=drive_link" alt="">
-
                     @guest
                         <h1 class="text-4xl font-bold text-white">Transform Your Body with Calisthenics</h1>
                         <p class="mt-4 text-lg text-gray-300">Join our community and start your journey to a healthier, stronger you.</p>
