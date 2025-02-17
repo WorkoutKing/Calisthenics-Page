@@ -55,10 +55,3 @@
         @endif
     </ul>
 </div>
-<style>
-    @media screen and (max-width: 700px) {
-        .sidebar {
-            height: auto;
-        }
-    }
-</style>

@@ -104,14 +104,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-        img.media-image, img.main-image {
-            object-fit: cover;
-            height: -webkit-fill-available;
-        }
-        li.image-gif-position:hover img.main-image {
-            display: none;
-        }
-    </style>
 @endsection

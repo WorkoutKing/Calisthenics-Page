@@ -63,6 +63,6 @@
             <p class="text-gray-300">Email: madstars4ever@gmail.com</p>
 
             <hr class="border-gray-600 my-8">
-        </div> darius jurenas
+        </div>
     </div>
 @endsection

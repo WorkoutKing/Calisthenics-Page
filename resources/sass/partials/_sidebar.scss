@@ -29,22 +29,18 @@ main {
     backdrop-filter: blur(10px);
     color: #fff;
     transition: width 0s ease-in-out;
-    //border: 1px solid;
     z-index: 2;
 }
-
 .sidebar.collapsed {
     width: 80px;
     background-color: #1f2937;
 }
-
 .sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
 }
-
 .sidebar-toggle {
     background-color: transparent;
     border: none;
@@ -52,21 +48,17 @@ main {
     font-size: 24px;
     cursor: pointer;
 }
-
 .sidebar.collapsed .sidebar-menu li a span {
     display: none;
 }
-
 .sidebar.collapsed .sidebar-menu li a i {
     font-size: 20px;
 }
-
 .sidebar-menu {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-
 .sidebar-menu li a {
     display: block;
     padding: 15px 20px;
@@ -89,5 +81,8 @@ main {
     display: none;
 }
 .mobile-auth-links {
-    display: none; /* Hide by default */
+    display: none;
+}
+.sidebar-menu li a svg {
+    display: inline-block;
 }

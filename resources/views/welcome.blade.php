@@ -12,14 +12,14 @@
             <div class="hero_section px-6 py-16 bg-cover bg-center rounded-lg shadow" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/045/826/339/small/the-dark-stage-shows-dark-background-an-empty-dark-scene-neon-light-and-spotlights-the-concrete-floor-and-studio-room-with-smoke-float-up-the-interior-texture-high-quality-photo.jpg');">
                 <div class="max-w-3xl mx-auto text-center">
                     @auth
-                        <h1 class="text-4xl font-bold text-white">Welcome Back, {{ Auth::user()->name }}!</h1>
-                        <p class="mt-4 text-lg text-gray-300">Continue your calisthenics journey and achieve new milestones.</p>
-                        <a href="{{ route('profile.index') }}" class="btn mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Go to Dashboard</a>
+                        <h1 class="text-4xl font-bold text-white">Have a good time, {{ Auth::user()->name }}!</h1>
+                        <p class="mt-4 text-lg text-white">Continue your calisthenics journey and achieve new milestones.</p>
+                        <a href="{{ route('profile.index') }}" class="btn btn-extra mt-8 inline-block px-8 py-3 text-white font-semibold rounded-lg transition duration-300">Go to Dashboard</a>
                     @endauth
                     @guest
                         <h1 class="text-4xl font-bold text-white">Transform Your Body with Calisthenics</h1>
-                        <p class="mt-4 text-lg text-gray-300">Join our community and start your journey to a healthier, stronger you.</p>
-                        <a href="{{ route('login') }}" class="btn mt-8 inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Get Started</a>
+                        <p class="mt-4 text-lg text-white">Join our community and start your journey to a healthier, stronger you.</p>
+                        <a href="{{ route('login') }}" class="btn btn-extra mt-8 inline-block px-8 py-3 text-white font-semibold rounded-lg transition duration-300">Get Started</a>
                     @endguest
                 </div>
             </div>
@@ -70,76 +70,4 @@
         </div>
     </div>
 </div>
-<style>
-body {
-    background-color: #000;
-    color: #f3f4f6;
-}
-.swiper-container {
-    position: relative;
-}
-
-.swiper-button-prev, .swiper-button-next {
-    z-index: 1;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-    background: #1F2937;
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.3s;
-    border:1px solid #ef233c;
-}
-
-.swiper-button-prev:after, .swiper-button-next:after {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    background: #d90429;
-}
-
-.swiper-pagination {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.swiper-pagination-bullet:hover {
-    opacity: 1;
-}
-
-.swiper-container.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
-    height: fit-content;
-}
-
-.swiper-slide {
-    background-color: #1f2937;
-    border-radius: 0.5rem;
-    transition: transform 0.3s ease-in-out;
-}
-
-.swiper-slide:hover {
-    transform: scale(1.05);
-}
-
-.btn {
-    background-color: #1F2937;
-    color: #edf2f4;
-    border: 1px solid #ef233c;
-}
-
-.btn:hover {
-    background-color: #d90429;
-    color: #ffffff;
-}
-</style>
 @endsection

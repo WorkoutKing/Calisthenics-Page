@@ -1,0 +1,26 @@
+.text-format {
+    word-break: break-word;
+}
+.change-format {
+    h2 {
+        margin: 10px 0px;
+        font-size: 20px;
+    }
+    ul {
+        list-style: disc;
+    }
+    ol {
+        list-style-type: auto;
+    }
+    ul,
+    ol {
+        padding: 10px 25px;
+    }
+    p,
+    ol,
+    ul {
+        strong {
+            text-decoration: underline;
+        }
+    }
+}

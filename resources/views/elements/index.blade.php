@@ -147,13 +147,13 @@
                                                 <div class="flex flex-wrap space-x-3 items-center">
                                                     @if (auth()->user()->role_id == 2)
                                                         <!-- Admin Actions -->
-                                                        <a href="{{ route('steps.edit', $step->id) }}" class="btn bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition duration-150">
+                                                        <a href="{{ route('steps.edit', $step->id) }}" class="btn btn-extra text-white px-4 py-2 rounded-lg transition duration-150">
                                                             Edit
                                                         </a>
                                                         <form action="{{ route('steps.destroy', $step->id) }}" method="POST" class="inline-block">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-150">
+                                                            <button type="submit" class="btn btn-extra text-white px-4 py-2 rounded-lg transition duration-150">
                                                                 Delete
                                                             </button>
                                                         </form>
@@ -172,7 +172,7 @@
                                                                 <form action="{{ route('steps.destroyResult', $step->id) }}" method="POST" class="mt-2">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button type="submit" class="btn bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-150 w-full">
+                                                                    <button type="submit" class="btn btn-extra text-white px-4 py-2 rounded-lg transition duration-150 w-full">
                                                                         Delete Upload
                                                                     </button>
                                                                 </form>
@@ -183,7 +183,7 @@
                                                             @endif
                                                         </div>
                                                     @else
-                                                        <a href="{{ route('steps.uploadResult', $step->id) }}" class="btn bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-150">
+                                                        <a href="{{ route('steps.uploadResult', $step->id) }}" class="btn btn-extra text-white px-6 py-2 rounded-lg transition duration-150">
                                                             Upload Result
                                                         </a>
                                                     @endif
@@ -197,7 +197,7 @@
                         @auth
                             @if (auth()->user()->role_id == 2)
                                 <div class="mt-6 mb-4 text-right">
-                                    <a href="{{ route('steps.create', $element->id) }}" class="btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition duration-150">
+                                    <a href="{{ route('steps.create', $element->id) }}" class="btn btn-extra text-white px-6 py-3 rounded-lg transition duration-150">
                                         Add Step
                                     </a>
                                 </div>
@@ -212,7 +212,7 @@
         @auth
             @if (auth()->user()->role_id == 2)
                 <div class="mt-8 text-center">
-                    <a href="/elements/create" class="btn bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-150 shadow-lg">
+                    <a href="/elements/create" class="btn btn-extra text-white py-3 px-6 rounded-lg transition duration-150 shadow-lg">
                         Add New Element
                     </a>
                 </div>
@@ -220,16 +220,4 @@
         @endauth
     </div>
 </div>
-<style>
-    .btn {
-        background-color: #1F2937;
-        color: #edf2f4;
-        border: 1px solid #ef233c;
-    }
-
-    .btn:hover {
-        background-color: #d90429;
-        color: #ffffff;
-    }
-</style>
 @endsection

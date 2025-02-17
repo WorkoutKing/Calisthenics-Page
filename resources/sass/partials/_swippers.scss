@@ -1,0 +1,44 @@
+.swiper-container {
+    position: relative;
+}
+.swiper-button-prev,
+.swiper-button-next {
+    z-index: 1 !important;
+}
+.swiper-button-prev,
+.swiper-button-next {
+    background: #1f2937;
+    color: #fff !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    transition: background 0.3s;
+    border: 1px solid #ef233c;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 14px !important;
+    font-weight: bold;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: #d90429;
+}
+.swiper-pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+.swiper-pagination-bullet:hover {
+    opacity: 1;
+}
+.swiper-container.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
+    height: fit-content;
+}
+.swiper-slide {
+    background-color: #1f2937;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+.swiper-slide:hover {
+    transform: scale(1.05);
+}

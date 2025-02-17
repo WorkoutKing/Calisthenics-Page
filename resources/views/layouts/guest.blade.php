@@ -14,7 +14,7 @@
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 dark:text-gray-200 antialiased" style="background-color: #000;">
+    <body class="font-sans text-gray-900 dark:text-gray-200 antialiased guest-blade" style="background-color: #000;">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
             <div>
                 <a href="/">
@@ -26,10 +26,5 @@
                 {{ $slot }}
             </div>
         </div>
-        <style>
-        .min-h-screen {
-                padding: 10px;
-            }
-        </style>
     </body>
 </html>

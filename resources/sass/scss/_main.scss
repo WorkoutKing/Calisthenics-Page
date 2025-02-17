@@ -1,43 +1,35 @@
+/* Layout adjust */
 main {
     margin: 40px 0px;
+    background: #000;
 }
-body,
 .welcome-bg {
     background-color: #000;
+}
+body {
+    background-color: #000;
+    color: #f3f4f6;
 }
 .min-h-screen {
     width: calc(100% - 80px);
     margin-left: 80px;
 }
-.change-format {
-    h2 {
-        margin: 10px 0px;
-        font-size: 20px;
-    }
-    ul {
-        list-style: disc;
-    }
-    ol {
-        list-style-type: auto;
-    }
-    ul,
-    ol {
-        padding: 10px 25px;
-    }
-    p,
-    ol,
-    ul {
-        strong {
-            text-decoration: underline;
-        }
-    }
-}
-.sidebar-menu li a svg {
-    display: inline-block;
-}
+
 label {
     color: rgb(156 163 175 / var(--tw-text-opacity, 1)) !important;
 }
-.text-format {
-    word-break: break-word;
+
+/* Guest blade */
+.guest-blade .min-h-screen {
+    padding: 10px;
+}
+
+/* Exercises media */
+img.media-image,
+img.main-image {
+    object-fit: cover;
+    height: -webkit-fill-available;
+}
+li.image-gif-position:hover img.main-image {
+    display: none;
 }

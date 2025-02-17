@@ -72,11 +72,6 @@
             <!-- Include the Footer -->
             @include('layouts.footer') <!-- This includes the footer.blade.php -->
         </div>
-        <style>
-        main {
-            background: #000;
-        }
-        </style>
         <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     </body>
 </html>
