@@ -73,7 +73,12 @@
                         });
                     </script>
 
-                    <!-- SEO Fields -->
+                    <div class="mb-4">
+                        <label for="main_picture" class="block text-sm font-medium text-gray-300">Main Picture</label>
+                        <input type="file" name="main_picture" id="main_picture" class="block w-full text-sm text-gray-300 bg-gray-700 border rounded-lg">
+                    </div>
+
+                     <!-- SEO Fields -->
                     <div class="mb-4">
                         <label for="seo_title" class="block text-sm font-medium text-gray-300">SEO Title</label>
                         <input type="text" name="seo_title" id="seo_title" class="block w-full px-4 py-2 border rounded-lg text-white bg-gray-700" value="{{ old('seo_title') }}">
@@ -87,11 +92,6 @@
                     <div class="mb-4">
                         <label for="seo_keywords" class="block text-sm font-medium text-gray-300">SEO Keywords</label>
                         <input type="text" name="seo_keywords" id="seo_keywords" class="block w-full px-4 py-2 border rounded-lg text-white bg-gray-700" value="{{ old('seo_keywords') }}">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="main_picture" class="block text-sm font-medium text-gray-300">Main Picture</label>
-                        <input type="file" name="main_picture" id="main_picture" class="block w-full text-sm text-gray-300 bg-gray-700 border rounded-lg">
                     </div>
 
                     <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Create Post</button>

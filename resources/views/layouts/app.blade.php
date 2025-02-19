@@ -72,6 +72,7 @@
             <!-- Include the Footer -->
             @include('layouts.footer') <!-- This includes the footer.blade.php -->
         </div>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
         <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     </body>
 </html>

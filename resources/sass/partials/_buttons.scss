@@ -7,3 +7,10 @@
     background-color: #d90429;
     color: #ffffff;
 }
+.btn-extra:disabled {
+    background-color: unset;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+// .btn-extra:disabled:hover {
+// }

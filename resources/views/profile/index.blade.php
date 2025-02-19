@@ -18,6 +18,9 @@
             <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
                 Joined: {{ optional(auth()->user()->created_at)->format('M d, Y') ?? 'N/A' }}
             </p>
+            <p class="text-sm text-white dark:text-white-400">
+                <a href="/profile/settings">Edit profile</a>
+            </p>
         </div>
     </div>
 

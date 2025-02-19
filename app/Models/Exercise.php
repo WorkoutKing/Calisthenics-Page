@@ -41,4 +41,12 @@ class Exercise extends Model
     {
         return $this->hasMany(Element::class);
     }
+
+    // Define the many-to-many relationship with workouts through the pivot table
+    public function workouts()
+    {
+        return $this->belongsToMany(Workout::class, 'exercise_workout')
+            ->withPivot('sets', 'reps', 'rest_time')
+            ->withTimestamps();
+    }
 }

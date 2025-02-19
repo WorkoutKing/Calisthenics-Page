@@ -40,18 +40,25 @@
             <h1 class="text-3xl font-semibold text-gray-100 mb-6">Exercise Library</h1>
 
             <!-- Search Form -->
-            <form action="{{ route('exercises.index') }}" method="GET" class="mb-6 flex flex-col sm:flex-row sm:items-center sm:space-x-4">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search by title or muscle group" class="block w-full sm:w-64 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 mb-4 sm:mb-0">
+            <div class="mb-6">
+                <form action="{{ route('exercises.index') }}" method="GET" class="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 w-full">
+                    <!-- Search Input (Full width) -->
+                    <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Search by title or muscle group"
+                        class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-300">
 
-                <div class="flex items-center space-x-4">
-                    <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-green-600 transition duration-300">Search</button>
+                    <!-- Search Button -->
+                    <button type="submit" class="mt-4 sm:mt-0 sm:ml-4 btn-extra w-full sm:w-auto text-white px-4 py-2 rounded-lg transition">
+                        Search
+                    </button>
 
                     <!-- Clear Search Button -->
                     @if(request('search'))
-                        <a href="{{ route('exercises.index') }}" class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-300">Clear</a>
+                        <a href="{{ route('exercises.index') }}" class="px-4 py-2 rounded-lg btn-extra transition">
+                            Clear
+                        </a>
                     @endif
-                </div>
-            </form>
+                </form>
+            </div>
 
             <!-- Exercises List -->
             <ul class="space-y-4">

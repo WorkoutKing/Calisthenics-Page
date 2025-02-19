@@ -39,7 +39,7 @@
 
                 <div class="mb-6">
                     <label for="title" class="block text-sm font-medium text-gray-300">Title:</label>
-                    <input type="text" name="title" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" required>
+                    <input type="text" name="title" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2" required>
                 </div>
 
                 <div class="mb-6">
@@ -78,7 +78,7 @@
 
                 <div class="mb-6">
                     <label for="primary_muscle_group_id" class="block text-sm font-medium text-gray-300">Primary Muscle Group:</label>
-                    <select name="primary_muscle_group_id" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" required>
+                    <select name="primary_muscle_group_id" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2" required>
                         @foreach ($muscleGroups as $muscleGroup)
                             <option value="{{ $muscleGroup->id }}">{{ $muscleGroup->name }}</option>
                         @endforeach
@@ -87,7 +87,7 @@
 
                 <div class="mb-6">
                     <label for="secondary_muscle_groups" class="block text-sm font-medium text-gray-300">Secondary Muscle Groups:</label>
-                    <select style="height:600px;" name="secondary_muscle_groups[]" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" multiple>
+                    <select style="height:600px;" name="secondary_muscle_groups[]" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2" multiple>
                         @foreach ($muscleGroups as $muscleGroup)
                             <option value="{{ $muscleGroup->id }}">{{ $muscleGroup->name }}</option>
                         @endforeach
@@ -102,29 +102,29 @@
 
                 <div class="mb-6">
                     <label for="media_first_frame" class="block text-sm font-medium text-gray-300">Media URL first frame(GIF):</label>
-                    <input type="url" name="media_first_frame" id="media_first_frame" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" value="{{ old('media_first_frame', $exercise->media_first_frame ?? '') }}">
+                    <input type="url" name="media_first_frame" id="media_first_frame" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2" value="{{ old('media_first_frame', $exercise->media_first_frame ?? '') }}">
                     <small class="text-gray-500">Provide a direct URL to an first frame image of GIF.</small>
                 </div>
 
                 <div class="mb-6">
                     <label for="media_url" class="block text-sm font-medium text-gray-300">Media URL (GIF):</label>
-                    <input type="url" name="media_url" id="media_url" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" value="{{ old('media_url', $exercise->media_url ?? '') }}">
+                    <input type="url" name="media_url" id="media_url" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2" value="{{ old('media_url', $exercise->media_url ?? '') }}">
                     <small class="text-gray-500">Provide a direct URL to an GIF.</small>
                 </div>
 
                 <div class="mb-6">
                     <label for="seo_title" class="block text-sm font-medium text-gray-300">SEO Title:</label>
-                    <input type="text" name="seo_title" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800">
+                    <input type="text" name="seo_title" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2">
                 </div>
 
                 <div class="mb-6">
                     <label for="seo_description" class="block text-sm font-medium text-gray-300">SEO Description:</label>
-                    <textarea name="seo_description" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"></textarea>
+                    <textarea name="seo_description" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2"></textarea>
                 </div>
 
                 <div class="mb-6">
                     <label for="seo_keywords" class="block text-sm font-medium text-gray-300">SEO Keywords:</label>
-                    <textarea name="seo_keywords" class="block w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"></textarea>
+                    <textarea name="seo_keywords" class="w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-2"></textarea>
                 </div>
 
                 <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-green-600 transition duration-300">Create Exercise</button>

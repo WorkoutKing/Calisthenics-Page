@@ -27,9 +27,19 @@ label {
 /* Exercises media */
 img.media-image,
 img.main-image {
+    -o-object-fit: cover;
     object-fit: cover;
     height: -webkit-fill-available;
+    width: inherit;
 }
 li.image-gif-position:hover img.main-image {
     display: none;
+}
+div.image-gif-position:hover img.main-image {
+    display: none;
+}
+
+/* Font for workout level */
+.font-adjust {
+    font-family: cursive;
 }

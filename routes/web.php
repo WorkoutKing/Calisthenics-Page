@@ -16,7 +16,7 @@ use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\MuscleGroupController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ReleaseController;
-
+use App\Http\Controllers\WorkoutController;
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -24,6 +24,17 @@ Route::get('/welcome', function () {
 
 // Authenticated User Routes
 Route::middleware('auth')->group(function () {
+
+    // Workout Routes
+    Route::prefix('workouts')->name('workouts.')->group(function () {
+        Route::get('/my', [WorkoutController::class, 'myWorkouts'])->name('my');
+        Route::get('/create', [WorkoutController::class, 'create'])->name('create');
+        Route::post('/', [WorkoutController::class, 'store'])->name('store');
+        Route::get('/{workout}/edit', [WorkoutController::class, 'edit'])->name('edit');
+        Route::put('/{workout}', [WorkoutController::class, 'update'])->name('update');
+        Route::delete('/{workout}', [WorkoutController::class, 'destroy'])->name('destroy');
+    });
+
     // Profile Routes
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
@@ -73,6 +84,7 @@ Route::middleware('auth')->group(function () {
         Route::post('{id}/complete', [ChallengeController::class, 'complete'])->name('complete');
     });
 });
+
 
 // Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
@@ -161,6 +173,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 });
 // Public Profile (Must to be last becouse then user cant open notifications)
 // Public Routes
+Route::get('/workouts', [WorkoutController::class, 'index'])->name('workouts.index');
+Route::get('/workouts/{workout}', [WorkoutController::class, 'show'])->name('workouts.show');
 Route::get('releases', [ReleaseController::class, 'index'])->name('releases.index');
 Route::get('/', action: [HomeController::class, 'index'])->name('welcome');
 Route::get('/elements', action: [ElementController::class, 'index'])->name('elements.index');

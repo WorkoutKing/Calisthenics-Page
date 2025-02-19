@@ -90,6 +90,22 @@
                         @endif
                     </div>
 
+                    <!-- SEO Fields -->
+                    <div class="mb-4">
+                        <label for="seo_title" class="block text-sm font-medium text-gray-300">SEO Title</label>
+                        <input type="text" name="seo_title" id="seo_title" class="block w-full px-4 py-2 border rounded-lg text-white bg-gray-700" value="{{ $post->seo_title }}">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="seo_description" class="block text-sm font-medium text-gray-300">SEO Description</label>
+                        <textarea name="seo_description" id="seo_description" rows="3" class="block w-full px-4 py-2 border rounded-lg text-white bg-gray-700">{{ $post->seo_description }}</textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="seo_keywords" class="block text-sm font-medium text-gray-300">SEO Keywords</label>
+                        <input type="text" name="seo_keywords" id="seo_keywords" class="block w-full px-4 py-2 border rounded-lg text-white bg-gray-700" value="{{ $post->seo_keywords }}">
+                    </div>
+
                     <!-- Submit Button -->
                     <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">Update Post</button>
                 </form>

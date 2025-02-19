@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
+use App\Models\Basic;
+use App\Models\Meta;
+use App\Models\Workout;
 
 class User extends Authenticatable
 {
@@ -73,5 +76,10 @@ class User extends Authenticatable
     public function meta()
     {
         return $this->morphOne(Meta::class, 'metaable');
+    }
+
+    public function workouts()
+    {
+        return $this->hasMany(Workout::class);
     }
 }

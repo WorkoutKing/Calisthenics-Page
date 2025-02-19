@@ -9,7 +9,14 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'main_picture'];
+    protected $fillable = [
+        'title',
+        'content',
+        'main_picture',
+        'seo_title',
+        'seo_description',
+        'seo_keywords',
+    ];
 
     public function meta()
     {

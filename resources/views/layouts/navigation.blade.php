@@ -7,11 +7,11 @@
     </div>
     <ul class="sidebar-menu">
         @if(Auth::user())
-            <li><a href="/" aria-label="Home page"><i class="fas fa-house"></i> <span>Home</span></a></li>
             <li><a href="/elements" aria-label="Elements page"><i class="fa-solid fa-bars-progress"></i> <span>Progressions</span></a></li>
             <li><a href="/challenges" aria-label="Challenges page"><i class="fa-solid fa-hand-fist"></i> <span>Challenges</span></a></li>
             <li><a href="/basics" aria-label="Basics page"><i class="fa-solid fa-trophy"></i> <span>Basics</span></a></li>
             <li><a href="/exercises" aria-label="Exercises page"><i class="fa-solid fa-book-open"></i> <span>Exercises library</span></a></li>
+            <li><a href="/workouts" aria-label="Routines page"><i class="fa-solid fa-dumbbell"></i> <span>Routines</span></a></li>
             <li><a href="/posts" aria-label="Posts page"><i class="fas fa-newspaper"></i> <span>Our Blog</span></a></li>
             <li><a href="/about-us" aria-label="About us page"><i class="fa-solid fa-circle-info"></i> <span>About Us</span></a></li>
             <br>
@@ -31,7 +31,6 @@
                     <span>Notifications</span>
                 </a>
             </li>
-            <li><a href="/profile/settings" aria-label="Settings"><i class="fas fa-gears"></i><span>Profile settings</span></a></li>
             <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -39,10 +38,10 @@
                 </form>
             </li>
         @else
-            <li><a href="/" aria-label="Home page"><i class="fas fa-house"></i> <span>Home</span></a></li>
             <li><a href="/elements" aria-label="Elements page"><i class="fa-solid fa-bars-progress"></i> <span>Progressions</span></a></li>
             <li><a href="/basics/statistics" aria-label="Statistics page"><i class="fa-solid fa-trophy"></i> <span>Basics</span></a></li>
             <li><a href="/exercises" aria-label="Exercises page"><i class="fa-solid fa-book-open"></i> <span>Exercises library</span></a></li>
+            <li><a href="/workouts" aria-label="Routines page"><i class="fa-solid fa-dumbbell"></i> <span>Routines</span></a></li>
             <li><a href="/posts" aria-label="Posts page"><i class="fas fa-newspaper"></i> <span>Our Blog</span></a></li>
             <li><a href="/about-us" aria-label="About us page"><i class="fa-solid fa-circle-info"></i> <span>About Us</span></a></li>
             <!-- Add Register and Login buttons for mobile -->
