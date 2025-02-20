@@ -58,9 +58,9 @@
 
         <div class="flex items-center gap-4">
             <!-- Button with updated background color -->
-            <x-primary-button class="bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <button class="inline-flex items-center px-6 py-2 btn-extra text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
                 {{ __('Save') }}
-            </x-primary-button>
+            </button>
 
             @if (session('status') === 'profile-updated')
                 <p

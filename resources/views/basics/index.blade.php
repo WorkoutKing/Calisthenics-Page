@@ -124,7 +124,7 @@
 
             <!-- Submit Button -->
             <div class="pt-4">
-                <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 transition duration-150">
+                <button type="submit" class="w-full sm:w-auto px-6 py-3 btn-extra text-white font-medium rounded-md shadow-sm transition duration-150">
                     Upload Results
                 </button>
             </div>

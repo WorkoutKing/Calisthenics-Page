@@ -39,7 +39,7 @@
                     </div>
 
                     <!-- Create Button -->
-                    <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-green-700 transition duration-300 w-full sm:w-auto">
+                    <button type="submit" class="btn-extra text-white px-6 py-2 rounded-lg shadow-md transition duration-300 w-full sm:w-auto">
                         Create Release
                     </button>
                 </form>

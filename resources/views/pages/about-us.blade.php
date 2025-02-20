@@ -110,7 +110,7 @@
             <p class="text-lg text-gray-400 mb-4">
                 Have questions or want to learn more about calisthenics? Feel free to reach out to us anytime! We’d love to connect and assist you on your fitness journey.
             </p>
-            <a href="mailto:madstars4ever@gmail.com" class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300">Contact Us</a>
+            <a href="mailto:madstars4ever@gmail.com" class="btn-extra text-white px-6 py-2 rounded-lg shadow-md transition duration-300">Contact Us</a>
         </div>
     </div>
 @endsection

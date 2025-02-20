@@ -36,7 +36,7 @@
                             @csrf
                             @method('PATCH')
                             <button type="submit"
-                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                                class="btn-extra text-white px-4 py-2 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
                                 @if ($notifications->where('read', 0)->isEmpty()) disabled @endif>
                                 Mark All as Read
                             </button>

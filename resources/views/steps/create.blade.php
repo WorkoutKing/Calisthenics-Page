@@ -83,7 +83,7 @@
 
                         <!-- Submit Button -->
                         <div class="flex justify-end">
-                            <button type="submit" class="inline-flex items-center px-6 py-2 bg-blue-600 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-700">
+                            <button type="submit" class="inline-flex items-center px-6 py-2 btn-extra text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
                                 Add Step
                             </button>
                         </div>

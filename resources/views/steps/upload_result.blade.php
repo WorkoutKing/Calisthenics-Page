@@ -47,7 +47,7 @@
                             <input type="number" name="reps_time" id="reps_time" value="{{ old('reps_time') }}" placeholder="Enter number of reps or time in seconds" class="mt-1 p-2 block w-full bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
 
-                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200">
+                        <button type="submit" class="px-4 py-2 btn-extra text-white rounded-md transition duration-200">
                             Upload Your Result
                         </button>
                     </form>
