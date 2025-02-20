@@ -24,3 +24,20 @@
         }
     }
 }
+
+.change-format-releases {
+    h2 {
+        margin: 10px 0px;
+        font-size: 20px;
+    }
+    ul {
+        list-style: disc;
+    }
+    ol {
+        list-style-type: auto;
+    }
+    ul,
+    ol {
+        padding: 10px 25px;
+    }
+}

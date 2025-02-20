@@ -5,12 +5,19 @@
 }
 .btn-extra:hover {
     background-color: #d90429;
-    color: #ffffff;
 }
 .btn-extra:disabled {
     background-color: unset;
     opacity: 0.5;
     cursor: not-allowed;
+}
+.btn-extra-delete {
+    background-color: #d90429;
+    color: #edf2f4;
+    border: 1px solid #1f2937;
+}
+.btn-extra-delete:hover {
+    background-color: #d90429;
 }
 // .btn-extra:disabled:hover {
 // }

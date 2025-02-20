@@ -71,84 +71,95 @@
 
         <!-- Search Form -->
         <div class="mb-6">
-            <form action="{{ route('workouts.index') }}" method="GET" class="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 w-full">
-                <!-- Search Input (Full width) -->
-                <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Search by title or description"
-                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-300">
+            <form action="{{ route('workouts.index') }}" method="GET"
+                class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full">
 
-                <!-- Search Button -->
-                <button type="submit" class="mt-4 sm:mt-0 sm:ml-4 btn-extra w-full sm:w-auto text-white px-4 py-2 rounded-lg transition">
-                    Search
-                </button>
+                <!-- Search Input & Button (Full width on mobile) -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full">
+                    <input type="text" name="search" value="{{ $search ?? '' }}"
+                        placeholder="Search by title or description"
+                        class="w-full sm:w-auto flex-grow px-4 py-2 rounded-lg bg-gray-700 text-gray-300">
 
-                <!-- Clear Search Button -->
-                @if(isset($search) && $search !== '')
-                    <a href="{{ route('workouts.index') }}" class="px-4 py-2 rounded-lg btn-extra transition">
+                    <button type="submit"
+                        class="btn-extra text-white px-4 py-2 rounded-lg transition w-full sm:w-auto">
+                        Search
+                    </button>
+                </div>
+            </form>
+
+            <!-- Search Results & Clear Button (New line, but in one row) -->
+            @if(isset($search) && $search !== '')
+                <div class="flex flex-row items-center justify-between bg-gray-800 p-3 rounded-lg mt-2">
+                    <p class="text-gray-300 text-sm">Search results for: <span class="font-semibold">{{ $search }}</span></p>
+                    <a href="{{ route('workouts.index') }}"
+                        class="btn-extra px-4 py-2 rounded-lg transition text-white bg-red-500 hover:bg-red-600">
                         Clear
                     </a>
-                @endif
-            </form>
+                </div>
+            @endif
         </div>
 
         <!-- Grid Layout: Responsive (1 column, 2 column, 3 column) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($workouts as $workout)
-                <div class="bg-gray-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-200">
-                    <a href="{{ route('workouts.show', $workout->id) }}" class="block">
-                        <!-- Workout Title -->
-                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-100 mb-3 capitalize">{{ $workout->title }}</h3>
-
-                        <!-- Workout level (Focus) -->
-                        <div class="text-sm mb-4 mt-4 uppercase font-semibold
-                            @if($workout->focus == 'Beginner')
-                                text-sky-400
-                            @elseif($workout->focus == 'Intermediate')
-                                text-orange-500
-                            @elseif($workout->focus == 'Advanced')
-                                text-red-500
-                            @else
-                                text-gray-500
-                            @endif">
-                            {{ $workout->focus }}
-                        </div>
-
-                        <!-- Workout Type -->
-                        <div class="text-sm text-gray-500 mb-4 mt-4 uppercase font-semibold">
-                            <i class="fa-solid fa-bullseye mr-1"></i> <span>{{ $workout->workout_type }}</span>
-                        </div>
-
-                        <!-- Muscle Groups -->
-                        <div class="flex flex-wrap gap-3 mt-2">
-                            @php
-                                $muscleGroups = collect($workout->exercises)->map(function($exercise) {
-                                    return $exercise->primaryMuscleGroup ? $exercise->primaryMuscleGroup->name : null;
-                                })->filter()->unique();
-                            @endphp
-                            @forelse($muscleGroups as $muscle)
-                                <span class="text-xs sm:text-sm text-gray-400">{{ $muscle }}</span>
-                            @empty
-                                <span class="text-xs sm:text-sm text-gray-500">No muscle groups listed.</span>
-                            @endforelse
-                        </div>
-                    </a>
-
-                    <!-- Action Links (for Edit & Delete) -->
-                    @if (auth()->user() && auth()->user()->role_id === 2)
-                        <div class="flex justify-between mt-6 text-xs sm:text-sm">
-                            <a href="{{ route('workouts.edit', $workout->id) }}" class="text-yellow-400 hover:underline flex items-center">
-                                <i class="fa fa-pencil-alt mr-2"></i> Edit
-                            </a>
-                            <form action="{{ route('workouts.destroy', $workout->id) }}" method="POST" class="inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-400 hover:underline flex items-center" onclick="return confirm('Are you sure you want to delete this workout?')">
-                                    <i class="fa fa-trash mr-2"></i> Delete
-                                </button>
-                            </form>
-                        </div>
-                    @endif
+            @if($workouts->isEmpty())
+                <div class="col-span-full bg-gray-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-md text-center">
+                    <p class="text-xl text-gray-400">No results found. Try searching something else.</p>
                 </div>
-            @endforeach
+            @else
+                @foreach($workouts as $workout)
+                    <div class="bg-gray-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-200">
+                        <a href="{{ route('workouts.show', $workout->id) }}" class="block">
+                            <!-- Workout Title -->
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-100 mb-3 capitalize">{{ $workout->title }}</h3>
+                            <!-- Workout level (Focus) -->
+                            <div class="text-sm mb-4 mt-4 uppercase font-semibold
+                                @if($workout->focus == 'Beginner')
+                                    text-sky-400
+                                @elseif($workout->focus == 'Intermediate')
+                                    text-orange-500
+                                @elseif($workout->focus == 'Advanced')
+                                    text-red-500
+                                @else
+                                    text-gray-500
+                                @endif">
+                                {{ $workout->focus }}
+                            </div>
+                            <!-- Workout Type -->
+                            <div class="text-sm text-gray-500 mb-4 mt-4 uppercase font-semibold">
+                                <i class="fa-solid fa-bullseye mr-1"></i> <span>{{ $workout->workout_type }}</span>
+                            </div>
+                            <!-- Muscle Groups -->
+                            <div class="flex flex-wrap gap-3 mt-2">
+                                @php
+                                    $muscleGroups = collect($workout->exercises)->map(function($exercise) {
+                                        return $exercise->primaryMuscleGroup ? $exercise->primaryMuscleGroup->name : null;
+                                    })->filter()->unique();
+                                @endphp
+                                @forelse($muscleGroups as $muscle)
+                                    <span class="text-xs sm:text-sm text-gray-400">{{ $muscle }}</span>
+                                @empty
+                                    <span class="text-xs sm:text-sm text-gray-500">No muscle groups listed.</span>
+                                @endforelse
+                            </div>
+                        </a>
+                        <!-- Action Links (for Edit & Delete) -->
+                        @if (auth()->user() && auth()->user()->role_id === 2)
+                            <div class="flex justify-between mt-6 text-xs sm:text-sm">
+                                <a href="{{ route('workouts.edit', $workout->id) }}" class="text-yellow-400 hover:underline flex items-center">
+                                    <i class="fa fa-pencil-alt mr-2"></i> Edit
+                                </a>
+                                <form action="{{ route('workouts.destroy', $workout->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-400 hover:underline flex items-center" onclick="return confirm('Are you sure you want to delete this workout?')">
+                                        <i class="fa fa-trash mr-2"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
+            @endif
         </div>
 
         <!-- Pagination -->
@@ -156,4 +167,5 @@
             {{ $workouts->links() }}
         </div>
     </div>
+
 @endsection

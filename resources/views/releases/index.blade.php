@@ -26,7 +26,7 @@
                             <img src="{{ $release->image_url }}" alt="Release Image" class="mt-4 rounded-lg w-full object-cover shadow-lg">
                         @endif
 
-                        <div class="mt-4 text-gray-300 leading-relaxed">
+                        <div class="mt-4 text-gray-300 leading-relaxed change-format-releases">
                             {!! $release->description !!}
                         </div>
 

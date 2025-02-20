@@ -41,27 +41,41 @@
 
             <!-- Search Form -->
             <div class="mb-6">
-                <form action="{{ route('exercises.index') }}" method="GET" class="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 w-full">
-                    <!-- Search Input (Full width) -->
-                    <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Search by title or muscle group"
-                        class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-300">
+                <form action="{{ route('exercises.index') }}" method="GET"
+                    class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full">
 
-                    <!-- Search Button -->
-                    <button type="submit" class="mt-4 sm:mt-0 sm:ml-4 btn-extra w-full sm:w-auto text-white px-4 py-2 rounded-lg transition">
-                        Search
-                    </button>
+                    <!-- Search Input & Button (Full width on mobile) -->
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full">
+                        <input type="text" name="search" value="{{ $search ?? '' }}"
+                            placeholder="Search by title or description"
+                            class="w-full sm:w-auto flex-grow px-4 py-2 rounded-lg bg-gray-700 text-gray-300">
 
-                    <!-- Clear Search Button -->
-                    @if(request('search'))
-                        <a href="{{ route('exercises.index') }}" class="px-4 py-2 rounded-lg btn-extra transition">
+                        <button type="submit"
+                            class="btn-extra text-white px-4 py-2 rounded-lg transition w-full sm:w-auto">
+                            Search
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Search Results & Clear Button (New line, but in one row) -->
+                @if(request('search'))
+                    <div class="flex flex-row items-center justify-between bg-gray-900 p-3 rounded-lg mt-2">
+                        <p class="text-gray-300 text-sm">Search results for: <span class="font-semibold">{{ request('search') }}</span></p>
+                        <a href="{{ route('exercises.index') }}"
+                            class="btn-extra px-4 py-2 rounded-lg transition text-white bg-red-500 hover:bg-red-600">
                             Clear
                         </a>
-                    @endif
-                </form>
+                    </div>
+                @endif
             </div>
 
             <!-- Exercises List -->
             <ul class="space-y-4">
+                @if($exercises->isEmpty())
+                    <div class="col-span-full bg-gray-900 p-4 sm:p-6 md:p-8 rounded-lg shadow-md text-center">
+                        <p class="text-xl text-gray-400">No results found. Try searching something else.</p>
+                    </div>
+                @endif
                 @foreach($exercises as $exercise)
                     <a href="{{ route('exercises.show', $exercise->id) }}" class="block">
                         <li class="image-gif-position bg-gray-700 p-4 rounded-lg shadow-sm hover:bg-gray-600 transition duration-300">
@@ -87,10 +101,10 @@
                                 <div class="flex-1">
                                     <h2 class="text-xl text-white font-semibold">{{ $exercise->title }}</h2>
 
-                                    <div class="text-gray-400 mt-2">
+                                    <div class="text-gray-200 mt-2">
                                         <strong>Primary Muscle Group:</strong> {{ $exercise->primaryMuscleGroup->name ?? 'N/A' }}
                                     </div>
-                                    <div class="text-gray-400">
+                                    <div class="text-xs sm:text-sm text-gray-400">
                                         <strong>Secondary Muscle Groups:</strong>
                                         @if ($exercise->secondaryMuscleGroups->count() > 0)
                                             {{ implode(', ', $exercise->secondaryMuscleGroups->pluck('name')->toArray()) }}
