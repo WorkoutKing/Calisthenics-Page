@@ -164,7 +164,7 @@
 
         <!-- Pagination -->
         <div class="mt-4">
-            {{ $workouts->links() }}
+            {{ $workouts->appends(['search' => request('search')])->links() }}
         </div>
     </div>
 

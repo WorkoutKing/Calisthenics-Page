@@ -129,7 +129,7 @@
 
             <!-- Pagination -->
             <div class="mt-8 flex justify-center">
-                {{ $exercises->links() }}
+                {{ $exercises->appends(['search' => request('search')])->links() }}
             </div>
         </div>
     </div>

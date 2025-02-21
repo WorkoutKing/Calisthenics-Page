@@ -13,7 +13,6 @@ class ExerciseController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-
         $exercises = Exercise::query();
 
         if ($search) {
@@ -30,7 +29,9 @@ class ExerciseController extends Controller
 
         $exercises = $exercises->orderBy('title')->paginate(15);
 
-        return view('admin.exercises.index', compact('exercises'));
+        $exercises->appends(['search' => $search]);
+
+        return view('admin.exercises.index', compact('exercises', 'search'));
     }
 
     public function publicIndex(Request $request)
@@ -53,7 +54,7 @@ class ExerciseController extends Controller
 
         $exercises = $exercises->orderBy('title')->paginate(15);
 
-        return view('exercises.index', compact('exercises'));
+        return view('exercises.index', compact('exercises', 'search'));
     }
 
 
