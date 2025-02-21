@@ -13,15 +13,41 @@
         @csrf
         @method('put')
 
-        <div>
+        <!-- Current Password -->
+        <div class="relative">
             <x-input-label for="update_password_current_password" :value="__('Current Password')" class="text-gray-200" />
-            <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full bg-gray-700 text-white border-gray-600 focus:ring-indigo-500 focus:border-indigo-500" autocomplete="current-password" />
+
+            <x-text-input id="update_password_current_password"
+                        name="current_password"
+                        type="password"
+                        class="mt-1 block w-full bg-gray-700 text-white border-gray-600 focus:ring-indigo-500 focus:border-indigo-500 pr-10"
+                        autocomplete="current-password" />
+
+            <!-- Toggle Button -->
+            <button type="button" onclick="togglePassword('update_password_current_password', 'eyeIconCurrent')"
+                    class="absolute inset-y-0 right-3 top-9 text-gray-400">
+                <i id="eyeIconCurrent" class="fas fa-eye"></i>
+            </button>
+
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2 text-red-400" />
         </div>
 
-        <div>
+        <!-- New Password -->
+        <div class="relative mt-4">
             <x-input-label for="update_password_password" :value="__('New Password')" class="text-gray-200" />
-            <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full bg-gray-700 text-white border-gray-600 focus:ring-indigo-500 focus:border-indigo-500" autocomplete="new-password" />
+
+            <x-text-input id="update_password_password"
+                        name="password"
+                        type="password"
+                        class="mt-1 block w-full bg-gray-700 text-white border-gray-600 focus:ring-indigo-500 focus:border-indigo-500 pr-10"
+                        autocomplete="new-password" />
+
+            <!-- Toggle Button -->
+            <button type="button" onclick="togglePassword('update_password_password', 'eyeIconNew')"
+                    class="absolute inset-y-0 right-3 top-9 text-gray-400">
+                <i id="eyeIconNew" class="fas fa-eye"></i>
+            </button>
+
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2 text-red-400" />
         </div>
 

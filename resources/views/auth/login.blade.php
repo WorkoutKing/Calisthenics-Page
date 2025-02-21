@@ -20,15 +20,21 @@
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="password" :value="__('Password')" class="text-gray-800 dark:text-gray-200" />
 
             <x-text-input id="password"
-                          class="block mt-1 w-full bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400"
-                          type="password"
-                          name="password"
-                          required
-                          autocomplete="current-password" />
+                        class="block mt-1 w-full bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 pr-10"
+                        type="password"
+                        name="password"
+                        required
+                        autocomplete="current-password" />
+
+            <!-- Eye Icon for Toggle -->
+            <button type="button" onclick="togglePassword()"
+                class="absolute inset-y-0 right-3 top-9 text-gray-600 dark:text-gray-300">
+                <i id="eyeIcon" class="fas fa-eye"></i>
+            </button>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-600 dark:text-red-400" />
         </div>
