@@ -1,4 +1,8 @@
 @media screen and (max-width: 700px) {
+    .change-format ul,
+    .change-format ol {
+        padding: 5px 19px !important;
+    }
     main {
         margin: 15px 0px !important;
     }

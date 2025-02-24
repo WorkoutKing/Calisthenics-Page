@@ -5,15 +5,15 @@
 @section('meta_keywords', 'calisthenics, basics, statistics, top exercises, reps, users')
 
 @section('content')
-<div >
+<div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Page Title -->
-        <div class="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white p-6 rounded-lg shadow-lg mb-8">
-            <h1 class="text-4xl font-bold text-center mb-4 flex items-center justify-center">
+        <div class="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white p-3 rounded-lg shadow-lg mb-8">
+            <h1 class="text-3xl lg:text-4xl font-bold mb-4 text-center">
                 Top 10 Exercises Based on Reps
             </h1>
-            <p class="text-center text-lg sm:text-xl">
+            <p class="text-center text-lg lg:text-xl">
                 Dive into the world of calisthenics excellence! Discover the most performed exercises and be inspired by the top contributors.
                 <span class="font-semibold">Sign up now</span> to track your progress and climb the ranks!
             </p>
@@ -27,7 +27,7 @@
         @endif
 
         <!-- Statistics Section -->
-        <div class="bg-gray-800 text-white p-6 sm:p-8 rounded-lg shadow-md">
+        <div class="bg-gray-800 text-white p-3 sm:p-6 rounded-lg shadow-md">
             @php
             $exercises = [
                 'Pull Ups' => $topPullUps,

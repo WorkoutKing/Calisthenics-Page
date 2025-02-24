@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-6 sm:px-8">
-        <div class="bg-gray-800 text-white p-4 rounded-lg shadow-xl">
-            <h1 class="text-3xl font-semibold text-gray-100 mb-6">Privacy Policy</h1>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gray-800 text-white p-3 sm:p-8 rounded-lg shadow-xl">
+            <h1 class="text-3xl lg:text-4xl font-bold text-center mb-4">Privacy Policy</h1>
 
             <p class="text-gray-400">Last updated: 2025-01-28</p>
 

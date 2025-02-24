@@ -5,34 +5,34 @@
 @section('meta_keywords', 'calisthenics, fitness, mission, community, goal, strength, health, team')
 
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- About Section -->
-        <div class="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white p-8 rounded-lg shadow-lg mb-8">
-            <h1 class="text-4xl font-bold text-center mb-4">About Us</h1>
-            <p class="text-center text-lg sm:text-xl">
+        <div class="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white p-3 rounded-lg shadow-lg mb-8">
+            <h1 class="text-3xl lg:text-4xl font-bold text-center mb-4">About Us</h1>
+            <p class="text-center text-lg lg:text-xl">
                 At Madstars, we are passionate about calisthenics and believe in the power of bodyweight exercises to build strength, flexibility, and endurance. Our mission is to empower individuals worldwide to embrace a fitness lifestyle and transform their health through calisthenics.
             </p>
         </div>
 
         <!-- Mission Section -->
-        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
-            <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Mission</h2>
+        <div class="bg-gray-800 text-white p-3 sm:p-8 rounded-lg shadow-xl mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-6">Our Mission</h2>
             <p class="text-lg text-gray-400 leading-relaxed">
                 Our mission is simple: to make calisthenics accessible and enjoyable for everyone, regardless of age or fitness level. We aim to provide high-quality resources, tutorials, and workout plans that help people build strength, improve flexibility, and enhance endurance without the need for fancy equipment or gym memberships.
             </p>
         </div>
 
         <!-- Goal Section -->
-        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
-            <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Goal</h2>
+        <div class="bg-gray-800 text-white p-3 sm:p-8 rounded-lg shadow-xl mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-6">Our Goal</h2>
             <p class="text-lg text-gray-400 leading-relaxed">
                 Our goal is to foster a community of passionate fitness enthusiasts who support and inspire one another in their calisthenics journey. We believe in the power of consistency and dedication, and we’re here to help you push your limits and achieve your fitness goals. Whether you're a beginner or an advanced practitioner, we're committed to providing guidance and motivation every step of the way.
             </p>
         </div>
 
         <!-- Vision Section -->
-        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
-            <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Vision</h2>
+        <div class="bg-gray-800 text-white p-3 sm:p-8 rounded-lg shadow-xl mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-6">Our Vision</h2>
             <p class="text-lg text-gray-400 leading-relaxed">
                 We envision a world where everyone can experience the benefits of calisthenics, living healthier, stronger, and more confident lives. We aim to become a global hub for calisthenics education and inspiration, providing a platform where people can share their progress, learn new techniques, and achieve personal milestones together.
             </p>
@@ -40,7 +40,7 @@
 
         <!-- Founder Section -->
         <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
-            <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Founder</h2>
+            <h2 class="text-2xl font-semibold text-gray-100 mb-6">Our Founder</h2>
             <div class="flex flex-col items-center mb-8">
                 <img src="{{ asset('storage/pagePictures/fl.jpg') }}" alt="Raimundas" class="w-48 h-48 rounded-full mb-4">
                 <h3 class="text-2xl font-semibold text-white">Raimundas</h3>
@@ -94,7 +94,7 @@
 
         <!-- Funny Calisthenics Facts -->
         <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
-            <h2 class="text-3xl font-semibold text-gray-100 mb-6">Funny Calisthenics Facts</h2>
+            <h2 class="text-2xl font-semibold text-gray-100 mb-6">Funny Calisthenics Facts</h2>
             <ul class="list-disc pl-8 text-lg text-gray-400 space-y-4">
                 <li>Did you know? The world record for the most push-ups in one go is over 5000! Talk about endurance!</li>
                 <li>Calisthenics originated in ancient Greece! They didn’t have fancy gym equipment, just bodyweight exercises.</li>
@@ -106,7 +106,7 @@
 
         <!-- Contact Section (optional) -->
         <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl mb-8">
-            <h2 class="text-3xl font-semibold text-gray-100 mb-6">Contact Us</h2>
+            <h2 class="text-2xl font-semibold text-gray-100 mb-6">Contact Us</h2>
             <p class="text-lg text-gray-400 mb-4">
                 Have questions or want to learn more about calisthenics? Feel free to reach out to us anytime! We’d love to connect and assist you on your fitness journey.
             </p>

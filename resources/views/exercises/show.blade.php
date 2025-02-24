@@ -5,7 +5,7 @@
 @section('meta_keywords', $exercise->seo_keywords ?? '')
 
 @section('content')
-    <div class="container mx-auto px-6 sm:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="space-y-4">
             @if ($errors->any())
                 <div class="alert alert-danger mb-6 bg-red-800 border border-red-600 text-red-300 rounded-md p-4">
@@ -25,7 +25,7 @@
         </div>
 
         <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
-            <h1 class="text-4xl font-semibold text-gray-100 mb-6">{{ $exercise->title }}</h1>
+            <h1 class="text-3xl lg:text-4xl font-bold mb-4 text-center">{{ $exercise->title }}</h1>
 
             <!-- Display Main Picture -->
             @if ($exercise->media_url)
@@ -47,12 +47,15 @@
             <!-- Secondary Muscle Groups -->
             @if ($exercise->secondaryMuscleGroups->count() > 0)
                 <div class="mb-6">
-                    <h2 class="text-2xl font-semibold text-gray-200">Secondary Muscle Groups</h2>
-                    <ul class="text-gray-300">
-                        @foreach ($exercise->secondaryMuscleGroups as $group)
-                            <li>{{ $group->name }}</li>
-                        @endforeach
-                    </ul>
+                    <h2 class="text-1xl font-semibold text-gray-300">Secondary Muscle Groups</h2>
+                    <div class="text-xs sm:text-sm text-gray-400">
+                        <strong>Secondary Muscle Groups:</strong>
+                        @if ($exercise->secondaryMuscleGroups->count() > 0)
+                            {{ implode(', ', $exercise->secondaryMuscleGroups->pluck('name')->toArray()) }}
+                        @else
+                            N/A
+                        @endif
+                    </div>
                 </div>
             @endif
 

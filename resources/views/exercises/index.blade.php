@@ -36,8 +36,8 @@
             @endif
         </div>
 
-        <div class="bg-gray-800 text-white p-4 sm:p-8 rounded-lg shadow-xl">
-            <h1 class="text-3xl font-semibold text-gray-100 mb-6">Exercise Library</h1>
+        <div class="bg-gray-800 text-white p-3 sm:p-8 rounded-lg shadow-xl">
+            <h1 class="text-3xl lg:text-4xl font-bold mb-4">Exercise Library</h1>
 
             <!-- Search Form -->
             <div class="mb-6">

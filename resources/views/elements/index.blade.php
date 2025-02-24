@@ -34,10 +34,10 @@
 
         <!-- Page Title and Description -->
         <div class="bg-gray-800 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mb-8">
-            <h1 class="text-4xl font-bold text-center mb-4 text-white">
+            <h1 class="text-3xl lg:text-4xl font-bold text-center mb-4">
                 Explore Elements
             </h1>
-            <p class="text-center text-lg sm:text-xl text-gray-300">
+            <p class="text-center text-lg lg:text-xl">
                 Dive into the fascinating world of calisthenics! Learn, practice, and master various elements step by step. Earn points and track your progress as you grow.
                 <br><br> <!-- Add line breaks for spacing -->
                 <a href="/elements/statistics" class="font-bold text-blue-400 hover:text-blue-300 underline">Check out the top pantheon of elements</a>
@@ -55,7 +55,7 @@
             $overallCompletion = $totalElements ? round(($completedElements / $totalElements) * 100) : 0;
         @endphp
 
-        <div class="bg-gray-800 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mb-8">
+        <div class="bg-gray-800 p-3 sm:p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mb-8">
             <h2 class="text-2xl font-bold text-center text-white">
                 Completed Skills: {{ $completedElements }} / {{ $totalElements }}
             </h2>
@@ -69,7 +69,7 @@
         @endif
 
         <!-- Elements List -->
-        <div class="bg-gray-900 shadow-lg rounded-lg p-4 mb-8">
+        <div class="bg-gray-900 shadow-lg rounded-lg p-3 sm:p-8 mb-8">
             <ul class="space-y-8">
                 @foreach ($elements as $index => $element)
                     @php
