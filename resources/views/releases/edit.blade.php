@@ -3,7 +3,7 @@
 @section('content')
     <div class="py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div class="bg-gray-800 p-3 sm:p-6 rounded-lg shadow-lg">
                 <h1 class="text-2xl font-bold text-white mb-6">Edit Release</h1>
 
                 <form method="POST" action="{{ route('releases.update', $release) }}">

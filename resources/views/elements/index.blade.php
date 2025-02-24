@@ -5,9 +5,7 @@
 @section('meta_keywords', 'calisthenics, elements, steps, results, points')
 
 @section('content')
-<div >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <!-- Flash Messages -->
         @if ($errors->any())
             <div class="alert bg-red-900 border-l-4 border-red-600 text-red-100 p-4 mb-6 rounded-md">
@@ -81,7 +79,7 @@
                     @endphp
                     <li class="bg-gray-800 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200" x-data="{ open: {{ $index == 0 ? 'true' : 'false' }} }">
                         <h2 class="text-xl font-semibold text-gray-200 flex items-center justify-between">
-                            <span>
+                            <span class="flex flex-wrap">
                                 <i class="fa-solid fa-cube mr-2"></i> {{ $element->name }}
 
                                 @if ($element->exercise) <!-- Check if the element has an associated exercise -->
@@ -219,5 +217,4 @@
             @endif
         @endauth
     </div>
-</div>
 @endsection

@@ -21,12 +21,11 @@
                 </div>
             @endif
 
-            <!-- Page Title -->
+            <!-- Page Title and Description -->
             <div class="bg-gray-800 p-3 rounded-lg shadow-lg hover:shadow-xl transition duration-200 mb-8">
-                <h1 class="text-4xl font-bold text-center mb-4 text-white">
+                <h1 class="text-3xl lg:text-4xl font-bold text-center mb-4">
                     Active Challenges
                 </h1>
-                <!-- Description for Non-Authenticated Users -->
                 <p class="text-center text-lg sm:text-xl text-gray-300">
                     Embark on a journey of exciting calisthenics challenges! Learn techniques step-by-step to conquer various elements.
                     Track your progress and earn rewards as you complete each challenge.
@@ -39,12 +38,12 @@
             <!-- Active Challenges -->
             <section class="space-y-8">
                 @if ($challenges->isEmpty())
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-gray-800 p-3 sm:p-8 rounded-lg shadow-md text-center">
                         <p class="text-gray-300">No active challenges available at the moment. Please check back later!</p>
                     </div>
                 @else
                     @foreach ($challenges as $challenge)
-                        <div class="bg-gray-800 p-6 rounded-lg shadow-lg border hover:shadow-xl transition duration-200">
+                        <div class="bg-gray-800 p-3 sm:p-8 rounded-lg shadow-lg border hover:shadow-xl transition duration-200">
                             <h4 class="text-2xl font-bold text-white">{{ $challenge->name }}</h4>
                             <p class="text-gray-300 mt-3">{{ $challenge->description }}</p>
                             <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-300">
@@ -128,13 +127,13 @@
                 <h3 class="text-3xl font-bold text-gray-300 border-b pb-2 border-gray-500">
                     Previous Challenges
                 </h3>
-                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="bg-gray-700 p-3 sm:p-8 rounded-lg shadow-lg">
                     @if ($previousChallenges->isEmpty())
                         <p class="text-gray-400 text-center">No previous challenges available.</p>
                     @else
                         <ul class="divide-y divide-gray-600">
                             @foreach ($previousChallenges as $challenge)
-                                <li class="py-4 flex justify-between items-center">
+                                <li class="flex flex-wrap justify-between items-center">
                                     <span class="text-gray-300 font-medium">{{ $challenge->name }}</span>
                                     <span class="text-gray-400 text-sm">
                                         {{ $challenge->completed_count ?? 0 }} {{ Str::plural('person', $challenge->completed_count) }} completed

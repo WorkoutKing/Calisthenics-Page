@@ -68,7 +68,7 @@
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-150">
+                <button type="submit" class="w-full py-2 px-4 rounded-md btn-extra">
                     Update Element
                 </button>
             </div>
