@@ -18,6 +18,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ReleaseController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\SitemapController;
+use Illuminate\Http\Request;
+
 
 
 Route::get('/welcome', function () {
@@ -174,7 +176,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::delete('/admin/muscle-groups/{muscleGroup}', [MuscleGroupController::class, 'destroy'])->name('admin.muscle_groups.destroy');
 });
 // Public Profile (Must to be last becouse then user cant open notifications)
-// Public Routes
 Route::get('/workouts', [WorkoutController::class, 'index'])->name('workouts.index');
 Route::get('/workouts/{workout:slug}', [WorkoutController::class, 'show'])->name('workouts.show');
 Route::get('releases', [ReleaseController::class, 'index'])->name('releases.index');
@@ -192,9 +193,16 @@ Route::get('/exercises/{exercise:slug}', [ExerciseController::class, 'publicShow
 Route::get('/about-us', [PagesController::class, 'indexAboutUs'])->name('pages.about-us');
 Route::get('/privacy-policy', [PagesController::class, 'indexPrivacy'])->name('pages.privacy-policy');
 Route::get('/one-rep-max-calculators', [PagesController::class, 'indexCalculator'])->name('pages.calculator');
-Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
 
+Route::get('/generate-sitemap', function (Request $request) {
+    if ($request->query('key') !== 'my_secret_key') {
+        abort(403, 'Unauthorized');
+    }
 
+    app(SitemapController::class)->generateSitemap();
+
+    return response()->json(['message' => 'Sitemap generated successfully!']);
+});
 
 // Include Auth Routes
 require __DIR__ . '/auth.php';

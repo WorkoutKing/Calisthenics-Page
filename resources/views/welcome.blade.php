@@ -51,7 +51,7 @@
             <div class="swiper-container mt-10">
                 <div class="swiper-wrapper">
                     @foreach ($newestPosts as $post)
-                        <a href="{{ route('posts.show', $post->id) }}" class="swiper-slide block group">
+                        <a href="{{ route('posts.show', $post->slug) }}" class="swiper-slide block group">
                             <div class="relative bg-gray-800 rounded-lg overflow-hidden shadow-md transition transform group-hover:scale-105">
                                 <img src="{{ asset('storage/'.$post->main_picture) }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
                                 <div class="p-4">
