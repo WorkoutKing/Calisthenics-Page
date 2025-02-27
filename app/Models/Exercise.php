@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Exercise extends Model
 {
@@ -19,15 +20,37 @@ class Exercise extends Model
         'seo_title',
         'seo_description',
         'seo_keywords',
+        'slug'
     ];
 
-    // Define the one-to-many relationship with MuscleGroup (for primary muscle group)
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($exercise) {
+            $exercise->slug = static::generateUniqueSlug($exercise->title);
+        });
+
+        static::updating(function ($exercise) {
+            if ($exercise->isDirty('title')) {
+                $exercise->slug = static::generateUniqueSlug($exercise->title, $exercise->id);
+            }
+        });
+    }
+
+    private static function generateUniqueSlug($title, $exerciseId = null)
+    {
+        $slug = Str::slug($title);
+        $count = Exercise::where('slug', $slug)->where('id', '!=', $exerciseId)->count();
+
+        return $count > 0 ? "{$slug}-" . ($count + 1) : $slug;
+    }
+
     public function primaryMuscleGroup()
     {
         return $this->belongsTo(MuscleGroup::class, 'primary_muscle_group_id');
     }
 
-    // Define the many-to-many relationship for secondary muscle groups
     public function secondaryMuscleGroups()
     {
         return $this->belongsToMany(MuscleGroup::class, 'exercise_muscle_group');
@@ -42,7 +65,6 @@ class Exercise extends Model
         return $this->hasMany(Element::class);
     }
 
-    // Define the many-to-many relationship with workouts through the pivot table
     public function workouts()
     {
         return $this->belongsToMany(Workout::class, 'exercise_workout')

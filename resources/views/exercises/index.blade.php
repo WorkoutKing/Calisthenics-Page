@@ -77,7 +77,7 @@
                     </div>
                 @endif
                 @foreach($exercises as $exercise)
-                    <a href="{{ route('exercises.show', $exercise->id) }}" class="block">
+                    <a href="{{ route('exercises.show', $exercise->slug) }}" class="block">
                         <li class="image-gif-position bg-gray-700 p-4 rounded-lg shadow-sm hover:bg-gray-600 transition duration-300">
                             <div class="flex flex-col sm:flex-row items-start sm:items-center">
 

@@ -94,13 +94,13 @@ class WorkoutController extends Controller
         return redirect()->route('workouts.index')->with('success', 'Workout created successfully.');
     }
 
-    public function show($id)
+    public function show(Workout $workout)
     {
-        $workout = Workout::with([
+        $workout->load([
             'exercises.primaryMuscleGroup' => function ($query) {
                 $query->select('id', 'name');
             }
-        ])->findOrFail($id);
+        ]);
 
         return view('workouts.show', compact('workout'));
     }

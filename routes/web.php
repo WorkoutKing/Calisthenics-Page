@@ -17,6 +17,8 @@ use App\Http\Controllers\MuscleGroupController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ReleaseController;
 use App\Http\Controllers\WorkoutController;
+use App\Http\Controllers\SitemapController;
+
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -174,22 +176,24 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 // Public Profile (Must to be last becouse then user cant open notifications)
 // Public Routes
 Route::get('/workouts', [WorkoutController::class, 'index'])->name('workouts.index');
-Route::get('/workouts/{workout}', [WorkoutController::class, 'show'])->name('workouts.show');
+Route::get('/workouts/{workout:slug}', [WorkoutController::class, 'show'])->name('workouts.show');
 Route::get('releases', [ReleaseController::class, 'index'])->name('releases.index');
 Route::get('/', action: [HomeController::class, 'index'])->name('welcome');
 Route::get('/elements', action: [ElementController::class, 'index'])->name('elements.index');
 Route::get('/elements/statistics', [ElementController::class, 'statistics'])->name('elements.statistics');
 Route::get('/basics/statistics', action: [BasicController::class, 'statistics'])->name('basics.statistics');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
 Route::get('/challenges/{id}', [ChallengeController::class, 'show'])->name('challenges.show');
 Route::get('/profile/{userId}', [ProfileController::class, 'otherUserProfile'])->name('profile.other');
 Route::get('/exercises', [ExerciseController::class, 'publicIndex'])->name('exercises.index');
-Route::get('/exercises/{exercise}', [ExerciseController::class, 'publicShow'])->name('exercises.show');
+Route::get('/exercises/{exercise:slug}', [ExerciseController::class, 'publicShow'])->name('exercises.show');
 Route::get('/about-us', [PagesController::class, 'indexAboutUs'])->name('pages.about-us');
 Route::get('/privacy-policy', [PagesController::class, 'indexPrivacy'])->name('pages.privacy-policy');
 Route::get('/one-rep-max-calculators', [PagesController::class, 'indexCalculator'])->name('pages.calculator');
+Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
+
 
 
 // Include Auth Routes

@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Exercise;
-use App\Models\User;
+use Illuminate\Support\Str;
 
 class Workout extends Model
 {
@@ -20,7 +19,31 @@ class Workout extends Model
         'seo_title',
         'seo_description',
         'seo_keywords',
+        'slug'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($workout) {
+            $workout->slug = static::generateUniqueSlug($workout->title);
+        });
+
+        static::updating(function ($workout) {
+            if ($workout->isDirty('title')) {
+                $workout->slug = static::generateUniqueSlug($workout->title, $workout->id);
+            }
+        });
+    }
+
+    private static function generateUniqueSlug($title, $workoutId = null)
+    {
+        $slug = Str::slug($title);
+        $count = Workout::where('slug', $slug)->where('id', '!=', $workoutId)->count();
+
+        return $count > 0 ? "{$slug}-" . ($count + 1) : $slug;
+    }
 
     public function exercises()
     {

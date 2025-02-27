@@ -107,6 +107,7 @@ class ExerciseController extends Controller
         return view('exercises.show', compact('exercise'));
     }
 
+
     public function edit(Exercise $exercise)
     {
         $muscleGroups = MuscleGroup::orderBy('name', 'asc')->get();

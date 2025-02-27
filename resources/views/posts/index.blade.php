@@ -25,7 +25,7 @@
             <!-- Grid Layout for Posts -->
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse ($posts as $post)
-                    <a href="{{ route('posts.show', $post->id) }}" class="bg-gray-700 p-3 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-transform transform hover:scale-105 flex flex-col text-white">
+                    <a href="{{ route('posts.show', $post->slug) }}" class="bg-gray-700 p-3 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-transform transform hover:scale-105 flex flex-col text-white">
                         <!-- Post Image -->
                         <div class="mb-4 overflow-hidden rounded-lg">
                             <img src="{{ $post->main_picture ? asset('storage/' . $post->main_picture) : 'default-image.jpg' }}"

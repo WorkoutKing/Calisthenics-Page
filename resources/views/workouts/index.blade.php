@@ -108,7 +108,7 @@
             @else
                 @foreach($workouts as $workout)
                     <div class="bg-gray-800 p-4 sm:p-6 md:p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-200">
-                        <a href="{{ route('workouts.show', $workout->id) }}" class="block">
+                        <a href="{{ route('workouts.show', $workout->slug) }}" class="block">
                             <!-- Workout Title -->
                             <h3 class="text-xl sm:text-2xl font-semibold text-gray-100 mb-3 capitalize">{{ $workout->title }}</h3>
                             <!-- Workout level (Focus) -->
