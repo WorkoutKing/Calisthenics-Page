@@ -14,5 +14,9 @@ class PagesController extends Controller
     {
         return view('pages.about-us');
     }
+    public function indexCalculator()
+    {
+        return view('pages.calculator');
+    }
 }
 

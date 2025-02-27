@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>http://localhost/workouts</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/workouts/{workout}</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/releases</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/elements</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/elements/statistics</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/basics/statistics</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/posts</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/challenges</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/profile/{userId}</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/about-us</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/privacy-policy</loc>
+
+            </url>
+    <url>
+        <loc>http://localhost/one-rep-max-calculators</loc>
+
+            </url>
+</urlset>

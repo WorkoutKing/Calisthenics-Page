@@ -189,6 +189,8 @@ Route::get('/exercises', [ExerciseController::class, 'publicIndex'])->name('exer
 Route::get('/exercises/{exercise}', [ExerciseController::class, 'publicShow'])->name('exercises.show');
 Route::get('/about-us', [PagesController::class, 'indexAboutUs'])->name('pages.about-us');
 Route::get('/privacy-policy', [PagesController::class, 'indexPrivacy'])->name('pages.privacy-policy');
+Route::get('/one-rep-max-calculators', [PagesController::class, 'indexCalculator'])->name('pages.calculator');
+
 
 // Include Auth Routes
 require __DIR__ . '/auth.php';

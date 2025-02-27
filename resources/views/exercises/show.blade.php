@@ -65,6 +65,18 @@
                 <div class="change-format" id="editor">{!! $exercise->description !!}</div>
             </div>
 
+            <div class="support-section text-center mt-8 bg-gray-900 p-2 sm:p-4 rounded-lg mb-4">
+                <strong class="text-gray-300 text-xl font-semibold">Enjoying the exercises? Support my work!</strong>
+
+                <div class="donation-buttons flex justify-center gap-6 mt-4">
+                    <form action="https://www.paypal.com/donate" method="post" target="_top">
+                        <input type="hidden" name="hosted_button_id" value="Q7NBP8DLC34N4" />
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                        <img alt="" border="0" src="https://www.paypal.com/en_LT/i/scr/pixel.gif" width="1" height="1" />
+                    </form>
+                </div>
+            </div>
+
             <!-- Back to Exercises Link -->
             <a href="{{ route('exercises.index') }}" class="bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-gray-700 transition duration-300">Back to Exercise Library</a>
         </div>
