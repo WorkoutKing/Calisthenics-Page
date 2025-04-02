@@ -18,5 +18,9 @@ class PagesController extends Controller
     {
         return view('pages.calculator');
     }
+    public function indexGPM()
+    {
+        return view('pages.gpm');
+    }
 }
 

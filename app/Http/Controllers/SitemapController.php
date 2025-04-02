@@ -48,7 +48,7 @@ class SitemapController extends Controller
         $posts = Post::all();
         foreach ($posts as $post) {
             $xml .= '<url>';
-            $xml .= '<loc>' . route('posts.show', ['post' => $post->slug]) . '</loc>';
+            $xml .= '<loc>' . route('posts.show', ['post' => $post->id]) . '</loc>';
             $xml .= '<lastmod>' . $post->updated_at->toAtomString() . '</lastmod>';
             $xml .= '<priority>0.8</priority>';
             $xml .= '</url>';
@@ -58,9 +58,9 @@ class SitemapController extends Controller
         $exercises = Exercise::all();
         foreach ($exercises as $exercise) {
             $xml .= '<url>';
-            $xml .= '<loc>' . route('exercises.show', ['exercise' => $exercise->slug]) . '</loc>';
+            $xml .= '<loc>' . route('exercises.show', ['exercise' => $exercise->id]) . '</loc>';
             $xml .= '<lastmod>' . $exercise->updated_at->toAtomString() . '</lastmod>';
-            $xml .= '<priority>0.7</priority>';
+            $xml .= '<priority>0.9</priority>';
             $xml .= '</url>';
         }
 
@@ -68,7 +68,7 @@ class SitemapController extends Controller
         $workouts = Workout::all();
         foreach ($workouts as $workout) {
             $xml .= '<url>';
-            $xml .= '<loc>' . route('workouts.show', ['workout' => $workout->slug]) . '</loc>';
+            $xml .= '<loc>' . route('workouts.show', ['workout' => $workout->id]) . '</loc>';
             $xml .= '<lastmod>' . $workout->updated_at->toAtomString() . '</lastmod>';
             $xml .= '<priority>0.7</priority>';
             $xml .= '</url>';
@@ -80,7 +80,7 @@ class SitemapController extends Controller
             $xml .= '<url>';
             $xml .= '<loc>' . route('challenges.show', ['id' => $challenge->id]) . '</loc>';
             $xml .= '<lastmod>' . $challenge->updated_at->toAtomString() . '</lastmod>';
-            $xml .= '<priority>0.6</priority>';
+            $xml .= '<priority>0.8</priority>';
             $xml .= '</url>';
         }
 
